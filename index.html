@@ -42,7 +42,7 @@
        • অফিসের খোলার সময়        ->  "FOOTER" সেকশন
 
      ★ যে তথ্য এখনো পাওয়া যায়নি — SITE-এ ফাঁকা রাখা আছে, পেলেই বসিয়ে দিন:
-       website, facebook, bkash, nagad, rocket, অফিসের খোলার সময়, বাকি কভারেজ এলাকা
+       website, nagad, অফিসের খোলার সময়, বাকি কভারেজ এলাকা
        (ফাঁকা থাকলে সাইটে ওই অংশ নিজে থেকেই লুকিয়ে যায় — ভুয়া তথ্য দেখায় না)
      ===================================================================== -->
 
@@ -647,12 +647,12 @@ html.nav-open,html.nav-open body{overflow:hidden}
 }
 .tip h3{font-size:17px;margin-bottom:4px}
 .tip p{font-size:14.5px;color:var(--ink-2);line-height:1.62}
-.tips-note{
+.callout{
   margin-top:16px;padding:15px 16px;border-radius:var(--r-md);
   background:var(--brand-soft);color:var(--ink);
   font-size:14.5px;line-height:1.62;max-width:74ch;
 }
-.tips-note b{color:var(--brand)}
+.callout b{color:var(--brand)}
 
 /* =====================================================================
    14. FOOTER
@@ -870,7 +870,10 @@ html.nav-open,html.nav-open body{overflow:hidden}
             }
           }
         ]
-      }
+      },
+      "sameAs": [
+        "https://www.facebook.com/profile.php?id=61566587596670"
+      ]
     },
     {
       "@type": "WebSite",
@@ -1369,7 +1372,11 @@ html.nav-open,html.nav-open body{overflow:hidden}
           <button type="button" class="copy-btn" hidden data-copy="rocket" data-en="Copy">কপি</button>
         </div>
       </div>
-      <p class="pay-note" data-en="Always use Send Money, not Cash Out. Keep the transaction ID until the next bill.">সবসময় সেন্ড মানি করুন, ক্যাশ আউট নয়। পরের বিল পর্যন্ত ট্রানজেকশন আইডি রেখে দিন।</p>
+      <p class="callout rv">
+        <b data-en="Reference:">রেফারেন্স:</b>
+        <span data-en="When you Send Money, type your User ID in the Reference field. Without it we cannot tell whose bill the money is for.">সেন্ড মানি করার সময় রেফারেন্স (Reference) ঘরে আপনার ইউজার আইডি লিখুন। এটা না দিলে টাকাটা কার বিল, সেটা আমরা বুঝতে পারব না।</span>
+      </p>
+      <p class="pay-note" data-en="Always use Send Money — not Payment and not Cash Out. Keep the transaction ID until the next bill.">সবসময় সেন্ড মানি (Send Money) করুন — পেমেন্ট (Payment) বা ক্যাশ আউট নয়। পরের বিল পর্যন্ত ট্রানজেকশন আইডি রেখে দিন।</p>
     </div>
   </section>
 
@@ -1413,7 +1420,7 @@ html.nav-open,html.nav-open body{overflow:hidden}
           <p data-en="Our line and boxes run on backup power, but your own router dies with the mains. A small mini-UPS for the router and the ONU keeps the internet running right through an outage.">আমাদের লাইন ও বক্স ব্যাকআপ বিদ্যুতে চলে, কিন্তু বিদ্যুৎ গেলে আপনার রাউটার বন্ধ হয়ে যায়। রাউটার ও ওএনইউ-র জন্য ছোট একটি মিনি-ইউপিএস নিলে বিদ্যুৎ না থাকলেও ইন্টারনেট চলবে।</p>
         </article>
       </div>
-      <p class="tips-note rv">
+      <p class="callout rv">
         <b data-en="Careful:">সাবধান:</b>
         <span data-en="We never ask for your bKash PIN or an OTP. If someone calls asking for a PIN, an OTP or your Wi-Fi password, do not give it — hang up and call our hotline.">আমরা কখনো আপনার বিকাশ পিন বা ওটিপি চাই না। কেউ ফোন করে পিন, ওটিপি বা ওয়াই-ফাই পাসওয়ার্ড চাইলে দেবেন না — ফোন রেখে আমাদের হটলাইনে কল করুন।</span>
       </p>
@@ -1536,12 +1543,12 @@ var SITE = {
   waText:   "আসসালামু আলাইকুম, আমি ইন্টারনেট সংযোগ নিতে চাই।",
 
   /* ★ এখনো জানা যায়নি — পেলে এখানে বসান, ফাঁকা থাকলে সাইটে দেখাবে না */
-  facebook: "",                         /* ফেসবুক পেজের লিংক */
+  facebook: "https://www.facebook.com/profile.php?id=61566587596670",  /* ফেসবুক পেজ */
   hours:    "",                         /* যেমন: "প্রতিদিন খোলা, সকাল ৯টা – রাত ৯টা" */
   hoursEn:  "",
-  bkash:    "",                         /* বিকাশ নম্বর */
+  bkash:    "01819504463",              /* বিকাশ — শুধু সেন্ড মানি */
   nagad:    "",                         /* নগদ নম্বর */
-  rocket:   ""                          /* রকেট নম্বর */
+  rocket:   "01819504463"               /* রকেট — একই নম্বর */
 };
 
 (function () {
@@ -1809,48 +1816,27 @@ var SITE = {
     });
   });
 
-  /* ---------- ১০. সার্চ ইঞ্জিনের জন্য তথ্য (SITE থেকেই) ---------- */
-  var PACKAGES = [
-    { speed: "50 Mbps",  price: "525" },
-    { speed: "70 Mbps",  price: "685" },
-    { speed: "100 Mbps", price: "840" },
-    { speed: "150 Mbps", price: "1050" }
-  ];
-  var ld = {
-    "@context": "https://schema.org",
-    "@type": "InternetServiceProvider",
-    "name": "মাসুদ ইন্টারনেট সার্ভিস",
-    "alternateName": "Masud Internet Service",
-    "description": "বিপুলাসার, মনোহরগঞ্জ, কুমিল্লায় ফাইবার অপটিক ব্রডব্যান্ড ইন্টারনেট সেবা।",
-    "telephone": ["+880" + SITE.phone1.slice(1), "+880" + SITE.phone2.slice(1)],
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Bipulasar, Poschim Bazar",
-      "addressLocality": "Monoharganj",
-      "addressRegion": "Cumilla",
-      "addressCountry": "BD"
-    },
-    "areaServed": $$("#cov-list .chip:not(.chip-ask)").map(function (c) {
-      return c.getAttribute("data-en") || c.textContent;
-    }),
-    "priceRange": "৳525–৳1050",
-    "makesOffer": PACKAGES.map(function (pk) {
-      return {
-        "@type": "Offer",
-        "name": pk.speed + " · 30 days",
-        "price": pk.price,
-        "priceCurrency": "BDT",
-        "eligibleDuration": { "@type": "QuantitativeValue", "value": 30, "unitCode": "DAY" }
-      };
-    })
-  };
-  if (SITE.website) { ld.url = SITE.website; }
-  if (SITE.hoursEn) { ld.openingHours = SITE.hoursEn; }
-  if (SITE.facebook) { ld.sameAs = [SITE.facebook]; }
-  var ldTag = document.createElement("script");
-  ldTag.type = "application/ld+json";
-  ldTag.textContent = JSON.stringify(ld);
-  document.head.appendChild(ldTag);
+  /* ---------- ১০. সার্চ ইঞ্জিনের জন্য তথ্য ----------
+     আসল JSON-LD পেজের <head>-এ লেখা আছে। এখানে শুধু SITE থেকে
+     ফোন, ফেসবুক, খোলার সময়, ওয়েবসাইট ও কভারেজ এলাকা
+     মিলিয়ে দেওয়া হয় — তাই SITE বদলালে সার্চ ইঞ্জিনের তথ্যও বদলায়।
+     ★ প্যাকেজের দাম বদলালে <head>-এর JSON-LD-তেও হাতে বদলাতে হবে। */
+  try {
+    var ldTag = $('script[type="application/ld+json"]');
+    var ldData = ldTag && JSON.parse(ldTag.textContent);
+    var biz = ldData && ldData["@graph"] && ldData["@graph"][0];
+    if (biz) {
+      biz.telephone = ["+880" + SITE.phone1.slice(1), "+880" + SITE.phone2.slice(1)];
+      var areas = $$("#cov-list .chip:not(.chip-ask)").map(function (c) {
+        return { "@type": "Place", "name": c.getAttribute("data-bn") || c.textContent };
+      });
+      if (areas.length)  { biz.areaServed = areas; }
+      if (SITE.facebook) { biz.sameAs = [SITE.facebook]; }
+      if (SITE.hoursEn)  { biz.openingHours = SITE.hoursEn; }
+      if (SITE.website)  { biz.url = SITE.website; }
+      ldTag.textContent = JSON.stringify(ldData);
+    }
+  } catch (e) {}
 })();
 </script>
 
