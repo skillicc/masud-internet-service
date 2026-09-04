@@ -1,0 +1,5 @@
+# মাসুদ ইন্টারনেট সার্ভিস — সব সার্চ ইঞ্জিনকে পুরো সাইট দেখার অনুমতি
+User-agent: *
+Allow: /
+
+Sitemap: https://skillicc.github.io/masud-internet-service/sitemap.xml

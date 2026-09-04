@@ -3,14 +3,22 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<!-- এই পেজের আসল ঠিকানা। ডোমেইন কিনলে নিচের সব জায়গায় নতুন ঠিকানা বসান। -->
+<link rel="canonical" href="https://skillicc.github.io/masud-internet-service/">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <title>মাসুদ ইন্টারনেট সার্ভিস — গ্রাম বাংলার ইন্টারনেট</title>
 <meta name="description" content="মাসুদ ইন্টারনেট সার্ভিস — বিপুলাসার, পশ্চিম বাজার, মনোহরগঞ্জ, কুমিল্লায় ঘরে বসেই দ্রুতগতির ফাইবার ইন্টারনেট। ৫০ থেকে ১৫০ Mbps প্যাকেজ, ৩০ দিন মেয়াদ, আনলিমিটেড ডাটা। হটলাইন ০১৯৭৯-৫০৪৪৬৩।">
 <meta name="theme-color" content="#0B6B5E" id="meta-theme">
 <meta property="og:title" content="মাসুদ ইন্টারনেট সার্ভিস — গ্রাম বাংলার ইন্টারনেট">
 <meta property="og:description" content="৫০–১৫০ Mbps ফাইবার প্যাকেজ, ৩০ দিন মেয়াদ, আনলিমিটেড ডাটা। বিপুলাসার, মনোহরগঞ্জ, কুমিল্লা।">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://skillicc.github.io/masud-internet-service/">
+<meta property="og:site_name" content="মাসুদ ইন্টারনেট সার্ভিস">
 <meta property="og:locale" content="bn_BD">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="মাসুদ ইন্টারনেট সার্ভিস — গ্রাম বাংলার ইন্টারনেট">
+<meta name="twitter:description" content="৫০–১৫০ Mbps ফাইবার প্যাকেজ, ৩০ দিন মেয়াদ, আনলিমিটেড ডাটা। বিপুলাসার, মনোহরগঞ্জ, কুমিল্লা।">
 
 <!-- হোয়াটসঅ্যাপ/ফেসবুকে লিংক শেয়ার করলে যে ছবি দেখাবে।
      ডোমেইন কেনার পর নিচের দুই জায়গায় পুরো ঠিকানা দিন,
@@ -40,7 +48,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@500;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@600;700;800&family=Hind+Siliguri:wght@400;600;700&display=swap">
 
 <!-- প্রথম রঙ আঁকার আগেই থিম বসানো হয় — তাই ডার্ক মোডে সাদা ঝলক দেখা যায় না -->
 <script>
@@ -157,6 +165,8 @@ body{
   line-height:1.7;
   padding-bottom:calc(var(--bar-h) + env(safe-area-inset-bottom,0px));
   -webkit-font-smoothing:antialiased;
+  -webkit-tap-highlight-color:rgba(11,107,94,.14);
+  overflow-wrap:break-word;
 }
 h1,h2,h3{
   font-family:'Baloo Da 2','Hind Siliguri',system-ui,sans-serif;
@@ -324,6 +334,7 @@ button{font-family:inherit}
   transition:max-height .32s var(--ease),visibility .32s var(--ease);
 }
 .drawer.open{max-height:calc(100vh - var(--hdr-h));overflow-y:auto;visibility:visible}
+@supports (height:100dvh){ .drawer.open{max-height:calc(100dvh - var(--hdr-h))} }
 @media (min-width:1024px){ .drawer{display:none} }
 .drawer-in{padding:12px 0 18px}
 .drawer-links{display:grid;gap:2px;margin-bottom:14px}
@@ -345,6 +356,7 @@ button{font-family:inherit}
   opacity:0;pointer-events:none;transition:opacity .3s var(--ease);
 }
 .scrim.on{opacity:1;pointer-events:auto}
+html.nav-open,html.nav-open body{overflow:hidden}
 @media (min-width:1024px){ .scrim{display:none} }
 
 /* =====================================================================
@@ -407,6 +419,11 @@ button{font-family:inherit}
   line-height:1.25;color:var(--brand);font-variant-numeric:tabular-nums;
 }
 .fact span{display:block;font-size:12.5px;color:var(--ink-3);line-height:1.4;margin-top:2px}
+@media (max-width:400px){
+  .fact{padding:13px 6px}
+  .fact b{font-size:18.5px}
+  .fact span{font-size:11.5px}
+}
 
 /* hero panel (illustrative connection card) */
 .hero-art{display:none}
@@ -613,6 +630,30 @@ button{font-family:inherit}
 .faq details[open] summary{color:var(--brand)}
 .faq p{padding:0 18px 18px;color:var(--ink-2);font-size:15px;max-width:74ch}
 
+/* ---------------------------------------------------------------------
+   TIPS — গ্রাহকদের জন্য সহজ পরামর্শ
+   --------------------------------------------------------------------- */
+.tips{display:grid;gap:14px}
+@media (min-width:700px){ .tips{grid-template-columns:1fr 1fr} }
+@media (min-width:1200px){ .tips{grid-template-columns:repeat(3,1fr)} }
+.tip{
+  background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r-md);padding:18px 18px 20px;
+}
+.tip-n{
+  display:grid;place-items:center;width:30px;height:30px;margin-bottom:11px;
+  border-radius:9px;background:var(--brand-soft);color:var(--brand);
+  font-family:'Baloo Da 2',sans-serif;font-weight:700;font-size:15px;
+}
+.tip h3{font-size:17px;margin-bottom:4px}
+.tip p{font-size:14.5px;color:var(--ink-2);line-height:1.62}
+.tips-note{
+  margin-top:16px;padding:15px 16px;border-radius:var(--r-md);
+  background:var(--brand-soft);color:var(--ink);
+  font-size:14.5px;line-height:1.62;max-width:74ch;
+}
+.tips-note b{color:var(--brand)}
+
 /* =====================================================================
    14. FOOTER
    ===================================================================== */
@@ -669,6 +710,21 @@ button{font-family:inherit}
 @media (min-width:1024px){ .totop{bottom:26px;right:26px} }
 
 /* =====================================================================
+   15b. TOUCH TARGETS
+   Most visitors are on a phone, so every small control gets a 44px tap
+   area via an invisible ::after — the visible size stays exactly as is.
+   ===================================================================== */
+@media (pointer:coarse){
+  .icon-btn,.lang button,.copy-btn,.chip-ask{position:relative}
+  .icon-btn::after,.lang button::after,.copy-btn::after,.chip-ask::after{
+    content:"";position:absolute;left:0;right:0;top:50%;
+    height:44px;transform:translateY(-50%);
+  }
+  .icon-btn::after{left:-3px;right:-3px}
+  .chip-ask::after{left:-2px;right:-2px}
+}
+
+/* =====================================================================
    16. PRINT
    ===================================================================== */
 @media print{
@@ -681,6 +737,203 @@ button{font-family:inherit}
   a{text-decoration:none}
 }
 </style>
+
+<!-- =====================================================================
+     SEO — সার্চ ইঞ্জিনের জন্য কাঠামোবদ্ধ তথ্য (JSON-LD)
+     গুগল এখান থেকে ব্যবসার নাম, ঠিকানা, ফোন, প্যাকেজের দাম ও
+     প্রশ্ন-উত্তর পড়ে নেয় — তাই সার্চ রেজাল্টে বাড়তি তথ্য দেখায়।
+     ★ দাম বা ফোন বদলালে নিচেও একই বদল করুন, নইলে গুগল ভুল তথ্য দেখাবে।
+     ===================================================================== -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://skillicc.github.io/masud-internet-service/#business",
+      "name": "মাসুদ ইন্টারনেট সার্ভিস",
+      "alternateName": "Masud Internet Service",
+      "description": "বিপুলাসার, পশ্চিম বাজার, মনোহরগঞ্জ, কুমিল্লায় ঘরে ঘরে ফাইবার অপটিক ব্রডব্যান্ড ইন্টারনেট সংযোগ। ৫০ থেকে ১৫০ Mbps প্যাকেজ, ৩০ দিন মেয়াদ, আনলিমিটেড ডাটা, FUP নেই।",
+      "url": "https://skillicc.github.io/masud-internet-service/",
+      "image": "https://skillicc.github.io/masud-internet-service/og-image.png",
+      "logo": "https://skillicc.github.io/masud-internet-service/apple-touch-icon.png",
+      "telephone": [
+        "+8801979504463",
+        "+8801817799076"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "বিপুলাসার, পশ্চিম বাজার",
+        "addressLocality": "মনোহরগঞ্জ",
+        "addressRegion": "কুমিল্লা",
+        "addressCountry": "BD"
+      },
+      "areaServed": [
+        {
+          "@type": "Place",
+          "name": "বিপুলাসার"
+        },
+        {
+          "@type": "Place",
+          "name": "পশ্চিম বাজার"
+        },
+        {
+          "@type": "Place",
+          "name": "মনোহরগঞ্জ"
+        }
+      ],
+      "priceRange": "৳525 – ৳1050",
+      "currenciesAccepted": "BDT",
+      "paymentAccepted": "নগদ টাকা, বিকাশ, নগদ, রকেট",
+      "knowsLanguage": [
+        "bn",
+        "en"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "ইন্টারনেট প্যাকেজ",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "name": "৫০ Mbps",
+            "price": "525",
+            "priceCurrency": "BDT",
+            "url": "https://skillicc.github.io/masud-internet-service/#packages",
+            "availability": "https://schema.org/InStock",
+            "eligibleDuration": {
+              "@type": "QuantitativeValue",
+              "value": 30,
+              "unitCode": "DAY"
+            },
+            "itemOffered": {
+              "@type": "Service",
+              "name": "৫০ Mbps ফাইবার ইন্টারনেট",
+              "description": "আনলিমিটেড ডাটা, পুরো পরিবারের জন্য যথেষ্ট।",
+              "serviceType": "ব্রডব্যান্ড ইন্টারনেট সংযোগ"
+            }
+          },
+          {
+            "@type": "Offer",
+            "name": "৭০ Mbps",
+            "price": "685",
+            "priceCurrency": "BDT",
+            "url": "https://skillicc.github.io/masud-internet-service/#packages",
+            "availability": "https://schema.org/InStock",
+            "eligibleDuration": {
+              "@type": "QuantitativeValue",
+              "value": 30,
+              "unitCode": "DAY"
+            },
+            "itemOffered": {
+              "@type": "Service",
+              "name": "৭০ Mbps ফাইবার ইন্টারনেট",
+              "description": "আনলিমিটেড ডাটা, HD ভিডিও ও অনলাইন ক্লাস একসাথে।",
+              "serviceType": "ব্রডব্যান্ড ইন্টারনেট সংযোগ"
+            }
+          },
+          {
+            "@type": "Offer",
+            "name": "১০০ Mbps",
+            "price": "840",
+            "priceCurrency": "BDT",
+            "url": "https://skillicc.github.io/masud-internet-service/#packages",
+            "availability": "https://schema.org/InStock",
+            "eligibleDuration": {
+              "@type": "QuantitativeValue",
+              "value": 30,
+              "unitCode": "DAY"
+            },
+            "itemOffered": {
+              "@type": "Service",
+              "name": "১০০ Mbps ফাইবার ইন্টারনেট",
+              "description": "আনলিমিটেড ডাটা, গেমিং ও ভিডিও কল স্মুথ।",
+              "serviceType": "ব্রডব্যান্ড ইন্টারনেট সংযোগ"
+            }
+          },
+          {
+            "@type": "Offer",
+            "name": "১৫০ Mbps",
+            "price": "1050",
+            "priceCurrency": "BDT",
+            "url": "https://skillicc.github.io/masud-internet-service/#packages",
+            "availability": "https://schema.org/InStock",
+            "eligibleDuration": {
+              "@type": "QuantitativeValue",
+              "value": 30,
+              "unitCode": "DAY"
+            },
+            "itemOffered": {
+              "@type": "Service",
+              "name": "১৫০ Mbps ফাইবার ইন্টারনেট",
+              "description": "আনলিমিটেড ডাটা, দোকান, অফিস ও বড় পরিবারের জন্য।",
+              "serviceType": "ব্রডব্যান্ড ইন্টারনেট সংযোগ"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://skillicc.github.io/masud-internet-service/#website",
+      "url": "https://skillicc.github.io/masud-internet-service/",
+      "name": "মাসুদ ইন্টারনেট সার্ভিস",
+      "inLanguage": [
+        "bn-BD",
+        "en"
+      ],
+      "publisher": {
+        "@id": "https://skillicc.github.io/masud-internet-service/#business"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://skillicc.github.io/masud-internet-service/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "লাইন বসাতে কত টাকা লাগে?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "আপনার বাড়ি আমাদের সবচেয়ে কাছের বক্স থেকে কত দূরে, তার উপর নির্ভর করে। নতুন সংযোগ অফারে ২,২০০৳-তে রাউটার, ওএনইউ ও প্রথম মাস পাচ্ছেন। কল করলে আপনার বাড়ির জন্য সঠিক খরচ বলে দেব।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "লাইন কেটে গেলে কী করব?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "প্রথমে হটলাইনে কল করুন — বেশিরভাগ সমস্যা ফোনেই সমাধান হয়ে যায়। না হলে একই দিনে টেকনিশিয়ান আসবেন, মেরামতের জন্য বাড়তি টাকা লাগে না।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "একটি লাইনে কয়টা ডিভাইস চলবে?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "ডিভাইসের কোনো লিমিট নেই। ৭০ Mbps প্যাকেজে পুরো পরিবারের ফোন, টিভি ও ল্যাপটপ একসাথে চলে। একসাথে অনেকে ব্যবহার করলে বেশি স্পিডের প্যাকেজ নিন।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "মাসের মাঝে প্যাকেজ বদলানো যাবে?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "যাবে। কল করলে একই দিনে স্পিড বদলে দেওয়া হয়। দামের পার্থক্য পরের মাসের বিলে সমন্বয় করা হয়।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "লোডশেডিংয়ে ইন্টারনেট চলবে?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "আমাদের লাইন ও বক্সে ব্যাকআপ বিদ্যুৎ আছে, তাই ইন্টারনেট চালু থাকে। শুধু আপনার নিজের রাউটারের জন্য আইপিএস বা পাওয়ার ব্যাংক লাগবে।"
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -707,6 +960,7 @@ button{font-family:inherit}
       <a href="#how" data-nav data-en="How it works">সংযোগ</a>
       <a href="#coverage" data-nav data-en="Coverage">কভারেজ</a>
       <a href="#payment" data-nav data-en="Bill">বিল</a>
+      <a href="#tips" data-nav data-en="Tips">টিপস</a>
       <a href="#faq" data-nav data-en="FAQ">প্রশ্ন</a>
     </nav>
 
@@ -1119,6 +1373,53 @@ button{font-family:inherit}
     </div>
   </section>
 
+  <!-- ===================== TIPS ===================== -->
+  <section class="section" id="tips">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <p class="eyebrow" data-en="Tips">টিপস</p>
+        <h2 class="sec-title" data-en="Simple tips to get more from your internet">ইন্টারনেট আরও ভালো চলার সহজ টিপস</h2>
+        <p class="sec-lead" data-en="Most of what customers call us about can be sorted out at home in a minute. Run through these first.">গ্রাহকেরা যেসব সমস্যায় সবচেয়ে বেশি কল করেন, তার বেশিরভাগই ঘরে বসে এক মিনিটেই ঠিক করা যায়। আগে এগুলো দেখে নিন।</p>
+      </div>
+      <div class="tips">
+        <article class="tip rv">
+          <span class="tip-n" aria-hidden="true" data-en="1">১</span>
+          <h3 data-en="Put the router high up, in the middle">রাউটার উঁচুতে, ঘরের মাঝখানে</h3>
+          <p data-en="Inside a cupboard or down on the floor, the signal gets eaten by the walls. Keep it in the middle of the house, at least five feet up and out in the open — every room then gets the same coverage.">আলমারির ভেতরে বা মেঝেতে রাখলে সিগন্যাল দেয়ালে আটকে যায়। ঘরের মাঝামাঝি, মাটি থেকে অন্তত ৫ ফুট উঁচুতে খোলা জায়গায় রাখুন — সব ঘরে সমান নেটওয়ার্ক পাবেন।</p>
+        </article>
+        <article class="tip rv">
+          <span class="tip-n" aria-hidden="true" data-en="2">২</span>
+          <h3 data-en="Slow? Restart the router first">স্পিড কম মনে হলে আগে রিস্টার্ট</h3>
+          <p data-en="Switch the router off for 30 seconds, then on again. Most slow-speed complaints clear up right there — try it once before you call us.">রাউটারের বিদ্যুৎ ৩০ সেকেন্ড বন্ধ রেখে আবার চালু করুন। স্পিড কমে যাওয়ার বেশিরভাগ সমস্যা এতেই ঠিক হয়ে যায় — কল করার আগে একবার করে দেখুন।</p>
+        </article>
+        <article class="tip rv">
+          <span class="tip-n" aria-hidden="true" data-en="3">৩</span>
+          <h3 data-en="Keep the password strong">পাসওয়ার্ড শক্ত রাখুন</h3>
+          <p data-en="Do not use a birthday or a phone number. Mix letters and numbers, at least eight characters, and change it every three or four months — otherwise your speed quietly goes to the neighbours' phones.">জন্মতারিখ বা ফোন নম্বর পাসওয়ার্ড দেবেন না। অক্ষর ও সংখ্যা মিলিয়ে অন্তত ৮ ঘরের পাসওয়ার্ড দিন, ৩-৪ মাসে একবার বদলান — নইলে আপনার স্পিড প্রতিবেশীর ফোনে চলে যায়।</p>
+        </article>
+        <article class="tip rv">
+          <span class="tip-n" aria-hidden="true" data-en="4">৪</span>
+          <h3 data-en="How to measure speed properly">স্পিড মাপার সঠিক নিয়ম</h3>
+          <p data-en="Stand near the router and test on fast.com or speedtest.net with one device only. From a far room, or while the whole house is streaming, the number will always read low.">রাউটারের কাছে দাঁড়িয়ে, শুধু একটি ডিভাইসে fast.com বা speedtest.net দিয়ে মাপুন। দূরের ঘর থেকে বা বাড়ির সবাই ইউটিউব চালু রেখে মাপলে স্পিড কম দেখাবেই।</p>
+        </article>
+        <article class="tip rv">
+          <span class="tip-n" aria-hidden="true" data-en="5">৫</span>
+          <h3 data-en="Never bend the fiber cable">ফাইবারের তার মোড়াবেন না</h3>
+          <p data-en="Fiber is a thread of glass — a sharp bend, or a door pressing on it, snaps the strand inside where you cannot see it. If the cable looks pulled tight or coiled, call us instead of handling it yourself.">ফাইবার কাচের সুতার মতো — জোরে ভাঁজ করলে বা দরজা-জানালার নিচে চাপা পড়লে ভেতরে ভেঙে যায়, বাইরে থেকে বোঝাও যায় না। তার টানটান বা মোড়ানো দেখলে নিজে না ধরে আমাদের কল করুন।</p>
+        </article>
+        <article class="tip rv">
+          <span class="tip-n" aria-hidden="true" data-en="6">৬</span>
+          <h3 data-en="Keep Wi-Fi on through load-shedding">লোডশেডিংয়ে ওয়াই-ফাই চালু রাখুন</h3>
+          <p data-en="Our line and boxes run on backup power, but your own router dies with the mains. A small mini-UPS for the router and the ONU keeps the internet running right through an outage.">আমাদের লাইন ও বক্স ব্যাকআপ বিদ্যুতে চলে, কিন্তু বিদ্যুৎ গেলে আপনার রাউটার বন্ধ হয়ে যায়। রাউটার ও ওএনইউ-র জন্য ছোট একটি মিনি-ইউপিএস নিলে বিদ্যুৎ না থাকলেও ইন্টারনেট চলবে।</p>
+        </article>
+      </div>
+      <p class="tips-note rv">
+        <b data-en="Careful:">সাবধান:</b>
+        <span data-en="We never ask for your bKash PIN or an OTP. If someone calls asking for a PIN, an OTP or your Wi-Fi password, do not give it — hang up and call our hotline.">আমরা কখনো আপনার বিকাশ পিন বা ওটিপি চাই না। কেউ ফোন করে পিন, ওটিপি বা ওয়াই-ফাই পাসওয়ার্ড চাইলে দেবেন না — ফোন রেখে আমাদের হটলাইনে কল করুন।</span>
+      </p>
+    </div>
+  </section>
+
   <!-- ===================== FAQ ===================== -->
   <section class="section" id="faq">
     <div class="wrap">
@@ -1185,6 +1486,7 @@ button{font-family:inherit}
           <a href="#how" data-en="How to connect">সংযোগ নেওয়ার নিয়ম</a>
           <a href="#coverage" data-en="Coverage areas">কভারেজ এলাকা</a>
           <a href="#payment" data-en="Bill payment">বিল পরিশোধ</a>
+          <a href="#tips" data-en="Internet tips">ইন্টারনেট টিপস</a>
           <a href="#faq" data-en="FAQ">সাধারণ প্রশ্ন</a>
         </div>
       </div>
@@ -1386,6 +1688,7 @@ var SITE = {
   function setMenu(open) {
     menuBtn.setAttribute("aria-expanded", String(open));
     drawer.classList.toggle("open", open);
+    document.documentElement.classList.toggle("nav-open", open);
     scrim.hidden = false;
     scrim.classList.toggle("on", open);
   }
