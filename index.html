@@ -34,7 +34,7 @@
 <!-- =====================================================================
      ★★★ এখানে আপনার তথ্য বসান / EDIT YOUR DETAILS HERE ★★★
      পেজের একদম নিচে <script> ট্যাগের ভেতরে "SITE" অবজেক্টে —
-     ফোন নম্বর, হোয়াটসঅ্যাপ, ফেসবুক, বিকাশ/নগদ/রকেট ও অফিসের ঠিকানা
+     ফোন নম্বর, হোয়াটসঅ্যাপ, ফেসবুক, বিকাশ/নগদ ও অফিসের ঠিকানা
      বদলালেই পুরো সাইটে বদলে যাবে।
      এছাড়া হাতে বদলাতে হবে:
        • প্যাকেজের দাম ও স্পিড   ->  "PACKAGES" সেকশন
@@ -586,7 +586,7 @@ html.nav-open,html.nav-open body{overflow:hidden}
    12. PAYMENT
    ===================================================================== */
 .pays{display:grid;gap:12px;grid-template-columns:1fr}
-@media (min-width:620px){ .pays{grid-template-columns:repeat(3,1fr)} }
+@media (min-width:620px){ .pays{grid-template-columns:repeat(2,1fr)} }
 .pay{
   background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);
   padding:14px 15px;display:flex;align-items:center;gap:12px;
@@ -784,7 +784,7 @@ html.nav-open,html.nav-open body{overflow:hidden}
       ],
       "priceRange": "৳525 – ৳1050",
       "currenciesAccepted": "BDT",
-      "paymentAccepted": "নগদ টাকা, বিকাশ, নগদ, রকেট",
+      "paymentAccepted": "নগদ টাকা, বিকাশ, নগদ",
       "knowsLanguage": [
         "bn",
         "en"
@@ -1280,7 +1280,7 @@ html.nav-open,html.nav-open body{overflow:hidden}
           <span class="why-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2.5"/><path d="M2 10h20"/><path d="M6 15h4"/></svg></span>
           <div>
             <h3 data-en="Pay the bill from home">ঘরে বসেই বিল</h3>
-            <p data-en="Send the bill on bKash, Nagad or Rocket — no walking to the office every month.">বিকাশ, নগদ বা রকেটে বিল পাঠান — প্রতি মাসে অফিসে যাওয়ার দরকার নেই।</p>
+            <p data-en="Send the bill on bKash or Nagad — no walking to the office every month.">বিকাশ বা নগদে বিল পাঠান — প্রতি মাসে অফিসে যাওয়ার দরকার নেই।</p>
           </div>
         </div>
       </div>
@@ -1365,11 +1365,6 @@ html.nav-open,html.nav-open body{overflow:hidden}
           <span class="pay-dot" style="background:#EE7A1A"></span>
           <div class="pay-txt"><b data-en="Nagad">নগদ</b><span data-pay="nagad">নম্বরের জন্য কল করুন</span></div>
           <button type="button" class="copy-btn" hidden data-copy="nagad" data-en="Copy">কপি</button>
-        </div>
-        <div class="pay">
-          <span class="pay-dot" style="background:#8C3494"></span>
-          <div class="pay-txt"><b data-en="Rocket">রকেট</b><span data-pay="rocket">নম্বরের জন্য কল করুন</span></div>
-          <button type="button" class="copy-btn" hidden data-copy="rocket" data-en="Copy">কপি</button>
         </div>
       </div>
       <p class="callout rv">
@@ -1547,8 +1542,7 @@ var SITE = {
   hours:    "",                         /* যেমন: "প্রতিদিন খোলা, সকাল ৯টা – রাত ৯টা" */
   hoursEn:  "",
   bkash:    "01819504463",              /* বিকাশ — শুধু সেন্ড মানি */
-  nagad:    "",                         /* নগদ নম্বর */
-  rocket:   "01819504463"               /* রকেট — একই নম্বর */
+  nagad:    ""                          /* নগদ নম্বর */
 };
 
 (function () {
