@@ -9,7 +9,7 @@
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <title>মাসুদ ইন্টারনেট সার্ভিস — গ্রাম বাংলার ইন্টারনেট</title>
 <meta name="description" content="মাসুদ ইন্টারনেট সার্ভিস — বিপুলাসার, পশ্চিম বাজার, মনোহরগঞ্জ, কুমিল্লায় ঘরে বসেই দ্রুতগতির ফাইবার ইন্টারনেট। ৫০ থেকে ১৫০ Mbps প্যাকেজ, ৩০ দিন মেয়াদ, আনলিমিটেড ডাটা। হটলাইন ০১৯৭৯-৫০৪৪৬৩।">
-<meta name="theme-color" content="#0B6B5E" id="meta-theme">
+<meta name="theme-color" content="#F4F8F7" id="meta-theme">
 <meta property="og:title" content="মাসুদ ইন্টারনেট সার্ভিস — গ্রাম বাংলার ইন্টারনেট">
 <meta property="og:description" content="৫০–১৫০ Mbps ফাইবার প্যাকেজ, ৩০ দিন মেয়াদ, আনলিমিটেড ডাটা। বিপুলাসার, মনোহরগঞ্জ, কুমিল্লা।">
 <meta property="og:type" content="website">
@@ -21,13 +21,17 @@
 <meta name="twitter:description" content="৫০–১৫০ Mbps ফাইবার প্যাকেজ, ৩০ দিন মেয়াদ, আনলিমিটেড ডাটা। বিপুলাসার, মনোহরগঞ্জ, কুমিল্লা।">
 
 <!-- হোয়াটসঅ্যাপ/ফেসবুকে লিংক শেয়ার করলে যে ছবি দেখাবে।
-     ডোমেইন কেনার পর নিচের দুই জায়গায় পুরো ঠিকানা দিন,
-     যেমন: https://আপনার-ডোমেইন.com/og-image.png -->
-<meta property="og:image" content="https://masudinternetservice.com/og-image.png">
+     ⚠ এটি অবশ্যই JPEG বা PNG থাকতে হবে — WebP/AVIF নয়। হোয়াটসঅ্যাপ ও
+       ফেসবুকের প্রিভিউ-পড়া যন্ত্র ব্রাউজার নয়, ওগুলো নতুন ফরম্যাট বোঝে না।
+     আগে ২৮১KB-র PNG ছিল; হোয়াটসঅ্যাপ ~৩০০KB-র পর প্রিভিউ বাদ দিয়ে দেয়,
+     তাই ৫৫KB-র JPEG করা হয়েছে। পুরোনো .png ফাইলটি কিছুদিন রেখে দেওয়া
+     হচ্ছে, যাতে আগে যারা লিংক শেয়ার করেছেন তাদের প্রিভিউ না ভাঙে। -->
+<meta property="og:image" content="https://masudinternetservice.com/og-image.jpg">
+<meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="মাসুদ ইন্টারনেট সার্ভিস — ৫০ থেকে ১৫০ Mbps ফাইবার প্যাকেজ">
-<meta name="twitter:image" content="https://masudinternetservice.com/og-image.png">
+<meta name="twitter:image" content="https://masudinternetservice.com/og-image.jpg">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230B6B5E'/%3E%3Cg fill='none' stroke='%23F3FBF8' stroke-width='2.2' stroke-linecap='round'%3E%3Cpath d='M6 12.5a14 14 0 0 1 20 0'/%3E%3Cpath d='M9.5 16.8a9.2 9.2 0 0 1 13 0'/%3E%3C/g%3E%3Ccircle cx='16' cy='23' r='2' fill='%23F3FBF8'/%3E%3C/svg%3E">
 
@@ -50,6 +54,14 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@600;700;800&family=Hind+Siliguri:wght@400;600;700&display=swap">
 
+<!-- বড় পর্দায় হিরোর ছবিটাই সবচেয়ে বড় অংশ, তাই আগেভাগে নামানো হয়।
+     media অ্যাট্রিবিউটের কারণে মোবাইলে এটি নামে না — সেখানে শিরোনামই
+     সবচেয়ে বড় অংশ, আর ছবি নামালে বাংলা ফন্টের সাথে লড়াই বাধত। -->
+<link rel="preload" as="image" media="(min-width:960px)" fetchpriority="high"
+      type="image/avif"
+      imagesrcset="img/hero-family-480.avif 480w, img/hero-family-720.avif 720w, img/hero-family-1120.avif 1120w"
+      imagesizes="560px">
+
 <!-- প্রথম রঙ আঁকার আগেই থিম বসানো হয় — তাই ডার্ক মোডে সাদা ঝলক দেখা যায় না -->
 <script>
 (function () {
@@ -65,86 +77,244 @@
 <style>
 /* =====================================================================
    1. TOKENS
+
+   রঙের নিয়ম / colour rules — পড়ে নিন, নইলে সহজেই ভাঙবে:
+
+   ১. নিচের তিনটি ব্লকে হাতে-লেখা রঙ (primitive) থাকে। ২ ও ৩ নম্বর ব্লক
+      হুবহু এক হতে হবে — একটিতে বদলালে অন্যটিতেও বদলান।
+      (CSS-এ @media-র ভেতরের আর বাইরের সিলেক্টর একসাথে গ্রুপ করা যায় না,
+       তাই এই দুটো ব্লক আলাদাই থাকতে বাধ্য।)
+
+   ২. সব শেষে color-mix() দিয়ে কিছু রঙ নিজে থেকেই তৈরি হয় (derived)।
+      সেগুলো শুধু background / box-shadow-এ ব্যবহার করা যাবে,
+      কখনো color / fill / stroke-এ নয় — কারণ color-mix না চললে
+      background ফাঁকা হয়ে যায় (নিরাপদ), কিন্তু color অননুমেয় হয়ে যায়।
+
+   ৩. লেখার রঙ সব ব্যাকগ্রাউন্ডে WCAG AA (৪.৫:১) মেনে বাছা হয়েছে।
+      উজ্জ্বলতা লেখার রঙে নয়, ফিল-গ্রেডিয়েন্ট-টিন্টে রাখা হয়েছে।
    ===================================================================== */
 :root{
-  --paper:#F7F5EF;
-  --paper-2:#F1EEE4;
+  /* --- কাগজ ও কালি / surfaces and text --- */
+  --paper:#F4F8F7;
+  --paper-2:#E7F2EF;
   --surface:#FFFFFF;
-  --surface-2:#EEECE3;
-  --ink:#12211E;
-  --ink-2:#4C5D59;
-  --ink-3:#7E8D89;
-  --line:#DEDACE;
-  --line-soft:#E9E6DC;
-  --brand:#0B6B5E;
-  --brand-2:#0E8977;
-  --brand-soft:#E4F1ED;
-  --brand-line:#BCDCD4;
-  --on-brand:#F3FBF8;
-  --signal:#D9480F;
-  --on-signal:#FFF6F1;
-  --gold:#8A6118;
-  --gold-bg:#FAF1DC;
-  --gold-line:#EAD9AF;
-  --shadow-1:0 1px 2px rgba(18,33,30,.05);
-  --shadow-2:0 2px 4px rgba(18,33,30,.05), 0 12px 28px -16px rgba(18,33,30,.28);
-  --shadow-3:0 4px 10px rgba(18,33,30,.06), 0 26px 50px -26px rgba(18,33,30,.36);
+  --surface-2:#EAF3F0;
+  --ink:#071A17;
+  --ink-2:#3D5A55;
+  --ink-3:#53706A;          /* সাদার উপর ৫.৩৯ — আগের #7E8D89 ছিল ৩.৪৭, AA ফেল */
+  --line:#CBDEDA;
+  --line-soft:#DCEBE7;
+
+  /* --- ব্র্যান্ড টিল / brand --- */
+  --brand:#00786A;          /* লেখার জন্য নিরাপদ: সাদায় ৫.৩৯, কাগজে ৫.০৪ */
+  --brand-2:#00A88E;        /* সাজসজ্জা ও গ্রেডিয়েন্টের মাঝের ধাপ */
+  --brand-3:#22D3B4;        /* শুধু সাজসজ্জা — লেখার নিচে কখনো নয় */
+  --brand-far:#005A50;      /* গ্রেডিয়েন্টের গাঢ় প্রান্ত */
+  --brand-soft:#D4F5EC;
+  --brand-line:#8CE0CD;
+  --on-brand:#FFFFFF;
+
+  /* --- কমলা সংকেত (কল বোতাম) / signal --- */
+  --signal:#C93E06;         /* সাদা লেখায় ৫.০৩ — আগের #D9480F ছিল ৪.০৩, AA ফেল */
+  --signal-2:#D0430B;
+  --signal-3:#F97316;       /* শুধু আভা/glow */
+  --signal-soft:#FFEDE3;
+  --on-signal:#FFFFFF;
+
+  /* --- "সবচেয়ে জনপ্রিয়" ব্যাজ — দুই থিমেই একই থাকে, এটাই এর কাজ --- */
+  --hot:#FFC94D;
+  --on-hot:#3A2600;         /* ৯.৪১ */
+
+  /* --- সোনালি (নতুন সংযোগের অফার) / gold --- */
+  --gold:#8A5A00;           /* ৫.৯৩ */
+  --gold-2:#E8A317;
+  --gold-bg:#FFF3D6;
+  --gold-line:#F2D48A;
+
+  /* --- সেকশনভিত্তিক রং / section accents --- */
+  --acc-sky:#0369A1;      --acc-sky-2:#0EA5E9;      --acc-sky-tint:#E6F4FC;      --acc-sky-line:#A8DAF4;
+  --acc-indigo:#4338CA;   --acc-indigo-2:#6366F1;   --acc-indigo-tint:#EEF0FF;   --acc-indigo-line:#C3C8FF;
+  --acc-green:#12703C;    --acc-green-2:#16A34A;    --acc-green-tint:#E6F7EC;    --acc-green-line:#A7E3BE;
+  --acc-magenta:#BE185D;  --acc-magenta-2:#EC4899;  --acc-magenta-tint:#FDEEF4;  --acc-magenta-line:#F7B9D4;
+  --acc-violet:#6D28D9;   --acc-violet-2:#8B44F0;   --acc-violet-tint:#F3ECFF;   --acc-violet-line:#D5BCFA;
+
+  /* --- প্যাকেজের চার রং: ৫০→৭০→১০০→১৫০ = আকাশি→টিল→বেগুনি→কমলা ---
+         (ব্যান্ডের সবচেয়ে হালকা প্রান্তেও সাদা লেখা AA পাস করে) */
+  --p1:#0369A1; --p1-2:#0EA5E9; --p1-tint:#E6F4FC; --p1-line:#A8DAF4; --on-p1:#FFFFFF;
+  --p1-band:linear-gradient(135deg,#0679B4,#024E7A);
+  --p2:#00786A; --p2-2:#00A88E; --p2-tint:#D4F5EC; --p2-line:#8CE0CD; --on-p2:#FFFFFF;
+  --p2-band:linear-gradient(135deg,#00806E,#005A50);
+  --p3:#6D28D9; --p3-2:#8B44F0; --p3-tint:#F3ECFF; --p3-line:#D5BCFA; --on-p3:#FFFFFF;
+  --p3-band:linear-gradient(135deg,#7C3AED,#4C1D95);
+  --p4:#C2410C; --p4-2:#EA6A1E; --p4-tint:#FFF0E6; --p4-line:#FFC29A; --on-p4:#FFFFFF;
+  --p4-band:linear-gradient(135deg,#C93E06,#7C2D12);
+
+  /* --- বিল পরিশোধের ব্র্যান্ড রং — কখনো টিন্ট করা যাবে না --- */
+  --bkash:#E2136E;
+  --nagad:#EE7A1A;
+
+  /* --- শিরোনামের গ্রেডিয়েন্ট লেখা (তিনটি ধাপই কাগজে ৩:১ পাস) --- */
+  --grad-h1:linear-gradient(100deg,#00655A 0%,#00897A 45%,#0E7490 100%);
+
+  /* --- ছবির ট্রিটমেন্ট — সাতটি আলাদা ছবি যেন এক পরিবারে পড়ে --- */
+  --ph-ring:var(--line);
+  --ph-tint:rgba(0,120,106,.20);
+  --ph-filter:saturate(1.06) contrast(1.02);
+  --ph-dim:transparent;
+  --ph-scrim:rgba(4,20,17,.55);
+  --cov-veil:rgba(244,248,247,.90);
+
+  /* --- সংখ্যার ব্যান্ড / stat band --- */
+  --band-bg1:#00786A; --band-bg2:#00A88E;
+  --band-ink:#FFFFFF; --band-ink-2:rgba(255,255,255,.84);
+  --band-num:#FFFFFF; --band-photo-op:.30;
+  --band-cell:rgba(255,255,255,.08); --band-line:rgba(255,255,255,.18);
+
+  --shadow-1:0 1px 2px rgba(7,26,23,.05);
+  --shadow-2:0 2px 4px rgba(7,26,23,.05), 0 12px 28px -16px rgba(7,26,23,.28);
+  --shadow-3:0 4px 10px rgba(7,26,23,.06), 0 26px 50px -26px rgba(7,26,23,.36);
   --r-sm:10px; --r-md:14px; --r-lg:20px; --r-xl:26px;
   --hdr-h:60px;
   --bar-h:74px;
   --ease:cubic-bezier(.22,.7,.3,1);
 }
-/* ---------- dark: system default, unless the user explicitly picked light ---------- */
+
+/* ---------- dark: system default, unless the user explicitly picked light ----------
+   ⚠ এই ব্লকের প্রতিটি মান নিচের :root[data-theme="dark"] ব্লকের সাথে হুবহু
+     এক রাখতে হবে। একটিতে বদলে অন্যটি ভুলে গেলে সিস্টেম-ডার্ক আর
+     হাতে-বাছা ডার্ক আলাদা দেখাবে।                                         */
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --paper:#0A1614;
-    --paper-2:#0D1E1A;
-    --surface:#11211E;
-    --surface-2:#183029;
-    --ink:#E8EFEC;
-    --ink-2:#A6B7B2;
-    --ink-3:#7B908B;
-    --line:#264039;
-    --line-soft:#1C332D;
-    --brand:#28C2A6;
-    --brand-2:#3FD8BB;
-    --brand-soft:#12302A;
-    --brand-line:#2A5A50;
-    --on-brand:#04211C;
-    --signal:#FF7A3D;
-    --on-signal:#2B0D02;
-    --gold:#E0B968;
-    --gold-bg:#2A2213;
-    --gold-line:#4A3C1E;
+    --paper:#04120F;
+    --paper-2:#08201B;
+    --surface:#0C1F1B;
+    --surface-2:#123029;
+    --ink:#E9F5F1;
+    --ink-2:#A3C0B9;
+    --ink-3:#7FA29A;
+    --line:#234A42;
+    --line-soft:#18352E;
+    --brand:#2FE0BD;
+    --brand-2:#5BF0D2;
+    --brand-3:#8CFCE4;
+    --brand-far:#7CF3DC;        /* ⚠ ভূমিকা উল্টে যায়: লাইটে গাঢ়, ডার্কে উজ্জ্বল */
+    --brand-soft:#0F3E36;
+    --brand-line:#1E5C50;
+    --on-brand:#04211C;         /* ⚠ পোলারিটি উল্টায়: লাইটে সাদা, ডার্কে প্রায়-কালো */
+    --signal:#FF8A4C;
+    --signal-2:#FF6B3D;
+    --signal-3:#FF9F6B;
+    --signal-soft:#33150A;
+    --on-signal:#2B0D02;        /* ⚠ পোলারিটি উল্টায় */
+    --hot:#FFC94D;              /* ⚠ ইচ্ছাকৃতভাবে অপরিবর্তিত */
+    --on-hot:#2B1F00;
+    --gold:#F7C85C;
+    --gold-2:#FFDD8A;
+    --gold-bg:#2A2008;
+    --gold-line:#5A4512;
+    --acc-sky:#57C6F5;      --acc-sky-2:#8CDCFB;      --acc-sky-tint:#07253A;      --acc-sky-line:#12527A;
+    --acc-indigo:#9DACFF;   --acc-indigo-2:#BFC7FF;   --acc-indigo-tint:#161A38;   --acc-indigo-line:#323C77;
+    --acc-green:#5BE08B;    --acc-green-2:#8CF0B0;    --acc-green-tint:#0A2417;    --acc-green-line:#1D5135;
+    --acc-magenta:#FF7FB0;  --acc-magenta-2:#FFA8C8;  --acc-magenta-tint:#2E0F1D;  --acc-magenta-line:#6B2843;
+    --acc-violet:#C8A6FF;   --acc-violet-2:#DCC6FF;   --acc-violet-tint:#1F1436;   --acc-violet-line:#4A2E80;
+    /* ⚠ প্যাকেজ ব্যান্ডের ভূমিকা উল্টে যায় — গাঢ় ফিল + উজ্জ্বল লেখা।
+         OLED পর্দায় ভরাট উজ্জ্বল রং চোখে লাগে, তাই এটা কোনো সূত্রে আসে না। */
+    --p1:#57C6F5; --p1-2:#8CDCFB; --p1-tint:#07253A; --p1-line:#12527A; --on-p1:#8CDCFB;
+    --p1-band:linear-gradient(135deg,#0E3A55,#07253A);
+    --p2:#2FE0BD; --p2-2:#5BF0D2; --p2-tint:#0F3E36; --p2-line:#1E5C50; --on-p2:#5BF0D2;
+    --p2-band:linear-gradient(135deg,#0F3E36,#0A2622);
+    --p3:#C8A6FF; --p3-2:#DCC6FF; --p3-tint:#1F1436; --p3-line:#4A2E80; --on-p3:#DCC6FF;
+    --p3-band:linear-gradient(135deg,#2B1A4D,#1F1436);
+    --p4:#FFA167; --p4-2:#FFBE93; --p4-tint:#2E1408; --p4-line:#6B3418; --on-p4:#FFBE93;
+    --p4-band:linear-gradient(135deg,#43200C,#2E1408);
+    --grad-h1:linear-gradient(100deg,#2FE0BD 0%,#5BF0D2 45%,#57C6F5 100%);
+    --ph-tint:rgba(47,224,189,.26);
+    --ph-filter:brightness(.86) saturate(.92) contrast(1.06);
+    --ph-dim:rgba(10,22,20,.22);
+    --ph-scrim:rgba(2,10,8,.66);
+    --cov-veil:rgba(4,18,15,.88);
+    --band-bg1:#0C2B26; --band-bg2:#123E35;
+    --band-ink:#E9F5F1; --band-ink-2:#9FBDB5;
+    --band-num:#5BF0D2; --band-photo-op:.22;
+    --band-cell:rgba(255,255,255,.05); --band-line:rgba(255,255,255,.10);
     --shadow-1:0 1px 2px rgba(0,0,0,.3);
     --shadow-2:0 2px 4px rgba(0,0,0,.3), 0 12px 28px -16px rgba(0,0,0,.7);
     --shadow-3:0 4px 10px rgba(0,0,0,.35), 0 26px 50px -26px rgba(0,0,0,.8);
   }
 }
-/* ---------- dark: explicitly chosen ---------- */
+/* ---------- dark: explicitly chosen ----------
+   ⚠ উপরের @media ব্লকের হুবহু নকল। দুটো একসাথে বদলাতে হবে।            */
 :root[data-theme="dark"]{
-  --paper:#0A1614;
-  --paper-2:#0D1E1A;
-  --surface:#11211E;
-  --surface-2:#183029;
-  --ink:#E8EFEC;
-  --ink-2:#A6B7B2;
-  --ink-3:#7B908B;
-  --line:#264039;
-  --line-soft:#1C332D;
-  --brand:#28C2A6;
-  --brand-2:#3FD8BB;
-  --brand-soft:#12302A;
-  --brand-line:#2A5A50;
+  --paper:#04120F;
+  --paper-2:#08201B;
+  --surface:#0C1F1B;
+  --surface-2:#123029;
+  --ink:#E9F5F1;
+  --ink-2:#A3C0B9;
+  --ink-3:#7FA29A;
+  --line:#234A42;
+  --line-soft:#18352E;
+  --brand:#2FE0BD;
+  --brand-2:#5BF0D2;
+  --brand-3:#8CFCE4;
+  --brand-far:#7CF3DC;
+  --brand-soft:#0F3E36;
+  --brand-line:#1E5C50;
   --on-brand:#04211C;
-  --signal:#FF7A3D;
+  --signal:#FF8A4C;
+  --signal-2:#FF6B3D;
+  --signal-3:#FF9F6B;
+  --signal-soft:#33150A;
   --on-signal:#2B0D02;
-  --gold:#E0B968;
-  --gold-bg:#2A2213;
-  --gold-line:#4A3C1E;
+  --hot:#FFC94D;
+  --on-hot:#2B1F00;
+  --gold:#F7C85C;
+  --gold-2:#FFDD8A;
+  --gold-bg:#2A2008;
+  --gold-line:#5A4512;
+  --acc-sky:#57C6F5;      --acc-sky-2:#8CDCFB;      --acc-sky-tint:#07253A;      --acc-sky-line:#12527A;
+  --acc-indigo:#9DACFF;   --acc-indigo-2:#BFC7FF;   --acc-indigo-tint:#161A38;   --acc-indigo-line:#323C77;
+  --acc-green:#5BE08B;    --acc-green-2:#8CF0B0;    --acc-green-tint:#0A2417;    --acc-green-line:#1D5135;
+  --acc-magenta:#FF7FB0;  --acc-magenta-2:#FFA8C8;  --acc-magenta-tint:#2E0F1D;  --acc-magenta-line:#6B2843;
+  --acc-violet:#C8A6FF;   --acc-violet-2:#DCC6FF;   --acc-violet-tint:#1F1436;   --acc-violet-line:#4A2E80;
+  --p1:#57C6F5; --p1-2:#8CDCFB; --p1-tint:#07253A; --p1-line:#12527A; --on-p1:#8CDCFB;
+  --p1-band:linear-gradient(135deg,#0E3A55,#07253A);
+  --p2:#2FE0BD; --p2-2:#5BF0D2; --p2-tint:#0F3E36; --p2-line:#1E5C50; --on-p2:#5BF0D2;
+  --p2-band:linear-gradient(135deg,#0F3E36,#0A2622);
+  --p3:#C8A6FF; --p3-2:#DCC6FF; --p3-tint:#1F1436; --p3-line:#4A2E80; --on-p3:#DCC6FF;
+  --p3-band:linear-gradient(135deg,#2B1A4D,#1F1436);
+  --p4:#FFA167; --p4-2:#FFBE93; --p4-tint:#2E1408; --p4-line:#6B3418; --on-p4:#FFBE93;
+  --p4-band:linear-gradient(135deg,#43200C,#2E1408);
+  --grad-h1:linear-gradient(100deg,#2FE0BD 0%,#5BF0D2 45%,#57C6F5 100%);
+  --ph-tint:rgba(47,224,189,.26);
+  --ph-filter:brightness(.86) saturate(.92) contrast(1.06);
+  --ph-dim:rgba(10,22,20,.22);
+  --ph-scrim:rgba(2,10,8,.66);
+  --cov-veil:rgba(4,18,15,.88);
+  --band-bg1:#0C2B26; --band-bg2:#123E35;
+  --band-ink:#E9F5F1; --band-ink-2:#9FBDB5;
+  --band-num:#5BF0D2; --band-photo-op:.22;
+  --band-cell:rgba(255,255,255,.05); --band-line:rgba(255,255,255,.10);
   --shadow-1:0 1px 2px rgba(0,0,0,.3);
   --shadow-2:0 2px 4px rgba(0,0,0,.3), 0 12px 28px -16px rgba(0,0,0,.7);
   --shadow-3:0 4px 10px rgba(0,0,0,.35), 0 26px 50px -26px rgba(0,0,0,.8);
+}
+
+/* ---------- নিজে থেকে তৈরি রং (derived) ----------
+   এগুলো উপরের রঙ থেকে হিসাব করে বানানো, তাই থিম বদলালে নিজেরাই ঠিক হয়ে যায়।
+   শুধু ব্যাকগ্রাউন্ডে ব্যবহার — color-mix না চললে ফাঁকা হয়ে যাবে, যা নিরাপদ। */
+@supports (color: color-mix(in oklab, #000, #fff)){
+  :root{
+    --wash-gold:    color-mix(in oklab, var(--gold-2) 9%, var(--paper));
+    --wash-indigo:  color-mix(in oklab, var(--acc-indigo) 6%, var(--paper));
+    --wash-green:   color-mix(in oklab, var(--acc-green-2) 7%, var(--paper));
+    --wash-magenta: color-mix(in oklab, var(--acc-magenta) 5%, var(--paper));
+    --wash-violet:  color-mix(in oklab, var(--acc-violet) 6%, var(--paper));
+    --glow-brand:   color-mix(in oklab, var(--brand) 26%, transparent);
+    --glow-sky:     color-mix(in oklab, var(--acc-sky) 22%, transparent);
+    --glow-signal:  color-mix(in oklab, var(--signal-3) 30%, transparent);
+    --glow-gold:    color-mix(in oklab, var(--gold-2) 55%, transparent);
+  }
 }
 
 /* =====================================================================
@@ -165,7 +335,7 @@ body{
   line-height:1.7;
   padding-bottom:calc(var(--bar-h) + env(safe-area-inset-bottom,0px));
   -webkit-font-smoothing:antialiased;
-  -webkit-tap-highlight-color:rgba(11,107,94,.14);
+  -webkit-tap-highlight-color:rgba(0,120,106,.16);
   overflow-wrap:break-word;
 }
 h1,h2,h3{
@@ -174,7 +344,9 @@ h1,h2,h3{
 }
 p{margin:0}
 a{color:inherit}
-img,svg{max-width:100%}
+/* height:auto যেন width/height অ্যাট্রিবিউট রাখা ছবি চেপে না যায় */
+img{max-width:100%;height:auto}
+svg{max-width:100%}
 button{font-family:inherit}
 :focus-visible{outline:3px solid var(--signal);outline-offset:3px;border-radius:8px}
 ::selection{background:var(--brand);color:var(--on-brand)}
@@ -206,8 +378,18 @@ button{font-family:inherit}
 @media (min-width:960px){ .wrap{max-width:1160px;padding:0 28px} }
 @media (min-width:1320px){ .wrap{max-width:1240px;padding:0 32px} }
 
-.section{padding:clamp(42px,6.4vw,80px) 0}
-.section + .section{border-top:1px solid var(--line-soft)}
+/* সেকশনগুলো এখন নিজের নিজের হালকা রঙে ভরা, তাই মাঝের ধূসর দাগটি তুলে
+   দেওয়া হয়েছে — দুই ভিন্ন রঙের সন্ধিতে ওটা ভুলের মতো দেখাত।
+   isolation:isolate — যাতে ভেতরের ::before রঙের স্তর স্টিকি হেডারের নিচে
+   গিয়ে না পড়ে। */
+.section{padding:clamp(42px,6.4vw,80px) 0;position:relative;isolation:isolate}
+.section > .wrap{position:relative;z-index:1}
+/* সেকশনভিত্তিক হালকা রঙ / per-section wash */
+#offer{background:var(--wash-gold)}
+#how{background:var(--wash-indigo)}
+#coverage{background:var(--wash-green)}
+#payment{background:var(--wash-magenta)}
+#tips{background:var(--wash-violet)}
 .eyebrow{
   font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
   color:var(--brand);margin:0 0 10px;
@@ -240,12 +422,20 @@ button{font-family:inherit}
     backdrop-filter:saturate(180%) blur(14px);
   }
 }
-.topbar.stuck{border-bottom-color:var(--line-soft);box-shadow:var(--shadow-1)}
+/* স্ক্রল করলে হেডারের নিচে প্যাকেজের চার রঙের একটি সরু রেখা ফুটে ওঠে —
+   এক লাইনেই পুরো রঙের পরিবারটা পরিচয় করিয়ে দেয় */
+.topbar.stuck{box-shadow:var(--shadow-1)}
+.topbar::after{
+  content:"";position:absolute;inset:auto 0 -2px;height:2px;
+  background:linear-gradient(90deg,var(--p1),var(--p2),var(--p3),var(--p4));
+  opacity:0;transition:opacity .25s var(--ease);
+}
+.topbar.stuck::after{opacity:1}
 .topbar-in{display:flex;align-items:center;gap:12px;height:var(--hdr-h)}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;min-width:0;flex:0 1 auto}
 .mark{
   width:36px;height:36px;flex:none;border-radius:11px;
-  background:linear-gradient(140deg,var(--brand-2),var(--brand));
+  background:linear-gradient(140deg,var(--brand-3),var(--brand));
   display:grid;place-items:center;box-shadow:var(--shadow-1);
 }
 .mark svg{width:21px;height:21px;display:block;color:var(--on-brand)}
@@ -303,10 +493,11 @@ button{font-family:inherit}
 @media (min-width:1024px){
   .hdr-cta{
     display:inline-flex;align-items:center;gap:8px;text-decoration:none;
-    background:var(--signal);color:var(--on-signal);
+    background:linear-gradient(135deg,var(--signal-2),var(--signal));color:var(--on-signal);
     font-family:'Baloo Da 2',sans-serif;font-weight:600;font-size:15.5px;
     padding:0 17px;border-radius:11px;height:38px;white-space:nowrap;
-    box-shadow:var(--shadow-1);transition:filter .18s var(--ease),transform .12s var(--ease);
+    box-shadow:0 6px 16px -8px var(--glow-signal);
+    transition:filter .18s var(--ease),transform .12s var(--ease);
   }
   .hdr-cta:hover{filter:brightness(1.07)}
   .hdr-cta:active{transform:translateY(1px)}
@@ -352,7 +543,7 @@ button{font-family:inherit}
 }
 .drawer-cta{display:grid;grid-template-columns:1fr 1fr;gap:9px;padding:0 14px}
 .scrim{
-  position:fixed;inset:0;z-index:70;background:rgba(6,18,16,.5);
+  position:fixed;inset:0;z-index:70;background:rgba(4,18,15,.58);
   opacity:0;pointer-events:none;transition:opacity .3s var(--ease);
 }
 .scrim.on{opacity:1;pointer-events:auto}
@@ -371,7 +562,10 @@ html.nav-open,html.nav-open body{overflow:hidden}
 }
 .btn:active{transform:translateY(1px)}
 .btn svg{width:19px;height:19px;flex:none}
-.btn-call{background:var(--signal);color:var(--on-signal);box-shadow:var(--shadow-2)}
+.btn-call{
+  background:linear-gradient(135deg,var(--signal-2),var(--signal));color:var(--on-signal);
+  box-shadow:var(--shadow-2),0 12px 26px -14px var(--glow-signal);
+}
 .btn-call:hover{filter:brightness(1.07)}
 .btn-ghost{background:var(--surface);color:var(--ink);border-color:var(--line)}
 .btn-ghost:hover{border-color:var(--brand);color:var(--brand)}
@@ -383,20 +577,42 @@ html.nav-open,html.nav-open body{overflow:hidden}
    6. HERO
    ===================================================================== */
 .hero{position:relative;padding:clamp(28px,4vw,56px) 0 clamp(38px,5vw,66px);overflow:hidden}
+/* তিনটি নরম রঙের আভা মিলে হিরোর পেছনের রঙিন আকাশ।
+   ⚠ এটি নড়াচড়া করানো হয়নি — ঝাপসা গ্রেডিয়েন্ট প্রতি ফ্রেমে আঁকা
+     কম দামি ফোনে স্পষ্ট আটকে যায়, আর দর্শকের বড় অংশ সেখানেই। */
 .hero::before{
-  content:"";position:absolute;inset:-40% 0 auto -10%;height:520px;pointer-events:none;
-  background:radial-gradient(60% 60% at 30% 40%, var(--brand-soft) 0%, transparent 70%);
-  opacity:.85;
+  content:"";position:absolute;inset:-30% -10% auto -10%;height:640px;pointer-events:none;
+  background:
+    radial-gradient(46% 52% at 18% 26%, var(--glow-brand)  0%, transparent 68%),
+    radial-gradient(40% 44% at 82% 12%, var(--glow-sky)    0%, transparent 70%),
+    radial-gradient(52% 46% at 62% 78%, var(--glow-signal) 0%, transparent 72%);
+  filter:blur(8px);opacity:.9;
 }
-.hero > .wrap{position:relative}
+/* নিচের দিকে নরমভাবে কাগজের রঙে মিলিয়ে যায়, যাতে পরের সেকশনে ধাক্কা না লাগে */
+.hero::after{
+  content:"";position:absolute;inset:auto 0 0;height:120px;pointer-events:none;
+  background:linear-gradient(to bottom,transparent,var(--paper));
+}
+.hero > .wrap{position:relative;z-index:1}
 .hero-grid{display:grid;gap:clamp(28px,4vw,52px);align-items:center}
 @media (min-width:960px){ .hero-grid{grid-template-columns:1.02fr .98fr} }
 .hero h1{font-size:clamp(30px,5.6vw,54px);letter-spacing:-.015em;margin-bottom:14px}
+/* শিরোনামের জোর দেওয়া অংশ রঙের ঢেউয়ে আঁকা।
+   ⚠ প্রথমে সাধারণ color, তারপর @supports — পুরোনো ব্রাউজারে গ্রেডিয়েন্ট
+     না চললে লেখাটা অদৃশ্য হয়ে যাবে না। */
 .hero h1 em{font-style:normal;color:var(--brand)}
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  .hero h1 em{
+    background-image:var(--grad-h1);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;
+  }
+}
 .hero-lead{color:var(--ink-2);font-size:clamp(16px,1.7vw,18.5px);max-width:48ch}
 .tag{
   display:inline-flex;align-items:center;gap:8px;margin-bottom:16px;
-  background:var(--brand-soft);color:var(--brand);border:1px solid var(--brand-line);
+  background:linear-gradient(120deg,var(--brand-soft),var(--acc-sky-tint));
+  color:var(--brand);border:1px solid var(--brand-line);
   padding:5px 14px 6px;border-radius:999px;font-size:13.5px;font-weight:600;
 }
 .tag .dot{width:8px;height:8px;border-radius:50%;background:var(--brand);flex:none;position:relative}
@@ -408,52 +624,59 @@ html.nav-open,html.nav-open body{overflow:hidden}
 .cta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
 .cta-row .btn{flex:1 1 210px}
 @media (min-width:960px){ .cta-row .btn{flex:0 0 auto} }
-.facts{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:28px;
-  background:var(--line-soft);border:1px solid var(--line-soft);
-  border-radius:var(--r-md);overflow:hidden;
-}
-.fact{background:var(--surface);padding:15px 10px;text-align:center}
-.fact b{
-  display:block;font-family:'Baloo Da 2',sans-serif;font-size:clamp(20px,2.4vw,24px);
-  line-height:1.25;color:var(--brand);font-variant-numeric:tabular-nums;
-}
-.fact span{display:block;font-size:12.5px;color:var(--ink-3);line-height:1.4;margin-top:2px}
-@media (max-width:400px){
-  .fact{padding:13px 6px}
-  .fact b{font-size:18.5px}
-  .fact span{font-size:11.5px}
-}
+/* আগে এখানে .facts নামে তিনটি সংখ্যার সারি ছিল (১৫০ Mbps / ২৪-৭ / ১০০%)।
+   সেগুলো এখন হিরোর ঠিক নিচের #stats ব্যান্ডে গেছে — একই সংখ্যা অল্প ব্যবধানে
+   দুবার দেখালে সাইটটা টেমপ্লেটের মতো লাগত, আর মোবাইলে হিরো লম্বা হয়ে
+   ছবিটাকে ভাঁজের নিচে ঠেলে দিত। */
 
-/* hero panel (illustrative connection card) */
-.hero-art{display:none}
+/* hero panel — এখন এর ভেতরে ছবি থাকে, তাই সব প্রস্থেই দেখা যায়।
+   আগে এটি ৯৬০px-এর নিচে পুরো লুকানো ছিল, ফলে মোবাইলে হিরোতে কোনো
+   ছবিই দেখা যেত না — অথচ দর্শকের বড় অংশ মোবাইলেই। */
+.hero-art{display:block;position:relative;margin-top:clamp(22px,4vw,30px)}
+@media (max-width:959px){
+  /* ছোট পর্দায় কার্ডের সাজ নয়, শুধু ছবিটাই — .panel-top / .panel-foot-এর
+     ৯৬০px-এর নিচে কোনো স্টাইল নেই, খোলা রাখলে সাজানো ছাড়া লেখা বেরিয়ে পড়ত */
+  .panel-top,.panel-foot{display:none}
+}
 @media (min-width:960px){
-  .hero-art{display:block;position:relative}
+  .hero-art{margin-top:0}
   .panel{
-    background:var(--surface);border:1px solid var(--line);border-radius:var(--r-xl);
+    background:var(--surface);border:1px solid transparent;border-radius:var(--r-xl);
     padding:26px 26px 22px;box-shadow:var(--shadow-3);
+    background-image:linear-gradient(var(--surface),var(--surface)),
+                     linear-gradient(140deg,var(--brand),var(--acc-sky));
+    background-origin:border-box;
+    background-clip:padding-box,border-box;
   }
-  .panel-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:6px}
+  .panel-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}
   .live{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--brand)}
-  .live i{width:8px;height:8px;border-radius:50%;background:var(--brand);animation:blink 2.2s ease-in-out infinite}
-  @keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
   .panel-tag{
     font-size:13px;font-weight:600;color:var(--ink-3);
     background:var(--surface-2);border-radius:999px;padding:3px 12px;
   }
-  .cov-map{display:block;width:100%;height:auto;margin:10px 0 4px}
-  .cov-map text{
-    font-family:'Hind Siliguri',sans-serif;font-size:13px;font-weight:600;
-    fill:var(--ink-2);text-anchor:middle;
-  }
-  .cov-ring{fill:none;stroke:var(--brand);stroke-dasharray:3 7}
-  .cov-link{fill:none;stroke:var(--brand);stroke-width:2.2;stroke-linecap:round;
-    stroke-dasharray:6 10;animation:flow 3.4s linear infinite}
-  .cov-house{fill:var(--surface);stroke:var(--ink-3);stroke-width:2;
-    stroke-linecap:round;stroke-linejoin:round}
   .panel-foot{display:flex;align-items:center;gap:9px;margin-top:14px;font-size:13.5px;color:var(--ink-3)}
   .panel-foot svg{width:16px;height:16px;flex:none;color:var(--brand)}
 }
+
+/* ---------- কভারেজ মানচিত্রের SVG ----------
+   ⚠ এই নিয়মগুলো আগে @media (min-width:960px)-এর ভেতরে ছিল। মানচিত্রটি এখন
+     #coverage সেকশনে, যা সব প্রস্থে দেখা যায় — তাই নিয়মগুলো বাইরে আনা
+     জরুরি ছিল, নইলে মোবাইলে ব্রাউজারের ডিফল্ট কালো আকৃতি দেখা যেত। */
+.live i{width:8px;height:8px;border-radius:50%;background:var(--brand);animation:blink 2.2s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
+.cov-map{display:block;width:100%;height:auto}
+.cov-map text{
+  font-family:'Hind Siliguri',sans-serif;font-size:13px;font-weight:600;
+  fill:var(--ink-2);text-anchor:middle;
+}
+.cov-ring{fill:none;stroke:var(--brand);stroke-dasharray:3 7}
+/* তিনটি বলয়ে তিনটি রং — কেন্দ্র থেকে দূরে গেলে রং বদলায় */
+.cov-ring:nth-of-type(2){stroke:var(--acc-sky)}
+.cov-ring:nth-of-type(3){stroke:var(--acc-violet)}
+.cov-link{fill:none;stroke:var(--brand);stroke-width:2.2;stroke-linecap:round;
+  stroke-dasharray:6 10;animation:flow 3.4s linear infinite}
+.cov-house{fill:var(--surface);stroke:var(--ink-3);stroke-width:2;
+  stroke-linecap:round;stroke-linejoin:round}
 
 /* =====================================================================
    6b. ILLUSTRATIONS (inline SVG — scales sharp, follows the theme)
@@ -462,14 +685,89 @@ html.nav-open,html.nav-open body{overflow:hidden}
 @media (min-width:1200px){ .art{max-width:600px} }
 .fiber-flow{stroke-dasharray:7 15;animation:flow 3s linear infinite}
 @keyframes flow{to{stroke-dashoffset:-44}}
-.art-kit{display:block;width:100%;height:auto;max-width:300px;margin:18px 0 0}
-@media (min-width:860px){ .art-kit{margin:22px 0 0} }
+
+/* =====================================================================
+   6c. PHOTOS — সাতটি আলাদা ছবি যেন এক পরিবারের মনে হয়
+
+   ছবিগুলো আলাদা আলাদা জায়গার, আলাদা আলোয় তোলা। এক রঙের পাতলা আভা,
+   একই কোণ আর একই রিং দিলে সেগুলো একসাথে বসে যায়।
+
+   ⚠ আভা দেওয়া হয়েছে soft-light দিয়ে, duotone দিয়ে নয়। পুরো টিল duotone
+     দক্ষিণ-এশীয় ত্বককে ধূসর-সবুজ করে ফেলে — যা এই দর্শকের চোখে
+     "নকল সাইট" পড়ে, অর্থাৎ ঠিক উল্টো ফল।
+   ===================================================================== */
+.ph{
+  position:relative;display:block;margin:0;overflow:hidden;isolation:isolate;
+  border-radius:var(--r-lg);border:1px solid var(--ph-ring);
+  background-color:var(--surface-2);      /* লোড হওয়ার আগে সাদা গর্ত নয় */
+  background-size:cover;background-position:center;
+  box-shadow:var(--shadow-2);
+}
+.ph img{
+  display:block;width:100%;height:100%;object-fit:cover;object-position:center 42%;
+  filter:var(--ph-filter);
+}
+/* ১. ব্র্যান্ডের হালকা আভা */
+.ph::before{
+  content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(155deg,var(--ph-tint),transparent 62%);
+  mix-blend-mode:soft-light;
+}
+/* ২. ডার্ক মোডে হালকা ঢাকনা — নইলে গাঢ় পাতার উপর ছবি জ্বলজ্বল করে */
+.ph::after{
+  content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:var(--ph-dim);
+}
+/* ছবির উপরে লেখা বসলে নিচে ছায়া লাগে */
+.ph-scrim::after{
+  background:linear-gradient(to top,var(--ph-scrim) 0,transparent 46%),var(--ph-dim);
+}
+
+/* হিরোর ছবি — ছোট পর্দায় ইচ্ছাকৃতভাবে খাটো, যাতে কল বোতাম ভাঁজের নিচে
+   চলে না যায়; প্রস্থ বাড়লে অনুপাতও চওড়া হয়, উচ্চতা প্রায় একই থাকে */
+.hero-ph{aspect-ratio:16/9}
+@media (min-width:700px){ .hero-ph{aspect-ratio:21/9} }
+@media (min-width:960px){ .hero-ph{aspect-ratio:4/3;border-radius:var(--r-md)} }
+@media (min-width:1200px){ .hero-ph{aspect-ratio:5/4} }
+
+.offer-ph{aspect-ratio:16/9;margin-top:4px}
+.step-ph{aspect-ratio:4/3;margin-bottom:14px;border-radius:var(--r-md)}
+@media (min-width:760px){ .step-ph{aspect-ratio:16/10} }
+
+/* =====================================================================
+   6d. STAT BAND — সংখ্যায় আমাদের সেবা
+   ===================================================================== */
+.statband{
+  position:relative;isolation:isolate;overflow:hidden;
+  padding:clamp(34px,5vw,56px) 0;
+  background:linear-gradient(150deg,var(--band-bg1),var(--band-bg2));
+  color:var(--band-ink);
+}
+.statband-bg{position:absolute;inset:0;margin:0;z-index:-1;opacity:var(--band-photo-op)}
+.statband-bg img{display:block;width:100%;height:100%;object-fit:cover;filter:saturate(1.12)}
+.stats{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:1px;
+  background:var(--band-line);border:1px solid var(--band-line);
+  border-radius:var(--r-lg);overflow:hidden;
+}
+@media (min-width:760px){ .stats{grid-template-columns:repeat(auto-fit,minmax(168px,1fr))} }
+.stat{background:var(--band-cell);padding:18px 12px 20px;text-align:center}
+.stat[hidden]{display:none}
+.stat b{
+  display:block;font-family:'Baloo Da 2',sans-serif;font-weight:800;
+  font-size:clamp(29px,5.4vw,43px);line-height:1.12;letter-spacing:-.02em;
+  font-variant-numeric:tabular-nums;color:var(--band-num);
+}
+.stat span{display:block;font-size:13px;line-height:1.45;margin-top:4px;color:var(--band-ink-2)}
+@media (max-width:400px){ .stat{padding:15px 8px 17px} .stat span{font-size:12px} }
 
 /* =====================================================================
    7. OFFER
    ===================================================================== */
 .offer{
-  background:var(--gold-bg);border:1px solid var(--gold-line);
+  background:linear-gradient(135deg,var(--gold-bg),var(--surface));
+  border:1px solid var(--gold-line);
+  box-shadow:0 18px 40px -28px var(--glow-gold);
   border-radius:var(--r-lg);padding:22px 20px 24px;display:grid;gap:18px;
 }
 @media (min-width:860px){ .offer{grid-template-columns:1.05fr 1fr;align-items:center;gap:36px;padding:30px 34px} }
@@ -486,49 +784,106 @@ html.nav-open,html.nav-open body{overflow:hidden}
 .pkgs{display:grid;gap:16px;grid-template-columns:1fr}
 @media (min-width:580px){ .pkgs{grid-template-columns:1fr 1fr;gap:18px} }
 @media (min-width:1060px){ .pkgs{grid-template-columns:repeat(4,1fr);gap:20px} }
+/* প্রতিটি প্যাকেজের নিজের রং। রংটা --c নামে একবার বসানো হয়, তারপর নিচের
+   সব নিয়ম শুধু var(--c) পড়ে — তাই নিয়ম একবারই লিখতে হয়।
+   ⚠ ক্রম মার্কআপের সাথে মিলতে হবে: ৫০ → ৭০ (জনপ্রিয়) → ১০০ → ১৫০।
+     কার্ড এদিক-ওদিক করলে রঙও সাথে যাবে, কিন্তু .pkg-hot ক্লাস আর
+     JSON-LD-র ক্রম যাবে না — দুটোই হাতে ঠিক করতে হবে। */
+.pkgs > .pkg:nth-child(1){--c:var(--p1);--c2:var(--p1-2);--c-tint:var(--p1-tint);--c-line:var(--p1-line);--c-band:var(--p1-band);--on-c:var(--on-p1)}
+.pkgs > .pkg:nth-child(2){--c:var(--p2);--c2:var(--p2-2);--c-tint:var(--p2-tint);--c-line:var(--p2-line);--c-band:var(--p2-band);--on-c:var(--on-p2)}
+.pkgs > .pkg:nth-child(3){--c:var(--p3);--c2:var(--p3-2);--c-tint:var(--p3-tint);--c-line:var(--p3-line);--c-band:var(--p3-band);--on-c:var(--on-p3)}
+.pkgs > .pkg:nth-child(4){--c:var(--p4);--c2:var(--p4-2);--c-tint:var(--p4-tint);--c-line:var(--p4-line);--c-band:var(--p4-band);--on-c:var(--on-p4)}
+
 .pkg{
-  position:relative;background:var(--surface);border:1px solid var(--line);
-  border-radius:var(--r-lg);padding:22px 20px;display:flex;flex-direction:column;gap:15px;
+  position:relative;overflow:hidden;
+  /* উপরের ১০৪px রঙিন, তারপর সাদা — স্পিড ও দাম একটি রঙিন মাথায় বসে */
+  background:linear-gradient(180deg,var(--c-tint) 0 104px,var(--surface) 104px);
+  border:1px solid var(--c-line);
+  border-radius:var(--r-lg);padding:28px 20px 22px;display:flex;flex-direction:column;gap:15px;
   transition:transform .22s var(--ease),box-shadow .22s var(--ease),border-color .22s var(--ease);
 }
+/* কার্ডের একেবারে উপরে রঙের সরু ফিতা */
+.pkg::before{content:"";position:absolute;inset:0 0 auto;height:6px;background:var(--c-band)}
 @media (hover:hover) and (pointer:fine){
-  .pkg:hover{transform:translateY(-4px);box-shadow:var(--shadow-2);border-color:var(--brand-line)}
+  .pkg:hover{
+    transform:translateY(-4px);border-color:var(--c);
+    box-shadow:0 20px 40px -24px var(--c);   /* ছায়াটাও কার্ডের নিজের রঙে */
+  }
 }
-.pkg-hot{border-color:var(--brand);box-shadow:var(--shadow-2),0 0 0 1px var(--brand)}
+/* সবচেয়ে জনপ্রিয় কার্ড — চারপাশে ২px রঙিন বেড় */
+.pkg-hot{
+  border:2px solid transparent;
+  background-image:linear-gradient(180deg,var(--c-tint) 0 104px,var(--surface) 104px),var(--c-band);
+  background-origin:border-box;
+  background-clip:padding-box,border-box;
+  box-shadow:var(--shadow-2);
+}
 .pkg-day{
-  align-self:flex-start;margin-top:-9px;background:var(--brand-soft);color:var(--brand);
-  border:1px solid var(--brand-line);border-radius:999px;padding:4px 11px 5px;
+  align-self:flex-start;background:var(--c-tint);color:var(--c);
+  border:1px solid var(--c-line);border-radius:999px;padding:4px 11px 5px;
   font-size:12px;font-weight:600;letter-spacing:.01em;font-variant-numeric:tabular-nums;
 }
+/* জনপ্রিয় কার্ডের ব্যাজটি সোনালি — এই একটিমাত্র রং দুই থিমেই এক থাকে,
+   কারণ "সবচেয়ে জনপ্রিয়" সংকেতটি সব সময় একইরকম চেনা উচিত */
+.pkg-hot .pkg-day{background:var(--hot);color:var(--on-hot);border-color:transparent;font-weight:700}
 .pkg-speed{display:flex;align-items:baseline;gap:6px;font-family:'Baloo Da 2',sans-serif}
-.pkg-speed b{font-size:clamp(38px,4.4vw,44px);line-height:1;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.pkg-speed b{
+  font-size:clamp(38px,4.4vw,44px);line-height:1;font-weight:800;
+  font-variant-numeric:tabular-nums;letter-spacing:-.02em;color:var(--c);
+}
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  .pkg-speed b{
+    background-image:linear-gradient(120deg,var(--c),var(--c2));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+}
 .pkg-speed span{font-size:16px;font-weight:600;color:var(--ink-3)}
-.pkg-price{border-top:1px dashed var(--line);padding-top:14px;display:flex;align-items:baseline;gap:7px;flex-wrap:wrap}
-.pkg-price b{font-family:'Baloo Da 2',sans-serif;font-size:27px;font-weight:700;color:var(--brand);font-variant-numeric:tabular-nums;line-height:1.2}
+.pkg-price{border-top:1px dashed var(--c-line);padding-top:14px;display:flex;align-items:baseline;gap:7px;flex-wrap:wrap}
+.pkg-price b{font-family:'Baloo Da 2',sans-serif;font-size:27px;font-weight:700;color:var(--c);font-variant-numeric:tabular-nums;line-height:1.2}
 .pkg-price span{font-size:13.5px;color:var(--ink-3)}
 .pkg ul{list-style:none;margin:0;padding:0;display:grid;gap:8px;font-size:14.5px;color:var(--ink-2)}
 .pkg li{display:flex;gap:9px;align-items:flex-start;line-height:1.5}
-.pkg li svg{width:15px;height:15px;flex:none;margin-top:4px;color:var(--brand)}
+.pkg li svg{width:15px;height:15px;flex:none;margin-top:4px;color:var(--c)}
 .pkg-btn{
   margin-top:auto;display:flex;align-items:center;justify-content:center;min-height:48px;
-  background:var(--brand-soft);color:var(--brand);border:1px solid var(--brand-line);
+  background:var(--c-tint);color:var(--c);border:1px solid var(--c-line);
   border-radius:var(--r-sm);text-decoration:none;font-weight:600;font-size:15.5px;
-  transition:background .18s var(--ease),color .18s var(--ease);
+  transition:background .18s var(--ease),color .18s var(--ease),border-color .18s var(--ease);
 }
-.pkg-btn:hover{background:var(--brand);color:var(--on-brand)}
-.pkg-hot .pkg-btn{background:var(--brand);color:var(--on-brand)}
+.pkg-btn:hover{background:var(--c-band);color:var(--on-c);border-color:transparent}
+.pkg-hot .pkg-btn{background:var(--c-band);color:var(--on-c);border-color:transparent}
 .pkg-hot .pkg-btn:hover{filter:brightness(1.08)}
+/* চার কলাম হলে জনপ্রিয় কার্ডটি একটু বড় করে দেখানো হয়।
+   ⚠ .js .rv.in{transform:none} এটাকে মুছে দিত, তাই বেশি নির্দিষ্ট
+     সিলেক্টর দিয়ে লিখতে হয়েছে। দুই কলামে করা হয় না — পাশের কার্ডে লেগে যেত। */
+@media (min-width:1060px){
+  .pkg-hot,.js .rv.in.pkg-hot{
+    transform:scale(1.04);z-index:1;
+    box-shadow:var(--shadow-2),0 26px 56px -28px var(--c);
+  }
+  .pkg-hot:hover,.js .rv.in.pkg-hot:hover{transform:scale(1.04) translateY(-4px)}
+}
 .pkg-note{margin-top:20px;font-size:14px;color:var(--ink-3);max-width:70ch}
 
 /* =====================================================================
    9. WHY
    ===================================================================== */
-.why{display:grid;gap:1px;background:var(--line-soft);border:1px solid var(--line-soft);border-radius:var(--r-lg);overflow:hidden}
+/* ঘরগুলোর মাঝের ১px ফাঁকটাই আসলে পেছনের রং — সেটাকে গ্রেডিয়েন্ট করে
+   দিলে বিনা খরচে রঙিন জালের মতো রেখা পাওয়া যায় */
+.why{
+  display:grid;gap:1px;border:1px solid transparent;border-radius:var(--r-lg);overflow:hidden;
+  background:linear-gradient(130deg,var(--p1),var(--p2),var(--p3),var(--p4));
+}
 @media (min-width:700px){ .why{grid-template-columns:1fr 1fr} }
 @media (min-width:1200px){ .why{grid-template-columns:repeat(4,1fr)} }
 .why-item{background:var(--surface);padding:20px 18px 22px;display:flex;gap:14px;align-items:flex-start}
 @media (min-width:1200px){ .why-item{flex-direction:column;gap:12px} }
 .why-ic{width:38px;height:38px;flex:none;border-radius:11px;background:var(--brand-soft);display:grid;place-items:center;color:var(--brand)}
+/* চারটি ঘরে প্যাকেজের চারটি রং — দুই গ্রিড দেখতে একই পরিবারের হয় */
+.why-item:nth-child(1) .why-ic{background:var(--p1-tint);color:var(--p1)}
+.why-item:nth-child(2) .why-ic{background:var(--p2-tint);color:var(--p2)}
+.why-item:nth-child(3) .why-ic{background:var(--p3-tint);color:var(--p3)}
+.why-item:nth-child(4) .why-ic{background:var(--p4-tint);color:var(--p4)}
 .why-ic svg{width:20px;height:20px}
 .why-item h3{font-size:17.5px;margin-bottom:3px}
 .why-item p{font-size:14.5px;color:var(--ink-2);line-height:1.6}
@@ -538,16 +893,20 @@ html.nav-open,html.nav-open body{overflow:hidden}
    ===================================================================== */
 .steps{display:grid;gap:18px;counter-reset:step}
 @media (min-width:760px){ .steps{grid-template-columns:repeat(3,1fr);gap:24px} }
+/* ছবি উপরে, তার নিচে নম্বর, তারপর লেখা — সব প্রস্থেই একই সাজ */
 .step{
-  display:flex;gap:14px;align-items:flex-start;
-  background:var(--surface);border:1px solid var(--line-soft);
-  border-radius:var(--r-lg);padding:18px 18px 20px;
+  display:flex;flex-direction:column;align-items:flex-start;
+  background:var(--surface);border:1px solid var(--acc-indigo-line);
+  border-radius:var(--r-lg);padding:18px 18px 20px;box-shadow:var(--shadow-2);
 }
-@media (min-width:760px){ .step{flex-direction:column;gap:12px} }
+.step .step-n{margin-bottom:11px}
+/* ⚠ রংটি ইচ্ছাকৃতভাবে গাঢ় ইন্ডিগো। হালকা ইন্ডিগোতে (#6366F1) সাদা লেখা
+     ৩.৯৭ — ১৭px লেখার জন্য AA ফেল। */
 .step-n{
   width:36px;height:36px;flex:none;border-radius:50%;
-  background:var(--brand);color:var(--on-brand);display:grid;place-items:center;
+  background:var(--acc-indigo);color:var(--on-brand);display:grid;place-items:center;
   font-family:'Baloo Da 2',sans-serif;font-weight:700;font-size:17px;
+  box-shadow:0 6px 14px -8px var(--acc-indigo);
 }
 .step h3{font-size:17.5px;margin-bottom:3px}
 .step p{font-size:14.5px;color:var(--ink-2);line-height:1.6}
@@ -555,6 +914,31 @@ html.nav-open,html.nav-open body{overflow:hidden}
 /* =====================================================================
    11. COVERAGE
    ===================================================================== */
+/* মানচিত্র আর গ্রামের ছবি একসাথে।
+   ছোট পর্দায় ছবিটা মানচিত্রের পেছনে পর্দার নিচে থাকে — জায়গার আবহ দেয়,
+   কিন্তু ১৩px বাংলা লেবেলগুলোর পড়ার সুবিধা নষ্ট করে না।
+   ৮৬০px থেকে দুটো পাশাপাশি বসে, পর্দা উঠে যায়। */
+.cov-stage{
+  position:relative;isolation:isolate;overflow:hidden;
+  border-radius:var(--r-lg);margin-bottom:22px;
+}
+.cov-stage .cov-photo{position:absolute;inset:0;border:0;border-radius:0;box-shadow:none}
+.cov-stage .cov-photo img{height:100%}
+.cov-stage::after{content:"";position:absolute;inset:0;z-index:2;background:var(--cov-veil)}
+.cov-stage .cov-map{position:relative;z-index:3;max-width:420px;margin:0 auto;padding:18px 0}
+@media (min-width:860px){
+  .cov-stage{
+    display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:22px;
+    background:var(--surface);border:1px solid var(--acc-green-line);padding:20px;
+  }
+  .cov-stage::after{display:none}
+  .cov-stage .cov-photo{
+    position:relative;inset:auto;order:2;aspect-ratio:2/1;
+    border:1px solid var(--ph-ring);border-radius:var(--r-md);box-shadow:var(--shadow-2);
+  }
+  .cov-stage .cov-map{order:1;margin:0;padding:0}
+}
+
 .cov-search{position:relative;max-width:420px;margin-bottom:20px}
 .cov-search svg{
   position:absolute;left:15px;top:50%;transform:translateY(-50%);
@@ -566,15 +950,23 @@ html.nav-open,html.nav-open body{overflow:hidden}
   transition:border-color .18s var(--ease);
 }
 .cov-search input::placeholder{color:var(--ink-3)}
-.cov-search input:focus{border-color:var(--brand);outline-offset:1px}
+.cov-search input:focus{border-color:var(--acc-green);outline-offset:1px}
 .chips{display:flex;flex-wrap:wrap;gap:9px}
 .chip{
   background:var(--surface);border:1px solid var(--line);border-radius:999px;
   padding:8px 16px;font-size:14.5px;color:var(--ink-2);line-height:1.5;
 }
+/* এলাকার নামগুলো ঘুরিয়ে ঘুরিয়ে তিন রঙে */
+.chip:nth-of-type(3n+1){background:var(--p1-tint);border-color:var(--p1-line);color:var(--p1)}
+.chip:nth-of-type(3n+2){background:var(--p2-tint);border-color:var(--p2-line);color:var(--p2)}
+.chip:nth-of-type(3n+3){background:var(--p3-tint);border-color:var(--p3-line);color:var(--p3)}
 .chip[hidden]{display:none}
-.chip-ask{background:var(--brand-soft);border-color:var(--brand-line);color:var(--brand);font-weight:600;text-decoration:none}
-.chip-ask:hover{background:var(--brand);color:var(--on-brand)}
+/* এই সেকশনের একমাত্র ভরাট বোতাম — তাই সবার চোখে পড়ে */
+.chips .chip-ask{
+  background:var(--acc-green);border-color:transparent;color:var(--on-brand);
+  font-weight:600;text-decoration:none;
+}
+.chips .chip-ask:hover{filter:brightness(1.08)}
 .cov-empty{
   margin-top:14px;font-size:15px;color:var(--ink-2);
   background:var(--gold-bg);border:1px solid var(--gold-line);
@@ -591,7 +983,13 @@ html.nav-open,html.nav-open body{overflow:hidden}
   background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);
   padding:14px 15px;display:flex;align-items:center;gap:12px;
 }
-.pay-dot{width:11px;height:11px;border-radius:50%;flex:none}
+/* বিকাশ ও নগদের নিজের রং — এগুলো ওদের ব্র্যান্ড, তাই কখনো বদলানো হয় না।
+   চারপাশের হালকা বলয়টা শুধু ছোট বিন্দুটিকে চোখে পড়ার মতো করে। */
+.pay-dot{width:12px;height:12px;border-radius:50%;flex:none}
+.pay-bkash{background:var(--bkash);box-shadow:0 0 0 3px rgba(226,19,110,.22)}
+.pay-nagad{background:var(--nagad);box-shadow:0 0 0 3px rgba(238,122,26,.24)}
+.pay-1{border-color:var(--acc-magenta-line);background:linear-gradient(120deg,var(--acc-magenta-tint),var(--surface))}
+.pay-2{border-color:var(--p4-line);background:linear-gradient(120deg,var(--p4-tint),var(--surface))}
 .pay-txt{min-width:0;flex:1}
 .pay-txt b{display:block;font-family:'Baloo Da 2',sans-serif;font-size:16.5px;line-height:1.3}
 .pay-txt span{
@@ -605,13 +1003,20 @@ html.nav-open,html.nav-open body{overflow:hidden}
   transition:background .18s var(--ease),color .18s var(--ease),border-color .18s var(--ease);
 }
 .copy-btn:hover{border-color:var(--brand-line);color:var(--brand)}
-.copy-btn.done{background:var(--brand);border-color:var(--brand);color:var(--on-brand)}
+/* "কপি হয়েছে" সবুজে — টিলের চেয়ে সবুজ বেশি স্পষ্ট করে সফলতা বোঝায় */
+.copy-btn.done{background:var(--acc-green);border-color:transparent;color:var(--on-brand)}
 .pay-note{margin-top:16px;font-size:14px;color:var(--ink-3);max-width:70ch}
 
 /* =====================================================================
    13. FAQ
    ===================================================================== */
-.faq{border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden;background:var(--surface);max-width:900px}
+.faq{
+  border:1px solid transparent;border-radius:var(--r-md);overflow:hidden;max-width:900px;
+  background-image:linear-gradient(var(--surface),var(--surface)),
+                   linear-gradient(160deg,var(--acc-violet),var(--brand));
+  background-origin:border-box;
+  background-clip:padding-box,border-box;
+}
 .faq details{border-bottom:1px solid var(--line-soft)}
 .faq details:last-child{border-bottom:0}
 .faq summary{
@@ -619,15 +1024,15 @@ html.nav-open,html.nav-open body{overflow:hidden}
   font-family:'Baloo Da 2',sans-serif;font-weight:600;font-size:16.5px;line-height:1.45;
   min-height:56px;transition:color .18s var(--ease)
 }
-.faq summary:hover{color:var(--brand)}
+.faq summary:hover{color:var(--acc-violet)}
 .faq summary::-webkit-details-marker{display:none}
 .faq summary::after{
   content:"";position:absolute;right:20px;top:23px;width:9px;height:9px;
   border-right:2px solid var(--ink-3);border-bottom:2px solid var(--ink-3);
   transform:rotate(45deg);transition:transform .2s var(--ease);
 }
-.faq details[open] summary::after{transform:rotate(225deg)}
-.faq details[open] summary{color:var(--brand)}
+.faq details[open] summary::after{transform:rotate(225deg);border-color:var(--acc-violet)}
+.faq details[open] summary{color:var(--acc-violet);background:var(--acc-violet-tint)}
 .faq p{padding:0 18px 18px;color:var(--ink-2);font-size:15px;max-width:74ch}
 
 /* ---------------------------------------------------------------------
@@ -645,19 +1050,45 @@ html.nav-open,html.nav-open body{overflow:hidden}
   border-radius:9px;background:var(--brand-soft);color:var(--brand);
   font-family:'Baloo Da 2',sans-serif;font-weight:700;font-size:15px;
 }
+/* ছয়টি টিপসে ছয়টি রং, ঘুরিয়ে ঘুরিয়ে */
+.tip:nth-child(6n+1) .tip-n{background:var(--p1-tint);color:var(--p1)}
+.tip:nth-child(6n+2) .tip-n{background:var(--p2-tint);color:var(--p2)}
+.tip:nth-child(6n+3) .tip-n{background:var(--p3-tint);color:var(--p3)}
+.tip:nth-child(6n+4) .tip-n{background:var(--p4-tint);color:var(--p4)}
+.tip:nth-child(6n+5) .tip-n{background:var(--acc-violet-tint);color:var(--acc-violet)}
+.tip:nth-child(6n+6) .tip-n{background:var(--acc-magenta-tint);color:var(--acc-magenta)}
 .tip h3{font-size:17px;margin-bottom:4px}
 .tip p{font-size:14.5px;color:var(--ink-2);line-height:1.62}
 .callout{
   margin-top:16px;padding:15px 16px;border-radius:var(--r-md);
-  background:var(--brand-soft);color:var(--ink);
+  background:var(--brand-soft);color:var(--ink);border-left:4px solid var(--brand);
   font-size:14.5px;line-height:1.62;max-width:74ch;
 }
 .callout b{color:var(--brand)}
+/* বিল পরিশোধের নির্দেশনা — সেকশনের নিজের রঙে */
+#payment .callout{
+  background:linear-gradient(120deg,var(--acc-magenta-tint),var(--surface));
+  border-left-color:var(--acc-magenta);
+}
+#payment .callout b{color:var(--acc-magenta)}
+/* প্রতারণার সতর্কবার্তা — এটি বেগুনি নয়, সতর্কতার কমলা রঙেই থাকা উচিত */
+.callout-warn{
+  background:var(--signal-soft);border-left-color:var(--signal);
+}
+.callout-warn b{color:var(--signal)}
 
 /* =====================================================================
    14. FOOTER
    ===================================================================== */
-.foot{background:var(--surface);border-top:1px solid var(--line);padding:clamp(32px,4vw,52px) 0 30px}
+/* ফুটারের উপরেও হেডারের সেই চার রঙের রেখা — পাতাটা দুই প্রান্তে বাঁধা পড়ে */
+.foot{
+  position:relative;border-top:0;padding:clamp(35px,4vw,55px) 0 30px;
+  background:linear-gradient(180deg,var(--surface),var(--brand-soft));
+}
+.foot::before{
+  content:"";position:absolute;inset:0 0 auto;height:3px;
+  background:linear-gradient(90deg,var(--p1),var(--p2),var(--p3),var(--p4));
+}
 .foot-grid{display:grid;gap:26px}
 @media (min-width:640px){ .foot-grid{grid-template-columns:1fr 1fr;gap:28px} }
 @media (min-width:960px){ .foot-grid{grid-template-columns:1.5fr 1fr 1fr 1.1fr;gap:32px} }
@@ -680,7 +1111,7 @@ html.nav-open,html.nav-open body{overflow:hidden}
   position:fixed;left:0;right:0;bottom:0;z-index:60;
   background:var(--surface);border-top:1px solid var(--line);
   padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px));
-  box-shadow:0 -6px 20px -14px rgba(18,33,30,.4);
+  box-shadow:0 -6px 20px -14px rgba(7,26,23,.45);
 }
 .bar-in{display:flex;gap:10px;max-width:760px;margin:0 auto}
 .bar a{
@@ -689,7 +1120,8 @@ html.nav-open,html.nav-open body{overflow:hidden}
   font-family:'Baloo Da 2',sans-serif;font-weight:600;font-size:16.5px;
 }
 .bar a svg{width:19px;height:19px;flex:none}
-.bar-call{background:var(--signal);color:var(--on-signal);flex:1.3}
+/* মোবাইলে এটাই প্রধান বোতাম — তাই সবচেয়ে জোরালো রং এখানে */
+.bar-call{background:linear-gradient(135deg,var(--signal-2),var(--signal));color:var(--on-signal);flex:1.3}
 .bar-wa{background:var(--brand-soft);color:var(--brand);border:1px solid var(--brand-line)}
 @media (min-width:1024px){
   .bar{display:none}
@@ -728,10 +1160,19 @@ html.nav-open,html.nav-open body{overflow:hidden}
    16. PRINT
    ===================================================================== */
 @media print{
-  .topbar,.bar,.totop,.scrim,.drawer,.cov-search,.hero-art{display:none !important}
+  /* গ্রামের দোকানের ইঙ্কজেটে সাতটা রঙিন ছবি ছাপা দয়া নয় */
+  .topbar,.bar,.totop,.scrim,.drawer,.cov-search,.hero-art,
+  .ph,.statband-bg,.cov-stage{display:none !important}
   .js .rv{opacity:1 !important;transform:none !important}
   body{padding:0;background:#fff;color:#000;font-size:12pt}
   .section{padding:14pt 0;break-inside:avoid}
+  /* সেকশনের রঙিন আভা ও কার্ডের রং কাগজে সাদা হয়ে যায় */
+  .section,.pkg,.offer,.step,.tip,.faq,.statband{
+    background:#fff !important;box-shadow:none !important;color:#000 !important;
+  }
+  .pkg::before,.topbar::after,.foot::before,.hero::before,.hero::after{display:none !important}
+  .statband{border:1px solid #ccc}
+  .stat b,.stat span{color:#000 !important}
   .faq details{break-inside:avoid}
   .faq p{display:block !important}
   a{text-decoration:none}
@@ -755,7 +1196,8 @@ html.nav-open,html.nav-open body{overflow:hidden}
       "alternateName": "Masud Internet Service",
       "description": "বিপুলাসার, পশ্চিম বাজার, মনোহরগঞ্জ, কুমিল্লায় ঘরে ঘরে ফাইবার অপটিক ব্রডব্যান্ড ইন্টারনেট সংযোগ। ৫০ থেকে ১৫০ Mbps প্যাকেজ, ৩০ দিন মেয়াদ, আনলিমিটেড ডাটা, FUP নেই।",
       "url": "https://masudinternetservice.com/",
-      "image": "https://masudinternetservice.com/og-image.png",
+      "_comment_image": "★ এখানে শুধু প্রতিষ্ঠানের নিজের তোলা ছবিই বসানো যাবে — গুগল এটিকে ব্যবসার আসল ছবি ধরে। স্টক ছবি এখানে বসানো যাবে না। অফিসের ছবি পেলে তালিকা করে যোগ করুন: [\"...og-image.jpg\", \"...img/office-bipulasar.jpg\"]",
+      "image": "https://masudinternetservice.com/og-image.jpg",
       "logo": "https://masudinternetservice.com/apple-touch-icon.png",
       "telephone": [
         "+8801979504463",
@@ -1030,60 +1472,31 @@ html.nav-open,html.nav-open body{overflow:hidden}
             <a class="btn btn-ghost" href="#packages" data-en="See packages">প্যাকেজ দেখুন</a>
           </div>
 
-          <div class="facts">
-            <div class="fact"><b data-en="150 Mbps">১৫০ Mbps</b><span data-en="Top speed">সর্বোচ্চ স্পিড</span></div>
-            <div class="fact"><b data-en="24/7">২৪/৭</b><span data-en="Support line">সাপোর্ট লাইন</span></div>
-            <div class="fact"><b data-en="100%">১০০%</b><span data-en="Fiber optic">ফাইবার অপটিক</span></div>
-          </div>
         </div>
 
-        <!-- আমাদের নেটওয়ার্ক — কভারেজ এলাকার ছবি (ডেস্কটপে দেখায়) -->
-        <div class="hero-art" aria-hidden="true">
+        <!-- ঘরে বসে ইন্টারনেট — আগে এখানে শুধু ডেস্কটপে একটি মানচিত্র দেখাত,
+             মোবাইলে কিছুই না। মানচিত্রটি এখন কভারেজ সেকশনে, আর এখানে ছবি। -->
+        <div class="hero-art">
           <div class="panel">
             <div class="panel-top">
               <span class="live"><i></i><span data-en="Our network">আমাদের নেটওয়ার্ক</span></span>
               <span class="panel-tag" data-en="Fiber in the village">গ্রামে ফাইবার</span>
             </div>
 
-            <svg class="cov-map" viewBox="0 0 320 268" fill="none">
-              <!-- কভারেজ রিং -->
-              <circle class="cov-ring" cx="104" cy="128" r="56" stroke-width="2" opacity=".3"/>
-              <circle class="cov-ring" cx="104" cy="128" r="94" stroke-width="2" opacity=".18"/>
-              <circle class="cov-ring" cx="104" cy="128" r="132" stroke-width="2" opacity=".1"/>
-
-              <!-- লাইন -->
-              <path class="cov-link" d="M104 128Q168 96 224 74"/>
-              <path class="cov-link" d="M104 128Q186 136 254 150"/>
-              <path class="cov-link" d="M104 128Q114 176 140 208"/>
-
-              <!-- আমাদের অফিস -->
-              <circle cx="104" cy="128" r="27" fill="var(--brand)"/>
-              <g transform="translate(104,128) scale(1.15)" stroke="var(--on-brand)" stroke-width="2" stroke-linecap="round" fill="none">
-                <path d="M-9.5 -4a13.5 13.5 0 0 1 19 0"/><path d="M-6 0a8.5 8.5 0 0 1 12 0"/>
-                <circle cx="0" cy="5" r="1.5" fill="var(--on-brand)" stroke="none"/>
-              </g>
-
-              <!-- বাড়ি ১ -->
-              <g transform="translate(232,58)">
-                <path class="cov-house" d="M-15 0 0-13 15 0"/>
-                <rect class="cov-house" x="-11" y="0" width="22" height="17" rx="3"/>
-              </g>
-              <text x="232" y="97" data-en="Bipulasar">বিপুলাসার</text>
-
-              <!-- বাড়ি ২ -->
-              <g transform="translate(264,148)">
-                <path class="cov-house" d="M-15 0 0-13 15 0"/>
-                <rect class="cov-house" x="-11" y="0" width="22" height="17" rx="3"/>
-              </g>
-              <text x="258" y="188" data-en="Poschim Bazar">পশ্চিম বাজার</text>
-
-              <!-- বাড়ি ৩ -->
-              <g transform="translate(146,212)">
-                <path class="cov-house" d="M-15 0 0-13 15 0"/>
-                <rect class="cov-house" x="-11" y="0" width="22" height="17" rx="3"/>
-              </g>
-              <text x="146" y="252" data-en="Monoharganj">মনোহরগঞ্জ</text>
-            </svg>
+            <figure class="ph hero-ph">
+              <picture>
+                <source type="image/avif"
+                        sizes="(min-width:960px) 560px, (min-width:700px) 712px, calc(100vw - 36px)"
+                        srcset="img/hero-family-480.avif 480w, img/hero-family-720.avif 720w, img/hero-family-1120.avif 1120w">
+                <source type="image/webp"
+                        sizes="(min-width:960px) 560px, (min-width:700px) 712px, calc(100vw - 36px)"
+                        srcset="img/hero-family-480.webp 480w, img/hero-family-720.webp 720w, img/hero-family-1120.webp 1120w">
+                <img src="img/hero-family-720.jpg" width="720" height="480"
+                     alt="মোবাইলে ইন্টারনেট ব্যবহার করছেন একজন"
+                     data-en-alt="Someone using the internet on a mobile phone"
+                     decoding="async">
+              </picture>
+            </figure>
 
             <div class="panel-foot">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21.5s7-6.4 7-11.5a7 7 0 1 0-14 0c0 5.1 7 11.5 7 11.5Z"/><circle cx="12" cy="10" r="2.6"/></svg>
@@ -1096,6 +1509,52 @@ html.nav-open,html.nav-open body{overflow:hidden}
     </div>
   </section>
 
+  <!-- ===================== সংখ্যায় আমাদের সেবা =====================
+       সব সংখ্যা পাতার অন্য জায়গা থেকেই আসা — নতুন কোনো দাবি করা হয়নি।
+       কভারেজ এলাকার সংখ্যাটি নিচের চিপ গুনে বসে, তাই এলাকা বাড়লে
+       এখানেও নিজে থেকেই বাড়বে।
+       HTML-এ আসল সংখ্যাই লেখা আছে — JS বন্ধ থাকলেও ঠিক দেখাবে। -->
+  <section class="statband" id="stats" aria-labelledby="stats-t">
+    <figure class="statband-bg" aria-hidden="true">
+      <picture>
+        <source type="image/avif" sizes="100vw"
+                srcset="img/stats-fiber-480.avif 480w, img/stats-fiber-720.avif 720w, img/stats-fiber-1120.avif 1120w">
+        <source type="image/webp" sizes="100vw"
+                srcset="img/stats-fiber-480.webp 480w, img/stats-fiber-720.webp 720w, img/stats-fiber-1120.webp 1120w">
+        <img src="img/stats-fiber-720.webp" width="720" height="360" alt=""
+             loading="lazy" decoding="async">
+      </picture>
+    </figure>
+
+    <div class="wrap">
+      <h2 class="sr-only" id="stats-t" data-en="Our service in numbers">সংখ্যায় আমাদের সেবা</h2>
+      <div class="stats">
+        <div class="stat">
+          <b class="stat-num" data-count="150">১৫০</b>
+          <span data-en="Top speed (Mbps)">সর্বোচ্চ স্পিড (Mbps)</span>
+        </div>
+        <div class="stat">
+          <b class="stat-num" data-count="24" data-suffix="/৭" data-suffix-en="/7">২৪/৭</b>
+          <span data-en="Support, every day">সাপোর্ট, প্রতিদিন</span>
+        </div>
+        <div class="stat">
+          <b class="stat-num" data-count="100" data-suffix="%" data-suffix-en="%">১০০%</b>
+          <span data-en="Fiber optic line">ফাইবার অপটিক লাইন</span>
+        </div>
+        <div class="stat">
+          <b class="stat-num" data-count="3" data-count-areas>৩</b>
+          <span data-en="Coverage areas">কভারেজ এলাকা</span>
+        </div>
+        <!-- ★ গ্রাহক সংখ্যা জানা গেলে নিচের SITE.customers-এ বসান —
+             ফাঁকা থাকলে এই ঘরটি সাইটে দেখাবে না। -->
+        <div class="stat" data-stat="customers" hidden>
+          <b class="stat-num" data-count="0" data-suffix="+" data-suffix-en="+">০</b>
+          <span data-en="Connected homes">সংযুক্ত পরিবার</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ===================== OFFER ===================== -->
   <section class="section" id="offer">
     <div class="wrap">
@@ -1103,28 +1562,21 @@ html.nav-open,html.nav-open body{overflow:hidden}
         <div>
           <p class="offer-label" data-en="New connection offer">নতুন সংযোগ অফার</p>
           <h2><span data-en="Everything for">মাত্র</span> <b data-en="৳2,200">২,২০০৳</b> <span data-en="— line, router and the first month free.">— লাইন, রাউটার ও প্রথম মাস ফ্রি।</span></h2>
-          <!-- ছবি: রাউটার ও ওএনইউ -->
-          <svg class="art-kit" viewBox="0 0 320 150" role="img" aria-labelledby="art-kit-t" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <title id="art-kit-t" data-en="What you get: a Wi-Fi router, an ONU and a DB box">যা পাচ্ছেন: ওয়াই-ফাই রাউটার, ওএনইউ ও ডিবি বক্স</title>
-            <path d="M16 134h288" stroke="var(--gold-line)" stroke-width="2.4" stroke-dasharray="2 10"/>
-            <!-- রাউটার -->
-            <path d="M56 86 44 44M110 86l12-42" stroke="var(--gold)" stroke-width="3"/>
-            <circle cx="44" cy="42" r="3.2" fill="var(--gold)"/>
-            <circle cx="122" cy="42" r="3.2" fill="var(--gold)"/>
-            <rect x="30" y="86" width="106" height="44" rx="11" fill="var(--surface)" stroke="var(--gold)" stroke-width="2.6"/>
-            <circle cx="50" cy="108" r="3.2" fill="var(--gold)"/>
-            <circle cx="63" cy="108" r="3.2" fill="var(--gold)" opacity=".55"/>
-            <circle cx="76" cy="108" r="3.2" fill="var(--gold)" opacity=".3"/>
-            <!-- সংযোগ -->
-            <path d="M136 108h28" stroke="var(--gold)" stroke-width="2.4" stroke-dasharray="3 6"/>
-            <!-- ওএনইউ -->
-            <rect x="164" y="92" width="84" height="38" rx="9" fill="var(--surface)" stroke="var(--gold)" stroke-width="2.6"/>
-            <circle cx="181" cy="111" r="3.2" fill="var(--gold)"/>
-            <circle cx="194" cy="111" r="3.2" fill="var(--gold)" opacity=".5"/>
-            <!-- ফাইবার -->
-            <path d="M248 111c18 0 20-23 38-23" stroke="var(--gold)" stroke-width="2.6"/>
-            <circle cx="288" cy="88" r="4.2" fill="var(--gold)"/>
-          </svg>
+          <!-- যা পাচ্ছেন তার ছবি — আগে এখানে আঁকা ছবি ছিল, এখন আসল যন্ত্র -->
+          <figure class="ph offer-ph">
+            <picture>
+              <source type="image/avif"
+                      sizes="(min-width:960px) 560px, (min-width:860px) 346px, (min-width:700px) 712px, calc(100vw - 36px)"
+                      srcset="img/offer-router-480.avif 480w, img/offer-router-720.avif 720w, img/offer-router-1120.avif 1120w">
+              <source type="image/webp"
+                      sizes="(min-width:960px) 560px, (min-width:860px) 346px, (min-width:700px) 712px, calc(100vw - 36px)"
+                      srcset="img/offer-router-480.webp 480w, img/offer-router-720.webp 720w, img/offer-router-1120.webp 1120w">
+              <img src="img/offer-router-720.webp" width="720" height="480"
+                   alt="অ্যান্টেনাসহ একটি ওয়াই-ফাই রাউটার"
+                   data-en-alt="A Wi-Fi router with antennas"
+                   loading="lazy" decoding="async">
+            </picture>
+          </figure>
         </div>
         <ul>
           <li>
@@ -1295,7 +1747,18 @@ html.nav-open,html.nav-open body{overflow:hidden}
         <h2 class="sec-title" data-en="Three steps, one day">তিন ধাপ, এক দিন</h2>
       </div>
       <div class="steps">
+        <!-- ধাপের ছবিগুলোতে alt নেই (alt="") — পাশের শিরোনাম ও বর্ণনাই
+             পুরো কথাটা বলছে, তাই স্ক্রিন রিডারে ছবির বর্ণনা বাড়তি শব্দ হতো। -->
         <div class="step rv">
+          <figure class="ph step-ph">
+            <picture>
+              <source type="image/avif" sizes="(min-width:960px) 360px, (min-width:760px) 224px, calc(100vw - 36px)"
+                      srcset="img/step-1-call-360.avif 360w, img/step-1-call-540.avif 540w, img/step-1-call-720.avif 720w">
+              <source type="image/webp" sizes="(min-width:960px) 360px, (min-width:760px) 224px, calc(100vw - 36px)"
+                      srcset="img/step-1-call-360.webp 360w, img/step-1-call-540.webp 540w, img/step-1-call-720.webp 720w">
+              <img src="img/step-1-call-540.webp" width="540" height="405" alt="" loading="lazy" decoding="async">
+            </picture>
+          </figure>
           <span class="step-n" data-en="1">১</span>
           <div>
             <h3 data-en="Call or message">কল বা মেসেজ দিন</h3>
@@ -1303,6 +1766,15 @@ html.nav-open,html.nav-open body{overflow:hidden}
           </div>
         </div>
         <div class="step rv">
+          <figure class="ph step-ph">
+            <picture>
+              <source type="image/avif" sizes="(min-width:960px) 360px, (min-width:760px) 224px, calc(100vw - 36px)"
+                      srcset="img/step-2-survey-360.avif 360w, img/step-2-survey-540.avif 540w, img/step-2-survey-720.avif 720w">
+              <source type="image/webp" sizes="(min-width:960px) 360px, (min-width:760px) 224px, calc(100vw - 36px)"
+                      srcset="img/step-2-survey-360.webp 360w, img/step-2-survey-540.webp 540w, img/step-2-survey-720.webp 720w">
+              <img src="img/step-2-survey-540.webp" width="540" height="405" alt="" loading="lazy" decoding="async">
+            </picture>
+          </figure>
           <span class="step-n" data-en="2">২</span>
           <div>
             <h3 data-en="We come and check">লাইন দেখে যাই</h3>
@@ -1310,6 +1782,15 @@ html.nav-open,html.nav-open body{overflow:hidden}
           </div>
         </div>
         <div class="step rv">
+          <figure class="ph step-ph">
+            <picture>
+              <source type="image/avif" sizes="(min-width:960px) 360px, (min-width:760px) 224px, calc(100vw - 36px)"
+                      srcset="img/step-3-wifi-360.avif 360w, img/step-3-wifi-540.avif 540w, img/step-3-wifi-720.avif 720w">
+              <source type="image/webp" sizes="(min-width:960px) 360px, (min-width:760px) 224px, calc(100vw - 36px)"
+                      srcset="img/step-3-wifi-360.webp 360w, img/step-3-wifi-540.webp 540w, img/step-3-wifi-720.webp 720w">
+              <img src="img/step-3-wifi-540.webp" width="540" height="405" alt="" loading="lazy" decoding="async">
+            </picture>
+          </figure>
           <span class="step-n" data-en="3">৩</span>
           <div>
             <h3 data-en="Wi-Fi starts">ওয়াই-ফাই চালু</h3>
@@ -1327,6 +1808,61 @@ html.nav-open,html.nav-open body{overflow:hidden}
         <p class="eyebrow" data-en="Coverage">কভারেজ এলাকা</p>
         <h2 class="sec-title" data-en="Where our line already runs">যেসব এলাকায় আমাদের লাইন আছে</h2>
         <p class="sec-lead" data-en="New areas are added every month. If your village is not on the list, call anyway — the line may already be nearby.">প্রতি মাসেই নতুন এলাকা যুক্ত হচ্ছে। আপনার গ্রাম তালিকায় না থাকলেও কল করুন — কাছাকাছি লাইন থাকতে পারে।</p>
+      </div>
+
+      <!-- মানচিত্র ও গ্রামের ছবি। মানচিত্রটি আগে ব্যানারে ছিল, শুধু বড়
+           পর্দায় দেখা যেত — এখন এখানে, সব পর্দাতেই। -->
+      <div class="cov-stage rv">
+        <figure class="ph cov-photo">
+          <picture>
+            <source type="image/avif" sizes="(min-width:960px) 552px, (min-width:860px) 356px, (min-width:700px) 712px, calc(100vw - 36px)"
+                    srcset="img/coverage-village-480.avif 480w, img/coverage-village-720.avif 720w, img/coverage-village-1120.avif 1120w">
+            <source type="image/webp" sizes="(min-width:960px) 552px, (min-width:860px) 356px, (min-width:700px) 712px, calc(100vw - 36px)"
+                    srcset="img/coverage-village-480.webp 480w, img/coverage-village-720.webp 720w, img/coverage-village-1120.webp 1120w">
+            <img src="img/coverage-village-720.webp" width="720" height="360" alt="" loading="lazy" decoding="async">
+          </picture>
+        </figure>
+
+        <svg class="cov-map" viewBox="0 0 320 268" fill="none" role="img" aria-labelledby="cov-map-t">
+          <title id="cov-map-t" data-en="Our line already runs to Bipulasar, Poschim Bazar and Monoharganj">আমাদের লাইন বিপুলাসার, পশ্চিম বাজার ও মনোহরগঞ্জে পৌঁছেছে</title>
+          <!-- কভারেজ রিং -->
+          <circle class="cov-ring" cx="104" cy="128" r="56" stroke-width="2" opacity=".3"/>
+          <circle class="cov-ring" cx="104" cy="128" r="94" stroke-width="2" opacity=".18"/>
+          <circle class="cov-ring" cx="104" cy="128" r="132" stroke-width="2" opacity=".1"/>
+
+          <!-- লাইন -->
+          <path class="cov-link" d="M104 128Q168 96 224 74"/>
+          <path class="cov-link" d="M104 128Q186 136 254 150"/>
+          <path class="cov-link" d="M104 128Q114 176 140 208"/>
+
+          <!-- আমাদের অফিস -->
+          <circle cx="104" cy="128" r="27" fill="var(--brand)"/>
+          <g transform="translate(104,128) scale(1.15)" stroke="var(--on-brand)" stroke-width="2" stroke-linecap="round" fill="none">
+            <path d="M-9.5 -4a13.5 13.5 0 0 1 19 0"/><path d="M-6 0a8.5 8.5 0 0 1 12 0"/>
+            <circle cx="0" cy="5" r="1.5" fill="var(--on-brand)" stroke="none"/>
+          </g>
+
+          <!-- বাড়ি ১ -->
+          <g transform="translate(232,58)">
+            <path class="cov-house" d="M-15 0 0-13 15 0"/>
+            <rect class="cov-house" x="-11" y="0" width="22" height="17" rx="3"/>
+          </g>
+          <text x="232" y="97" data-en="Bipulasar">বিপুলাসার</text>
+
+          <!-- বাড়ি ২ -->
+          <g transform="translate(264,148)">
+            <path class="cov-house" d="M-15 0 0-13 15 0"/>
+            <rect class="cov-house" x="-11" y="0" width="22" height="17" rx="3"/>
+          </g>
+          <text x="258" y="188" data-en="Poschim Bazar">পশ্চিম বাজার</text>
+
+          <!-- বাড়ি ৩ -->
+          <g transform="translate(146,212)">
+            <path class="cov-house" d="M-15 0 0-13 15 0"/>
+            <rect class="cov-house" x="-11" y="0" width="22" height="17" rx="3"/>
+          </g>
+          <text x="146" y="252" data-en="Monoharganj">মনোহরগঞ্জ</text>
+        </svg>
       </div>
 
       <div class="cov-search">
@@ -1356,13 +1892,13 @@ html.nav-open,html.nav-open body{overflow:hidden}
         <p class="sec-lead" data-en="Send money, then SMS us the transaction ID. You can also pay cash at the office in Bipulasar.">সেন্ড মানি করে ট্রানজেকশন আইডি এসএমএস করুন। বিপুলাসার অফিসে এসে নগদেও দিতে পারবেন।</p>
       </div>
       <div class="pays rv">
-        <div class="pay">
-          <span class="pay-dot" style="background:#E2136E"></span>
+        <div class="pay pay-1">
+          <span class="pay-dot pay-bkash"></span>
           <div class="pay-txt"><b data-en="bKash">বিকাশ</b><span data-pay="bkash">নম্বরের জন্য কল করুন</span></div>
           <button type="button" class="copy-btn" hidden data-copy="bkash" data-en="Copy">কপি</button>
         </div>
-        <div class="pay">
-          <span class="pay-dot" style="background:#EE7A1A"></span>
+        <div class="pay pay-2">
+          <span class="pay-dot pay-nagad"></span>
           <div class="pay-txt"><b data-en="Nagad">নগদ</b><span data-pay="nagad">নম্বরের জন্য কল করুন</span></div>
           <button type="button" class="copy-btn" hidden data-copy="nagad" data-en="Copy">কপি</button>
         </div>
@@ -1415,7 +1951,7 @@ html.nav-open,html.nav-open body{overflow:hidden}
           <p data-en="Our line and boxes run on backup power, but your own router dies with the mains. A small mini-UPS for the router and the ONU keeps the internet running right through an outage.">আমাদের লাইন ও বক্স ব্যাকআপ বিদ্যুতে চলে, কিন্তু বিদ্যুৎ গেলে আপনার রাউটার বন্ধ হয়ে যায়। রাউটার ও ওএনইউ-র জন্য ছোট একটি মিনি-ইউপিএস নিলে বিদ্যুৎ না থাকলেও ইন্টারনেট চলবে।</p>
         </article>
       </div>
-      <p class="callout rv">
+      <p class="callout callout-warn rv">
         <b data-en="Careful:">সাবধান:</b>
         <span data-en="We never ask for your bKash PIN or an OTP. If someone calls asking for a PIN, an OTP or your Wi-Fi password, do not give it — hang up and call our hotline.">আমরা কখনো আপনার বিকাশ পিন বা ওটিপি চাই না। কেউ ফোন করে পিন, ওটিপি বা ওয়াই-ফাই পাসওয়ার্ড চাইলে দেবেন না — ফোন রেখে আমাদের হটলাইনে কল করুন।</span>
       </p>
@@ -1542,7 +2078,11 @@ var SITE = {
   hours:    "",                         /* যেমন: "প্রতিদিন খোলা, সকাল ৯টা – রাত ৯টা" */
   hoursEn:  "",
   bkash:    "01819504463",              /* বিকাশ — শুধু সেন্ড মানি */
-  nagad:    ""                          /* নগদ নম্বর */
+  nagad:    "",                         /* নগদ নম্বর */
+  customers:""                          /* গ্রাহক সংখ্যা, যেমন: "450" —
+                                           ফাঁকা থাকলে "সংযুক্ত পরিবার" ঘরটি
+                                           সাইটে দেখাবেই না, তাই ভুল সংখ্যা
+                                           লাইভ হওয়ার ভয় নেই */
 };
 
 (function () {
@@ -1551,6 +2091,9 @@ var SITE = {
   var root = document.documentElement;
   var $  = function (s, c) { return (c || document).querySelector(s); };
   var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
+
+  /* ভাষা বদলালে যাদের নিজে থেকে আবার আঁকতে হয় তারা এখানে নাম লিখিয়ে রাখে */
+  var onLang = [];
 
   function prettyPhone(n) {
     n = String(n).replace(/\D/g, "");
@@ -1587,6 +2130,9 @@ var SITE = {
   ariaNodes.forEach(function (el) { el.setAttribute("data-bn-aria", el.getAttribute("aria-label") || ""); });
   var phNodes = $$("[data-en-ph]");
   phNodes.forEach(function (el) { el.setAttribute("data-bn-ph", el.placeholder || ""); });
+  /* ছবির বর্ণনাও (alt) দুই ভাষায় — aria-label-এর মতো একই নিয়মে */
+  var altNodes = $$("[data-en-alt]");
+  altNodes.forEach(function (el) { el.setAttribute("data-bn-alt", el.getAttribute("alt") || ""); });
 
   var btnBn = $("#btn-bn"), btnEn = $("#btn-en");
 
@@ -1603,6 +2149,9 @@ var SITE = {
     });
     phNodes.forEach(function (el) {
       el.placeholder = el.getAttribute(en ? "data-en-ph" : "data-bn-ph");
+    });
+    altNodes.forEach(function (el) {
+      el.setAttribute("alt", el.getAttribute(en ? "data-en-alt" : "data-bn-alt"));
     });
 
     /* ফোন ও পেমেন্ট নম্বর SITE থেকে।
@@ -1640,6 +2189,7 @@ var SITE = {
 
     btnBn.setAttribute("aria-pressed", String(!en));
     btnEn.setAttribute("aria-pressed", String(en));
+    for (var li = 0; li < onLang.length; li++) { onLang[li](en); }
     try { localStorage.setItem("mis-lang", lang); } catch (e) {}
   }
 
@@ -1652,7 +2202,9 @@ var SITE = {
 
   /* ---------- ৪. থিম (লাইট / ডার্ক) ---------- */
   var metaTheme = $("#meta-theme");
-  var THEME_COLOR = { light: "#F7F5EF", dark: "#0A1614" };
+  /* ⚠ দুটো মান CSS-এর --paper টোকেনের সাথে মিলতে হবে (লাইট ও ডার্ক),
+       নইলে অ্যান্ড্রয়েডের অ্যাড্রেস বার আর পেজের রং আলাদা দেখাবে */
+  var THEME_COLOR = { light: "#F4F8F7", dark: "#04120F" };
 
   function systemDark() {
     return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -1732,7 +2284,9 @@ var SITE = {
   }
 
   if ("IntersectionObserver" in window) {
-    var sections = $$("main section[id]");
+    /* #stats বাদ — ওর জন্য মেনুতে কোনো লিংক নেই, তাই ওটা পার হওয়ার সময়
+       মেনুর কোনো আইটেমই জ্বলত না, দেখে মনে হতো কিছু ভেঙে গেছে */
+    var sections = $$("main section[id]:not(#stats)");
     var spy = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
         if (en.isIntersecting) { markActive(en.target.id); }
@@ -1753,6 +2307,87 @@ var SITE = {
     }, 2000);
   } else {
     $$(".rv").forEach(function (el) { el.classList.add("in"); });
+  }
+
+  /* ---------- ৭খ. সংখ্যায় আমাদের সেবা — গুনে গুনে উপরে ওঠে ----------
+     HTML-এ আসল সংখ্যাই লেখা আছে, JS শুধু শূন্য থেকে গুনে সেখানে পৌঁছায়।
+     তাই JS বন্ধ থাকলে, পুরোনো ব্রাউজারে, বা কিছু আটকে গেলেও দর্শক
+     কখনো "০" দেখবেন না। */
+  var BN_DIGIT = ["০","১","২","৩","৪","৫","৬","৭","৮","৯"];
+  var statNums = $$("#stats [data-count]");
+
+  /* কভারেজ এলাকার সংখ্যাটা নিচের চিপ গুনেই আসে — নতুন এলাকা যোগ করলে
+     মানচিত্র, এই সংখ্যা আর গুগলের তথ্য তিনটেই একসাথে বদলায় */
+  var areaNum = $("#stats [data-count-areas]");
+  if (areaNum) {
+    areaNum.setAttribute("data-count", String($$("#cov-list .chip:not(.chip-ask)").length));
+  }
+
+  /* গ্রাহক সংখ্যা SITE-এ বসালেই ঘরটা দেখা যাবে, নইলে লুকানো থাকবে */
+  var custTile = $("#stats [data-stat='customers']");
+  if (custTile) {
+    var cust = String(SITE.customers || "").replace(/\D/g, "");
+    custTile.hidden = !cust;
+    if (cust) { $("[data-count]", custTile).setAttribute("data-count", cust); }
+  }
+
+  function bnNum(n, en) {
+    var s = String(n);
+    return en ? s : s.replace(/\d/g, function (d) { return BN_DIGIT[+d]; });
+  }
+  function statTarget(el) { return parseInt(el.getAttribute("data-count"), 10) || 0; }
+  function statPaint(el, val) {
+    var en = root.getAttribute("data-lang") === "en";
+    el.textContent = bnNum(val, en) +
+      (el.getAttribute(en ? "data-suffix-en" : "data-suffix") || "");
+  }
+
+  /* ভাষা বদলালে সংখ্যাগুলো নতুন করে আঁকা হয়।
+     ⚠ এগুলোতে data-en দেওয়া যায় না — setLang textContent মুছে দিত,
+       ফলে গোনার মাঝপথে সংখ্যা হারিয়ে যেত। */
+  onLang.push(function () {
+    statNums.forEach(function (el) {
+      if (el.getAttribute("data-run") === "done") { statPaint(el, statTarget(el)); }
+    });
+  });
+
+  var lessMotion = window.matchMedia &&
+                   window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function countUp(el) {
+    if (el.getAttribute("data-run")) { return; }
+    el.setAttribute("data-run", "1");
+    var end = statTarget(el);
+    if (lessMotion || !window.requestAnimationFrame) {
+      statPaint(el, end); el.setAttribute("data-run", "done"); return;
+    }
+    var dur = 1100, t0 = 0;
+    function frame(ts) {
+      if (!t0) { t0 = ts; }
+      var p = Math.min((ts - t0) / dur, 1);
+      statPaint(el, Math.round(end * (1 - Math.pow(1 - p, 3))));   /* শেষে ধীরে */
+      if (p < 1) { window.requestAnimationFrame(frame); }
+      else { statPaint(el, end); el.setAttribute("data-run", "done"); }
+    }
+    window.requestAnimationFrame(frame);
+  }
+
+  if (statNums.length) {
+    if ("IntersectionObserver" in window) {
+      var counted = 0;
+      var countObs = new IntersectionObserver(function (entries, obs) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting) { counted++; countUp(en.target); obs.unobserve(en.target); }
+        });
+      }, { threshold: .45 });
+      statNums.forEach(function (el) { countObs.observe(el); });
+      /* ২ সেকেন্ডেও কিছু না হলে ধরে নিই কিছু ভুল হয়েছে — সংখ্যা বসিয়ে দিই */
+      setTimeout(function () {
+        if (!counted) { statNums.forEach(function (el) { countUp(el); }); }
+      }, 2000);
+    } else {
+      statNums.forEach(function (el) { statPaint(el, statTarget(el)); el.setAttribute("data-run", "done"); });
+    }
   }
 
   /* ---------- ৮. কভারেজ এলাকা খোঁজা ---------- */
