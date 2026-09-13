@@ -1,0 +1,71 @@
+মাসুদ ইন্টারনেট সার্ভিস — ছবির উৎস ও লাইসেন্স
+Masud Internet Service — image sources and licences
+নামানো হয়েছে / downloaded: 2026-09-13
+
+সব ছবি Pexels License-এর অধীনে। বাণিজ্যিক ব্যবহার করা যায়, কৃতজ্ঞতা স্বীকার
+বাধ্যতামূলক নয় — তবু উৎস প্রমাণের জন্য এই তালিকা রাখা হলো।
+All images are under the Pexels License: free for commercial use, attribution
+not required. This file is kept as proof of provenance, not as attribution.
+https://www.pexels.com/license/
+
+গুরুত্বপূর্ণ / IMPORTANT
+  Pexels License অনুযায়ী ছবির মানুষ এই প্রতিষ্ঠানের সাথে যুক্ত — এমন ইঙ্গিত
+  দেওয়া যাবে না। তাই alt লেখায় কখনো "আমাদের গ্রাহক" বা "আমাদের টেকনিশিয়ান"
+  লেখা হয়নি, শুধু যা দেখা যাচ্ছে তার বর্ণনা আছে।
+  The licence forbids implying that depicted people endorse or are connected
+  to this business. Alt text is therefore purely descriptive — never
+  "our customer" or "our technician".
+
+  এই কারণেই JSON-LD-র LocalBusiness.image এখনো og-image.png-এই আছে; সেখানে
+  শুধু প্রতিষ্ঠানের নিজের তোলা ছবিই বসানো যাবে।
+  For the same reason LocalBusiness.image still points at og-image.png —
+  only a real photo of the business may go there.
+
+----------------------------------------------------------------------
+hero-family-*        হিরো / hero
+  Pexels #13005384 — Towfiqu Barbhuiya
+  https://www.pexels.com/photo/13005384/
+  মোবাইলে ইন্টারনেট ব্যবহার করছেন একজন নারী
+
+offer-router-*       নতুন সংযোগের অফার / offer
+  Pexels #32698507 — Pascal
+  https://www.pexels.com/photo/32698507/
+  কাঠের টেবিলে অ্যান্টেনাসহ ওয়াই-ফাই রাউটার
+
+step-1-call-*        ধাপ ১ — কল বা মেসেজ / step 1
+  Pexels #15568711 — Abrar Hashim
+  https://www.pexels.com/photo/15568711/
+  গ্রামের পথে বেঞ্চে বসে মোবাইলে কথা বলছেন একজন
+
+step-2-survey-*      ধাপ ২ — টেকনিশিয়ান আসবেন / step 2
+  Pexels #38760189 — Bertelli Fotografia
+  https://www.pexels.com/photo/38760189/
+  খুঁটিতে মই বেয়ে উঠে তার লাগাচ্ছেন একজন কর্মী
+
+step-3-wifi-*        ধাপ ৩ — লাইন চালু / step 3
+  Pexels #29711663 — Jakub Zerdzicki
+  https://www.pexels.com/photo/29711663/
+  জ্বলন্ত অ্যান্টেনাসহ চালু অবস্থায় ওয়াই-ফাই রাউটার
+
+coverage-village-*   কভারেজ এলাকা / coverage
+  Pexels #32766721 — imshaamim
+  https://www.pexels.com/photo/32766721/
+  নেত্রকোনার গ্রাম — বটগাছ, খড়ের গাদা, গরু, ধানখেত
+
+stats-fiber-*        সংখ্যায় আমাদের সেবা / stats band
+  Pexels #17194840 — Suki Lee
+  https://www.pexels.com/photo/17194840/
+  ফাইবার অপটিক তন্তুর আলো (বিমূর্ত, মানুষ নেই)
+----------------------------------------------------------------------
+
+ছবি বদলাতে হলে / to change an image
+  ১. নতুন ছবি _src/ ফোল্ডারে একই নামে রাখুন (hero.jpg, offer.jpg, step1.jpg,
+     step2.jpg, step3.jpg, coverage.jpg, stats.jpg)
+  ২. py tools/build-img.py  চালান — img/ ফোল্ডার নতুন করে তৈরি হবে
+  ৩. এই ফাইলে নতুন উৎস লিখে রাখুন
+  HTML-এ কিছু বদলাতে হবে না, নাম একই থাকলে।
+
+ক্লায়েন্টের নিজের তোলা ছবি পেলে / when the client's own photos arrive
+  অফিসের সামনের ছবি ও খুঁটির DB বক্সের ছবি পেলে সেগুলো step-2 ও coverage-এর
+  জায়গায় বসানোই সবচেয়ে ভালো — স্থানীয় গ্রাহক দোকানটা চেনেন, তাই একটি আসল
+  ছবি সাতটি স্টক ছবির চেয়ে বেশি বিশ্বাস আনে।

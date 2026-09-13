@@ -3,3 +3,7 @@
 index.backup.html
 index.prev-demo.html
 image/
+
+# ছবির মূল (আনকমপ্রেসড) ফাইল — tools/build-img.py এখান থেকে পড়ে img/ বানায়।
+# মূল ফাইল কমিট করলে git history স্থায়ীভাবে ভারী হয়ে যায়, তাই বাইরে রাখা।
+_src/
