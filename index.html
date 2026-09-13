@@ -1033,34 +1033,51 @@ html.nav-open,html.nav-open body{overflow:hidden}
 /* =====================================================================
    12. PAYMENT
    ===================================================================== */
-.pays{display:grid;gap:12px;grid-template-columns:1fr}
+.pays{display:grid;gap:14px;grid-template-columns:1fr}
 @media (min-width:620px){ .pays{grid-template-columns:repeat(2,1fr)} }
+@media (min-width:900px){ .pays{grid-template-columns:repeat(3,1fr)} }
+
+/* প্রতিটি উপায় একটি খাড়া কার্ড: উপরে নাম, মাঝে বড় করে নম্বর,
+   নিচে কপি বোতাম। নম্বরটাই এই সেকশনের আসল কাজ, তাই সেটাই সবচেয়ে বড়। */
 .pay{
+  --pc:var(--brand);
+  position:relative;overflow:hidden;
   background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);
-  padding:14px 15px;display:flex;align-items:center;gap:12px;
+  padding:20px 18px 20px;display:flex;flex-direction:column;gap:10px;
 }
-/* বিকাশ ও নগদের নিজের রং — এগুলো ওদের ব্র্যান্ড, তাই কখনো বদলানো হয় না।
-   চারপাশের হালকা বলয়টা শুধু ছোট বিন্দুটিকে চোখে পড়ার মতো করে। */
-.pay-dot{width:12px;height:12px;border-radius:50%;flex:none}
-.pay-bkash{background:var(--bkash);box-shadow:0 0 0 3px rgba(226,19,110,.22)}
-.pay-nagad{background:var(--nagad);box-shadow:0 0 0 3px rgba(238,122,26,.24)}
-.pay-1{border-color:var(--acc-magenta-line);background:linear-gradient(120deg,var(--acc-magenta-tint),var(--surface))}
-.pay-2{border-color:var(--p4-line);background:linear-gradient(120deg,var(--p4-tint),var(--surface))}
-.pay-txt{min-width:0;flex:1}
-.pay-txt b{display:block;font-family:'Baloo Da 2',sans-serif;font-size:16.5px;line-height:1.3}
-.pay-txt span{
-  display:block;font-size:15px;color:var(--ink-2);line-height:1.5;
+.pay::before{content:"";position:absolute;inset:0 0 auto;height:4px;background:var(--pc)}
+.pay-head{display:flex;align-items:center;gap:10px}
+.pay-head b{font-family:'Baloo Da 2',sans-serif;font-size:17.5px;line-height:1.3}
+.pay-num{
+  font-family:'Baloo Da 2',sans-serif;font-weight:700;
+  font-size:clamp(20px,2.2vw,24px);line-height:1.25;color:var(--ink);
   font-variant-numeric:tabular-nums;letter-spacing:.01em;
 }
+.pay-num-sm{font-size:clamp(16px,1.7vw,18px);font-weight:600}
+.pay-hint{font-size:13.5px;color:var(--ink-3);line-height:1.5}
+
+/* বিকাশ ও নগদের নিজের রং — এগুলো ওদের ব্র্যান্ড, তাই কখনো বদলানো হয় না।
+   চারপাশের হালকা বলয়টা শুধু ছোট বিন্দুটিকে চোখে পড়ার মতো করে। */
+.pay-dot{width:13px;height:13px;border-radius:50%;flex:none}
+.pay-bkash{background:var(--bkash);box-shadow:0 0 0 3px rgba(226,19,110,.22)}
+.pay-nagad{background:var(--nagad);box-shadow:0 0 0 3px rgba(238,122,26,.24)}
+.pay-cash{background:var(--acc-green);box-shadow:0 0 0 3px rgba(22,163,74,.22)}
+.pay-1{--pc:var(--bkash);border-color:var(--acc-magenta-line);background:linear-gradient(160deg,var(--acc-magenta-tint),var(--surface) 62%)}
+.pay-2{--pc:var(--nagad);border-color:var(--p4-line);background:linear-gradient(160deg,var(--p4-tint),var(--surface) 62%)}
+.pay-3{--pc:var(--acc-green);border-color:var(--acc-green-line);background:linear-gradient(160deg,var(--acc-green-tint),var(--surface) 62%)}
+
 .copy-btn{
-  flex:none;min-height:38px;padding:0 13px;cursor:pointer;
-  background:var(--surface-2);border:1px solid var(--line-soft);border-radius:var(--r-sm);
-  color:var(--ink-2);font-size:13.5px;font-weight:600;
+  margin-top:auto;align-self:flex-start;min-height:42px;padding:0 18px;cursor:pointer;
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--r-sm);
+  color:var(--ink-2);font-size:14.5px;font-weight:600;
   transition:background .18s var(--ease),color .18s var(--ease),border-color .18s var(--ease);
 }
-.copy-btn:hover{border-color:var(--brand-line);color:var(--brand)}
+.copy-btn:hover{border-color:var(--brand);color:var(--brand)}
 /* "কপি হয়েছে" সবুজে — টিলের চেয়ে সবুজ বেশি স্পষ্ট করে সফলতা বোঝায় */
 .copy-btn.done{background:var(--acc-green);border-color:transparent;color:var(--on-brand)}
+/* রেফারেন্সের নির্দেশনা তিন কার্ডের পুরো প্রস্থজুড়ে — আগে বাঁ পাশে
+   সরু হয়ে বসত আর ডান পাশটা ফাঁকা পড়ে থাকত */
+#payment .callout{max-width:none}
 .pay-note{margin-top:16px;font-size:14px;color:var(--ink-3);max-width:70ch}
 
 /* =====================================================================
@@ -1934,16 +1951,32 @@ html.nav-open,html.nav-open body{overflow:hidden}
         <h2 class="sec-title" data-en="Pay by the 10th of every month">প্রতি মাসের ১০ তারিখের মধ্যে</h2>
         <p class="sec-lead" data-en="Send money, then SMS us the transaction ID. You can also pay cash at the office in Bipulasar.">সেন্ড মানি করে ট্রানজেকশন আইডি এসএমএস করুন। বিপুলাসার অফিসে এসে নগদেও দিতে পারবেন।</p>
       </div>
+      <!-- তিনটি উপায়, তিনটি কার্ড। অফিসে নগদে দেওয়ার কথাটা আগে শুধু
+           উপরের লাইনে লেখা ছিল — আলাদা কার্ড হলে চোখে পড়ে, আর সারিটাও ভরে। -->
       <div class="pays rv">
         <div class="pay pay-1">
-          <span class="pay-dot pay-bkash"></span>
-          <div class="pay-txt"><b data-en="bKash">বিকাশ</b><span data-pay="bkash">নম্বরের জন্য কল করুন</span></div>
-          <button type="button" class="copy-btn" hidden data-copy="bkash" data-en="Copy">কপি</button>
+          <div class="pay-head">
+            <span class="pay-dot pay-bkash"></span>
+            <b data-en="bKash">বিকাশ</b>
+          </div>
+          <span class="pay-num" data-pay="bkash">নম্বরের জন্য কল করুন</span>
+          <button type="button" class="copy-btn" hidden data-copy="bkash" data-en="Copy number">নম্বর কপি করুন</button>
         </div>
         <div class="pay pay-2">
-          <span class="pay-dot pay-nagad"></span>
-          <div class="pay-txt"><b data-en="Nagad">নগদ</b><span data-pay="nagad">নম্বরের জন্য কল করুন</span></div>
-          <button type="button" class="copy-btn" hidden data-copy="nagad" data-en="Copy">কপি</button>
+          <div class="pay-head">
+            <span class="pay-dot pay-nagad"></span>
+            <b data-en="Nagad">নগদ</b>
+          </div>
+          <span class="pay-num" data-pay="nagad">নম্বরের জন্য কল করুন</span>
+          <button type="button" class="copy-btn" hidden data-copy="nagad" data-en="Copy number">নম্বর কপি করুন</button>
+        </div>
+        <div class="pay pay-3">
+          <div class="pay-head">
+            <span class="pay-dot pay-cash"></span>
+            <b data-en="Cash at the office">অফিসে নগদ</b>
+          </div>
+          <span class="pay-num pay-num-sm" data-en="Bipulasar, Poschim Bazar">বিপুলাসার, পশ্চিম বাজার</span>
+          <span class="pay-hint" data-en="Hand it over at the counter — no transaction ID needed.">সরাসরি এসে দিয়ে যেতে পারেন — ট্রানজেকশন আইডি লাগবে না।</span>
         </div>
       </div>
       <p class="callout rv">
@@ -2116,12 +2149,14 @@ var SITE = {
   addressEn:"Bipulasar, Poschim Bazar, Monoharganj, Cumilla",
   waText:   "আসসালামু আলাইকুম, আমি ইন্টারনেট সংযোগ নিতে চাই।",
 
+  /* বিল পরিশোধের নম্বর — বিকাশ ও নগদ দুটোই একই নম্বর */
+  bkash:    "01819504463",              /* বিকাশ — শুধু সেন্ড মানি */
+  nagad:    "01819504463",              /* নগদ — শুধু সেন্ড মানি */
+
   /* ★ এখনো জানা যায়নি — পেলে এখানে বসান, ফাঁকা থাকলে সাইটে দেখাবে না */
   facebook: "https://www.facebook.com/profile.php?id=61594068812208",  /* ফেসবুক পেজ */
   hours:    "",                         /* যেমন: "প্রতিদিন খোলা, সকাল ৯টা – রাত ৯টা" */
   hoursEn:  "",
-  bkash:    "01819504463",              /* বিকাশ — শুধু সেন্ড মানি */
-  nagad:    "",                         /* নগদ নম্বর */
   customers:""                          /* গ্রাহক সংখ্যা, যেমন: "450" —
                                            ফাঁকা থাকলে "সংযুক্ত পরিবার" ঘরটি
                                            সাইটে দেখাবেই না, তাই ভুল সংখ্যা
