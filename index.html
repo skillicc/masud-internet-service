@@ -763,7 +763,8 @@ html.nav-open,html.nav-open body{overflow:hidden}
 }
 @media (min-width:700px){ .why-ph{aspect-ratio:21/9} }
 
-.offer-ph{aspect-ratio:16/9;margin-top:4px}
+/* অফারের ছবি কার্ডের প্রান্ত পর্যন্ত যায় — তাই নিজের বর্ডার/কোণ নেই */
+.offer-ph{aspect-ratio:16/10;border:0;border-radius:0;box-shadow:none;margin:0}
 .step-ph{aspect-ratio:4/3;margin-bottom:14px;border-radius:var(--r-md)}
 @media (min-width:760px){ .step-ph{aspect-ratio:16/10} }
 
@@ -801,13 +802,20 @@ html.nav-open,html.nav-open body{overflow:hidden}
   background:linear-gradient(135deg,var(--gold-bg),var(--surface));
   border:1px solid var(--gold-line);
   box-shadow:0 18px 40px -28px var(--glow-gold);
-  border-radius:var(--r-lg);padding:22px 20px 24px;display:grid;gap:18px;
+  border-radius:var(--r-lg);display:grid;gap:0;overflow:hidden;
 }
-@media (min-width:860px){ .offer{grid-template-columns:1.05fr 1fr;align-items:center;gap:36px;padding:30px 34px} }
+.offer-body{padding:clamp(22px,3.2vw,40px)}
+@media (min-width:860px){
+  /* ছবি বাঁ কলামের পুরো উচ্চতা ভরে রাখে, লেখা ডানে */
+  .offer{grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);align-items:stretch}
+  .offer-ph{aspect-ratio:auto;height:100%;min-height:100%}
+}
 .offer-label{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:7px}
 .offer h2{font-size:clamp(22px,3.4vw,30px)}
 .offer h2 b{color:var(--gold);font-variant-numeric:tabular-nums}
-.offer ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.offer ul{list-style:none;margin:clamp(16px,2.2vw,22px) 0 0;padding:0;display:grid;gap:10px}
+.offer-cta{margin-top:clamp(18px,2.6vw,26px)}
+@media (min-width:520px){ .offer-cta{width:fit-content;padding-inline:30px} }
 .offer li{display:flex;gap:10px;align-items:flex-start;font-size:15.5px;color:var(--ink-2);line-height:1.55}
 .offer li svg{width:17px;height:17px;flex:none;margin-top:5px;color:var(--gold)}
 
@@ -1607,40 +1615,49 @@ html.nav-open,html.nav-open body{overflow:hidden}
   <!-- ===================== OFFER ===================== -->
   <section class="section" id="offer">
     <div class="wrap">
+      <!-- বড় পর্দায় ছবিটি কার্ডের বাঁ অর্ধেক পুরোটা ভরে রাখে, ডানে সব লেখা
+           ও কল বোতাম। আগে ছবি শিরোনামের নিচে বসত আর ডান পাশটা অর্ধেক
+           ফাঁকা পড়ে থাকত। -->
       <div class="offer rv">
-        <div>
+        <!-- যা পাচ্ছেন তার ছবি — আগে এখানে আঁকা ছবি ছিল, এখন আসল যন্ত্র -->
+        <figure class="ph offer-ph">
+          <picture>
+            <source type="image/avif"
+                    sizes="(min-width:1320px) 580px, (min-width:860px) 46vw, calc(100vw - 36px)"
+                    srcset="img/offer-router-480.avif 480w, img/offer-router-720.avif 720w, img/offer-router-1120.avif 1120w">
+            <source type="image/webp"
+                    sizes="(min-width:1320px) 580px, (min-width:860px) 46vw, calc(100vw - 36px)"
+                    srcset="img/offer-router-480.webp 480w, img/offer-router-720.webp 720w, img/offer-router-1120.webp 1120w">
+            <img src="img/offer-router-720.webp" width="720" height="480"
+                 alt="অ্যান্টেনাসহ একটি ওয়াই-ফাই রাউটার"
+                 data-en-alt="A Wi-Fi router with antennas"
+                 loading="lazy" decoding="async">
+          </picture>
+        </figure>
+
+        <div class="offer-body">
           <p class="offer-label" data-en="New connection offer">নতুন সংযোগ অফার</p>
           <h2><span data-en="Everything for">মাত্র</span> <b data-en="৳2,200">২,২০০৳</b> <span data-en="— line, router and the first month free.">— লাইন, রাউটার ও প্রথম মাস ফ্রি।</span></h2>
-          <!-- যা পাচ্ছেন তার ছবি — আগে এখানে আঁকা ছবি ছিল, এখন আসল যন্ত্র -->
-          <figure class="ph offer-ph">
-            <picture>
-              <source type="image/avif"
-                      sizes="(min-width:960px) 560px, (min-width:860px) 346px, (min-width:700px) 712px, calc(100vw - 36px)"
-                      srcset="img/offer-router-480.avif 480w, img/offer-router-720.avif 720w, img/offer-router-1120.avif 1120w">
-              <source type="image/webp"
-                      sizes="(min-width:960px) 560px, (min-width:860px) 346px, (min-width:700px) 712px, calc(100vw - 36px)"
-                      srcset="img/offer-router-480.webp 480w, img/offer-router-720.webp 720w, img/offer-router-1120.webp 1120w">
-              <img src="img/offer-router-720.webp" width="720" height="480"
-                   alt="অ্যান্টেনাসহ একটি ওয়াই-ফাই রাউটার"
-                   data-en-alt="A Wi-Fi router with antennas"
-                   loading="lazy" decoding="async">
-            </picture>
-          </figure>
+          <ul>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+              <span data-en="70 Mbps package, first month's recharge free">৭০ Mbps প্যাকেজ, প্রথম মাসের রিচার্জ ফ্রি</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+              <span data-en="One Netis Wi-Fi router included">একটি নেটিস ওয়াই-ফাই রাউটার</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+              <span data-en="One DB box and ONU device">একটি ডিবি বক্স ও ওএনইউ</span>
+            </li>
+          </ul>
+          <!-- পাতার সবচেয়ে বড় অফার, অথচ এতদিন এখানে কোনো বোতামই ছিল না -->
+          <a class="btn btn-call offer-cta" href="tel:01979504463" data-tel>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+            <span data-en="Take this offer">এই অফারটি নিন</span>
+          </a>
         </div>
-        <ul>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-            <span data-en="70 Mbps package, first month's recharge free">৭০ Mbps প্যাকেজ, প্রথম মাসের রিচার্জ ফ্রি</span>
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-            <span data-en="One Netis Wi-Fi router included">একটি নেটিস ওয়াই-ফাই রাউটার</span>
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-            <span data-en="One DB box and ONU device">একটি ডিবি বক্স ও ওএনইউ</span>
-          </li>
-        </ul>
       </div>
     </div>
   </section>
