@@ -20,12 +20,23 @@ from PIL import Image, ImageCms, ImageFilter, ImageOps
 
 SRC, OUT = "_src", "img"
 
-# প্রস্থের ধাপ — WIDE: হিরো/অফার/কভারেজ/স্ট্যাট, CARD: ধাপের ছোট কার্ড
+# প্রস্থের ধাপ
+#   BG   — হিরোর পেছনের পূর্ণ-পর্দা ছবি, বড় মনিটরেও ভরে যেতে হয়
+#   WIDE — অফার/কভারেজ/স্ট্যাট
+#   CARD — ধাপের ছোট কার্ড
+BG   = (640, 960, 1440, 1920)
 WIDE = (480, 720, 1120)
 CARD = (360, 540, 720)
 
-# বড় মাপ সবসময় ছোট হয়ে রেন্ডার হয়, তাই সেখানে কম কোয়ালিটিতেও দাগ চোখে পড়ে না
-Q = {360: (62, 76), 480: (62, 76), 540: (55, 68), 720: (55, 68), 1120: (48, 60)}
+# বড় মাপ সবসময় ছোট হয়ে রেন্ডার হয়, তাই সেখানে কম কোয়ালিটিতেও দাগ চোখে পড়ে না।
+# হিরোর ছবির উপরে লেখা বসে ও পর্দা থাকে, তাই ওখানে আরও কমানো যায়।
+Q = {360: (62, 76), 480: (62, 76), 540: (55, 68), 640: (58, 72),
+     720: (55, 68), 960: (50, 62), 1120: (48, 60), 1440: (42, 55), 1920: (38, 50)}
+
+# হিরোর পেছনের ছবি পর্দা ও লেখার নিচে থাকে, কেউ ওটার ঘাসের ডগা দেখে না।
+# ওখানে কোয়ালিটি অনেক কমিয়েও চোখে পড়ে না, অথচ ফোনের ডেটা অর্ধেক বাঁচে।
+Q_SOFT = {360: (40, 52), 540: (34, 46), 640: (38, 50), 720: (30, 42),
+          960: (32, 44), 1440: (27, 38), 1920: (24, 34)}
 
 # কোনো ছবি ৭২০w AVIF-এ এর চেয়ে বড় হলে সেটা এই দর্শকের জন্য বেশি জটিল —
 # সহজ/কম ডিটেইলের ফ্রেম বেছে নেওয়া ভালো
@@ -33,6 +44,11 @@ BUDGET_KB = 30
 
 #       মূল ফাইল       আউট নাম             ধাপ    অনুপাত  ফোকাস-y  jpeg?  lqip?
 JOBS = [
+    # হিরোর পেছনের ছবি দুই অনুপাতে বানানো হয়:
+    #   -w  চওড়া পর্দার জন্য (২১:৯), -t  ফোনের জন্য (৪:৫)
+    # একই ছবি cover করে বসালে ফোনে গ্রামটা চেনাই যেত না।
+    ("herobg-w.jpg", "hero-bg-w",        BG,    21 / 9, 0.60,    True,  True),
+    ("herobg.jpg",   "hero-bg-t",        CARD,  4 / 5,  0.58,    False, False),
     ("hero.jpg",     "hero-family",      WIDE,  3 / 2,  0.40,    True,  True),
     ("offer.jpg",    "offer-router",     WIDE,  3 / 2,  0.50,    False, False),
     ("step1.jpg",    "step-1-call",      CARD,  4 / 3,  0.42,    False, False),
@@ -76,16 +92,18 @@ def crop_to(im, ratio, focus):
     return im.crop((0, y, w, y + nh))
 
 
-def emit(im, name, widths, jpeg):
+def emit(im, name, widths, jpeg, soft=False):
+    table = Q_SOFT if soft else Q
     for w in widths:
         h = int(round(w * im.height / im.width))
         r = im.resize((w, h), Image.LANCZOS)
         # ছোট করার পর সামান্য শার্প — নইলে ধোঁয়াটে লাগে
         r = r.filter(ImageFilter.UnsharpMask(radius=0.6, percent=58, threshold=3))
-        aq, wq = Q[w]
+        aq, wq = table[w]
         r.save("%s/%s-%d.avif" % (OUT, name, w), quality=aq, speed=5)
         r.save("%s/%s-%d.webp" % (OUT, name, w), quality=wq, method=6)
-        if jpeg and w == 720:                        # শুধু একটাই JPEG — নিরাপত্তা জাল
+        # শুধু একটাই JPEG — নিরাপত্তা জাল। ধাপে ৭২০ না থাকলে ৯৬০-এ বানাই।
+        if jpeg and w == (960 if 960 in widths else 720):
             r.save("%s/%s-%d.jpg" % (OUT, name, w), quality=76,
                    optimize=True, progressive=True)
         ka = os.path.getsize("%s/%s-%d.avif" % (OUT, name, w)) / 1024.0
@@ -125,7 +143,7 @@ def main():
             continue
         print(name)
         im = crop_to(load(path), ratio, focus)
-        emit(im, name, ladder, jpeg)
+        emit(im, name, ladder, jpeg, soft=name.startswith("hero-bg"))
         if want_lqip:
             lqip(im, name)
     return 1 if missing else 0

@@ -54,13 +54,17 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@600;700;800&family=Hind+Siliguri:wght@400;600;700&display=swap">
 
-<!-- বড় পর্দায় হিরোর ছবিটাই সবচেয়ে বড় অংশ, তাই আগেভাগে নামানো হয়।
-     media অ্যাট্রিবিউটের কারণে মোবাইলে এটি নামে না — সেখানে শিরোনামই
-     সবচেয়ে বড় অংশ, আর ছবি নামালে বাংলা ফন্টের সাথে লড়াই বাধত। -->
-<link rel="preload" as="image" media="(min-width:960px)" fetchpriority="high"
+<!-- হিরোর পটভূমির ছবি এখন পাতার সবচেয়ে বড় অংশ, তাই দুই মাপেই আগেভাগে নামে।
+     media দিয়ে ভাগ করা — ফোনে খাড়া ছবিটি, বড় পর্দায় চওড়াটি।
+     দুটো একসাথে কখনো নামে না। -->
+<link rel="preload" as="image" media="(min-width:700px)" fetchpriority="high"
       type="image/avif"
-      imagesrcset="img/hero-family-480.avif 480w, img/hero-family-720.avif 720w, img/hero-family-1120.avif 1120w"
-      imagesizes="560px">
+      imagesrcset="img/hero-bg-w-640.avif 640w, img/hero-bg-w-960.avif 960w, img/hero-bg-w-1440.avif 1440w, img/hero-bg-w-1920.avif 1920w"
+      imagesizes="100vw">
+<link rel="preload" as="image" media="(max-width:699px)" fetchpriority="high"
+      type="image/avif"
+      imagesrcset="img/hero-bg-t-360.avif 360w, img/hero-bg-t-540.avif 540w, img/hero-bg-t-720.avif 720w"
+      imagesizes="100vw">
 
 <!-- প্রথম রঙ আঁকার আগেই থিম বসানো হয় — তাই ডার্ক মোডে সাদা ঝলক দেখা যায় না -->
 <script>
@@ -156,6 +160,12 @@
   /* --- শিরোনামের গ্রেডিয়েন্ট লেখা (তিনটি ধাপই কাগজে ৩:১ পাস) --- */
   --grad-h1:linear-gradient(100deg,#00655A 0%,#00897A 45%,#0E7490 100%);
 
+  /* --- হিরোর ছবির উপরে লেখা পড়ার জন্য পর্দা ---
+         ফোনে উপর থেকে নিচে (লেখা উপরে, গ্রাম নিচে),
+         বড় পর্দায় বাঁ থেকে ডানে (লেখা বাঁয়ে, গ্রাম ডানে)। */
+  --hero-scrim-v:linear-gradient(to bottom,rgba(244,248,247,1) 0%,rgba(244,248,247,.98) 33%,rgba(244,248,247,.74) 51%,rgba(244,248,247,.26) 72%,rgba(244,248,247,0) 92%);
+  --hero-scrim-h:linear-gradient(100deg,rgba(244,248,247,1) 0%,rgba(244,248,247,1) 32%,rgba(244,248,247,.96) 47%,rgba(244,248,247,.54) 58%,rgba(244,248,247,.10) 72%,rgba(244,248,247,0) 84%);
+
   /* --- ছবির ট্রিটমেন্ট — সাতটি আলাদা ছবি যেন এক পরিবারে পড়ে --- */
   --ph-ring:var(--line);
   --ph-tint:rgba(0,120,106,.20);
@@ -228,6 +238,8 @@
     --p4:#FFA167; --p4-2:#FFBE93; --p4-tint:#2E1408; --p4-line:#6B3418; --on-p4:#FFBE93;
     --p4-band:linear-gradient(135deg,#43200C,#2E1408);
     --grad-h1:linear-gradient(100deg,#2FE0BD 0%,#5BF0D2 45%,#57C6F5 100%);
+    --hero-scrim-v:linear-gradient(to bottom,rgba(4,18,15,1) 0%,rgba(4,18,15,.97) 33%,rgba(4,18,15,.72) 51%,rgba(4,18,15,.24) 72%,rgba(4,18,15,0) 92%);
+    --hero-scrim-h:linear-gradient(100deg,rgba(4,18,15,1) 0%,rgba(4,18,15,1) 32%,rgba(4,18,15,.95) 47%,rgba(4,18,15,.52) 58%,rgba(4,18,15,.10) 72%,rgba(4,18,15,0) 84%);
     --ph-tint:rgba(47,224,189,.26);
     --ph-filter:brightness(.86) saturate(.92) contrast(1.06);
     --ph-dim:rgba(10,22,20,.22);
@@ -286,6 +298,8 @@
   --p4:#FFA167; --p4-2:#FFBE93; --p4-tint:#2E1408; --p4-line:#6B3418; --on-p4:#FFBE93;
   --p4-band:linear-gradient(135deg,#43200C,#2E1408);
   --grad-h1:linear-gradient(100deg,#2FE0BD 0%,#5BF0D2 45%,#57C6F5 100%);
+  --hero-scrim-v:linear-gradient(to bottom,rgba(4,18,15,1) 0%,rgba(4,18,15,.97) 33%,rgba(4,18,15,.72) 51%,rgba(4,18,15,.24) 72%,rgba(4,18,15,0) 92%);
+  --hero-scrim-h:linear-gradient(100deg,rgba(4,18,15,1) 0%,rgba(4,18,15,1) 32%,rgba(4,18,15,.95) 47%,rgba(4,18,15,.52) 58%,rgba(4,18,15,.10) 72%,rgba(4,18,15,0) 84%);
   --ph-tint:rgba(47,224,189,.26);
   --ph-filter:brightness(.86) saturate(.92) contrast(1.06);
   --ph-dim:rgba(10,22,20,.22);
@@ -576,26 +590,43 @@ html.nav-open,html.nav-open body{overflow:hidden}
 /* =====================================================================
    6. HERO
    ===================================================================== */
-.hero{position:relative;padding:clamp(28px,4vw,56px) 0 clamp(38px,5vw,66px);overflow:hidden}
-/* তিনটি নরম রঙের আভা মিলে হিরোর পেছনের রঙিন আকাশ।
-   ⚠ এটি নড়াচড়া করানো হয়নি — ঝাপসা গ্রেডিয়েন্ট প্রতি ফ্রেমে আঁকা
-     কম দামি ফোনে স্পষ্ট আটকে যায়, আর দর্শকের বড় অংশ সেখানেই। */
-.hero::before{
-  content:"";position:absolute;inset:-30% -10% auto -10%;height:640px;pointer-events:none;
-  background:
-    radial-gradient(46% 52% at 18% 26%, var(--glow-brand)  0%, transparent 68%),
-    radial-gradient(40% 44% at 82% 12%, var(--glow-sky)    0%, transparent 70%),
-    radial-gradient(52% 46% at 62% 78%, var(--glow-signal) 0%, transparent 72%);
-  filter:blur(8px);opacity:.9;
+/* হিরো — পুরো প্রস্থজুড়ে গ্রামের ছবি, তার উপরে লেখা।
+   আগে ছবিটি ডান পাশে ছোট একটি বাক্সে বন্দি ছিল আর চারপাশে অনেক ফাঁকা
+   জায়গা পড়ে থাকত। এখন ছবিই পটভূমি, লেখা তার উপরে বসে। */
+.hero{
+  position:relative;isolation:isolate;overflow:hidden;
+  /* ফোনে নিচের দিকটা ফাঁকা রাখা হয় যাতে গ্রামটা দেখা যায় */
+  padding:clamp(24px,4vw,40px) 0 clamp(220px,44vw,300px);
 }
-/* নিচের দিকে নরমভাবে কাগজের রঙে মিলিয়ে যায়, যাতে পরের সেকশনে ধাক্কা না লাগে */
-.hero::after{
-  content:"";position:absolute;inset:auto 0 0;height:120px;pointer-events:none;
-  background:linear-gradient(to bottom,transparent,var(--paper));
+.hero-bg{position:absolute;inset:0;z-index:-2;margin:0}
+.hero-bg img{
+  display:block;width:100%;height:100%;object-fit:cover;object-position:center 58%;
+  filter:var(--ph-filter);
+}
+/* লেখার নিচে পর্দা — নইলে ছবির উপরে বাংলা লেখা পড়া যায় না */
+.hero::before{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:var(--hero-scrim-v);
 }
 .hero > .wrap{position:relative;z-index:1}
-.hero-grid{display:grid;gap:clamp(28px,4vw,52px);align-items:center}
-@media (min-width:960px){ .hero-grid{grid-template-columns:1.02fr .98fr} }
+.hero-grid{display:grid;gap:clamp(28px,4vw,52px)}
+.hero-in{max-width:34rem}
+
+@media (min-width:960px){
+  .hero{
+    padding:clamp(56px,7vw,96px) 0 clamp(64px,8vw,108px);
+    display:flex;align-items:center;min-height:min(84vh,700px);
+  }
+  .hero::before{background:var(--hero-scrim-h)}
+  .hero-bg img{object-position:center 55%}
+  .hero > .wrap{width:100%}
+  .hero-in{max-width:33rem}
+  /* নিচের দিকে কাগজের রঙে মিলিয়ে যায়, যাতে সংখ্যার ব্যান্ডে ধাক্কা না লাগে */
+  .hero::after{
+    content:"";position:absolute;inset:auto 0 0;height:170px;z-index:-1;pointer-events:none;
+    background:linear-gradient(to bottom,transparent,var(--paper));
+  }
+}
 .hero h1{font-size:clamp(30px,5.6vw,54px);letter-spacing:-.015em;margin-bottom:14px}
 /* শিরোনামের জোর দেওয়া অংশ রঙের ঢেউয়ে আঁকা।
    ⚠ প্রথমে সাধারণ color, তারপর @supports — পুরোনো ব্রাউজারে গ্রেডিয়েন্ট
@@ -621,49 +652,50 @@ html.nav-open,html.nav-open body{overflow:hidden}
   border:2px solid var(--brand);opacity:.5;animation:pulse 2.4s var(--ease) infinite;
 }
 @keyframes pulse{0%{transform:scale(.6);opacity:.7}70%{transform:scale(1.5);opacity:0}100%{opacity:0}}
-.cta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+/* দামটা বড় করে — রেফারেন্স সাইটের "500 TK /Month"-এর মতো।
+   সবচেয়ে সস্তা প্যাকেজের দাম, তাই দেখেই বোঝা যায় শুরু কোথা থেকে। */
+.hero-price{
+  display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;
+  margin-top:clamp(18px,2.6vw,26px);
+}
+.hero-price b{
+  font-family:'Baloo Da 2',sans-serif;font-weight:800;line-height:1;
+  font-size:clamp(40px,7vw,64px);letter-spacing:-.02em;
+  font-variant-numeric:tabular-nums;color:var(--signal);
+}
+.hero-price span{font-size:clamp(15px,1.6vw,17px);font-weight:600;color:var(--ink-2)}
+
+.cta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
 .cta-row .btn{flex:1 1 210px}
 @media (min-width:960px){ .cta-row .btn{flex:0 0 auto} }
-/* আগে এখানে .facts নামে তিনটি সংখ্যার সারি ছিল (১৫০ Mbps / ২৪-৭ / ১০০%)।
-   সেগুলো এখন হিরোর ঠিক নিচের #stats ব্যান্ডে গেছে — একই সংখ্যা অল্প ব্যবধানে
-   দুবার দেখালে সাইটটা টেমপ্লেটের মতো লাগত, আর মোবাইলে হিরো লম্বা হয়ে
-   ছবিটাকে ভাঁজের নিচে ঠেলে দিত। */
 
-/* hero panel — এখন এর ভেতরে ছবি থাকে, তাই সব প্রস্থেই দেখা যায়।
-   আগে এটি ৯৬০px-এর নিচে পুরো লুকানো ছিল, ফলে মোবাইলে হিরোতে কোনো
-   ছবিই দেখা যেত না — অথচ দর্শকের বড় অংশ মোবাইলেই। */
-.hero-art{display:block;position:relative;margin-top:clamp(22px,4vw,30px)}
-@media (max-width:959px){
-  /* ছোট পর্দায় কার্ডের সাজ নয়, শুধু ছবিটাই — .panel-top / .panel-foot-এর
-     ৯৬০px-এর নিচে কোনো স্টাইল নেই, খোলা রাখলে সাজানো ছাড়া লেখা বেরিয়ে পড়ত */
-  .panel-top,.panel-foot{display:none}
-}
+/* কোণার হটলাইন কার্ড — রেফারেন্স সাইটের "Customer Service" ব্যাজের মতো।
+   ছোট পর্দায় দেখানো হয় না, কারণ সেখানে নিচে স্থায়ী কল বোতামই আছে। */
+.hotline{display:none}
 @media (min-width:960px){
-  .hero-art{margin-top:0}
-  .panel{
-    background:var(--surface);border:1px solid transparent;border-radius:var(--r-xl);
-    padding:26px 26px 22px;box-shadow:var(--shadow-3);
-    background-image:linear-gradient(var(--surface),var(--surface)),
-                     linear-gradient(140deg,var(--brand),var(--acc-sky));
-    background-origin:border-box;
-    background-clip:padding-box,border-box;
+  .hotline{
+    display:inline-flex;align-items:center;gap:12px;text-decoration:none;
+    position:absolute;right:clamp(26px,5vw,88px);bottom:clamp(26px,4vw,56px);z-index:2;
+    background:var(--surface);border:1px solid var(--line);
+    border-radius:var(--r-lg);padding:12px 20px 13px;box-shadow:var(--shadow-3);
+    transition:transform .18s var(--ease),border-color .18s var(--ease);
   }
-  .panel-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}
-  .live{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--brand)}
-  .panel-tag{
-    font-size:13px;font-weight:600;color:var(--ink-3);
-    background:var(--surface-2);border-radius:999px;padding:3px 12px;
+  .hotline:hover{transform:translateY(-2px);border-color:var(--signal)}
+  .hotline-ic{
+    width:40px;height:40px;flex:none;display:grid;place-items:center;border-radius:50%;
+    background:linear-gradient(135deg,var(--signal-2),var(--signal));color:var(--on-signal);
   }
-  .panel-foot{display:flex;align-items:center;gap:9px;margin-top:14px;font-size:13.5px;color:var(--ink-3)}
-  .panel-foot svg{width:16px;height:16px;flex:none;color:var(--brand)}
+  .hotline-ic svg{width:19px;height:19px}
+  .hotline small{display:block;font-size:12.5px;color:var(--ink-3);line-height:1.3}
+  .hotline b{
+    display:block;font-family:'Baloo Da 2',sans-serif;font-size:19px;line-height:1.25;
+    color:var(--signal);font-variant-numeric:tabular-nums;letter-spacing:.01em;
+  }
 }
-
 /* ---------- কভারেজ মানচিত্রের SVG ----------
    ⚠ এই নিয়মগুলো আগে @media (min-width:960px)-এর ভেতরে ছিল। মানচিত্রটি এখন
      #coverage সেকশনে, যা সব প্রস্থে দেখা যায় — তাই নিয়মগুলো বাইরে আনা
      জরুরি ছিল, নইলে মোবাইলে ব্রাউজারের ডিফল্ট কালো আকৃতি দেখা যেত। */
-.live i{width:8px;height:8px;border-radius:50%;background:var(--brand);animation:blink 2.2s ease-in-out infinite}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
 .cov-map{display:block;width:100%;height:auto}
 .cov-map text{
   font-family:'Hind Siliguri',sans-serif;font-size:13px;font-weight:600;
@@ -723,12 +755,13 @@ html.nav-open,html.nav-open body{overflow:hidden}
   background:linear-gradient(to top,var(--ph-scrim) 0,transparent 46%),var(--ph-dim);
 }
 
-/* হিরোর ছবি — ছোট পর্দায় ইচ্ছাকৃতভাবে খাটো, যাতে কল বোতাম ভাঁজের নিচে
-   চলে না যায়; প্রস্থ বাড়লে অনুপাতও চওড়া হয়, উচ্চতা প্রায় একই থাকে */
-.hero-ph{aspect-ratio:16/9}
-@media (min-width:700px){ .hero-ph{aspect-ratio:21/9} }
-@media (min-width:960px){ .hero-ph{aspect-ratio:4/3;border-radius:var(--r-md)} }
-@media (min-width:1200px){ .hero-ph{aspect-ratio:5/4} }
+/* "কেন আমরা" সেকশনের ছবি — নিচের ফাইবারের আঁকা ছবির সাথে জোড়া */
+.why-ph{
+  aspect-ratio:16/9;max-width:520px;
+  margin:0 auto clamp(18px,2.6vw,26px);
+}
+@media (min-width:700px){ .why-ph{aspect-ratio:21/9} }
+@media (min-width:1200px){ .why-ph{max-width:600px} }
 
 .offer-ph{aspect-ratio:16/9;margin-top:4px}
 .step-ph{aspect-ratio:4/3;margin-bottom:14px;border-radius:var(--r-md)}
@@ -1454,59 +1487,60 @@ html.nav-open,html.nav-open body{overflow:hidden}
 <main id="main">
 <span id="top"></span>
 
-  <!-- ===================== HERO ===================== -->
+  <!-- ===================== HERO =====================
+       পুরো প্রস্থজুড়ে গ্রামের ছবি, তার উপরে লেখা।
+       ছবিটি দুই অনুপাতে রাখা আছে — ফোনে খাড়া (৪:৫), বড় পর্দায় চওড়া (২১:৯),
+       কারণ একই ছবি দুই জায়গায় cover করে বসালে ফোনে গ্রামটা চেনাই যেত না। -->
   <section class="hero">
+    <figure class="hero-bg" aria-hidden="true">
+      <picture>
+        <source type="image/avif" media="(min-width:700px)" sizes="100vw"
+                srcset="img/hero-bg-w-640.avif 640w, img/hero-bg-w-960.avif 960w, img/hero-bg-w-1440.avif 1440w, img/hero-bg-w-1920.avif 1920w">
+        <source type="image/webp" media="(min-width:700px)" sizes="100vw"
+                srcset="img/hero-bg-w-640.webp 640w, img/hero-bg-w-960.webp 960w, img/hero-bg-w-1440.webp 1440w, img/hero-bg-w-1920.webp 1920w">
+        <source type="image/avif" sizes="100vw"
+                srcset="img/hero-bg-t-360.avif 360w, img/hero-bg-t-540.avif 540w, img/hero-bg-t-720.avif 720w">
+        <source type="image/webp" sizes="100vw"
+                srcset="img/hero-bg-t-360.webp 360w, img/hero-bg-t-540.webp 540w, img/hero-bg-t-720.webp 720w">
+        <img src="img/hero-bg-w-960.jpg" width="1920" height="823" alt=""
+             fetchpriority="high" decoding="async">
+      </picture>
+    </figure>
+
     <div class="wrap">
-      <div class="hero-grid">
+      <div class="hero-in">
+        <span class="tag"><span class="dot"></span><span data-en="Fiber optic line · now in your area">ফাইবার অপটিক লাইন · এখন আপনার এলাকায়</span></span>
+        <h1><span data-en="High-speed internet,">দ্রুতগতির ইন্টারনেট</span> <em data-en="right at home.">এখন ঘরে বসেই।</em></h1>
+        <p class="hero-lead" data-en="Unlimited data with no FUP limit, 24-hour support, and a monthly bill a village family can afford.">আনলিমিটেড ডাটা, কোনো FUP লিমিট নেই, ২৪ ঘণ্টা সাপোর্ট — আর গ্রামের মানুষের সাধ্যের মধ্যে মাসিক বিল।</p>
 
-        <div>
-          <span class="tag"><span class="dot"></span><span data-en="Fiber optic line · now in your area">ফাইবার অপটিক লাইন · এখন আপনার এলাকায়</span></span>
-          <h1><span data-en="High-speed internet,">দ্রুতগতির ইন্টারনেট</span> <em data-en="right at home.">এখন ঘরে বসেই।</em></h1>
-          <p class="hero-lead" data-en="Unlimited data with no FUP limit, 24-hour support, and a monthly bill a village family can afford.">আনলিমিটেড ডাটা, কোনো FUP লিমিট নেই, ২৪ ঘণ্টা সাপোর্ট — আর গ্রামের মানুষের সাধ্যের মধ্যে মাসিক বিল।</p>
+        <!-- ★ এই দামটি ৫০ Mbps প্যাকেজের। প্যাকেজের দাম বদলালে এখানেও বদলান। -->
+        <p class="hero-price">
+          <b data-en="৳525">৫২৫৳</b>
+          <span data-en="from / month">থেকে · প্রতি মাসে</span>
+        </p>
 
-          <div class="cta-row">
-            <a class="btn btn-call" href="tel:01979504463" data-tel>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
-              <span data-phone-label>কল করুন 01979-504463</span>
-            </a>
-            <a class="btn btn-ghost" href="#packages" data-en="See packages">প্যাকেজ দেখুন</a>
-          </div>
-
+        <div class="cta-row">
+          <a class="btn btn-call" href="tel:01979504463" data-tel>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+            <span data-phone-label>কল করুন 01979-504463</span>
+          </a>
+          <a class="btn btn-ghost" href="#packages" data-en="See packages">প্যাকেজ দেখুন</a>
         </div>
-
-        <!-- ঘরে বসে ইন্টারনেট — আগে এখানে শুধু ডেস্কটপে একটি মানচিত্র দেখাত,
-             মোবাইলে কিছুই না। মানচিত্রটি এখন কভারেজ সেকশনে, আর এখানে ছবি। -->
-        <div class="hero-art">
-          <div class="panel">
-            <div class="panel-top">
-              <span class="live"><i></i><span data-en="Our network">আমাদের নেটওয়ার্ক</span></span>
-              <span class="panel-tag" data-en="Fiber in the village">গ্রামে ফাইবার</span>
-            </div>
-
-            <figure class="ph hero-ph">
-              <picture>
-                <source type="image/avif"
-                        sizes="(min-width:960px) 560px, (min-width:700px) 712px, calc(100vw - 36px)"
-                        srcset="img/hero-family-480.avif 480w, img/hero-family-720.avif 720w, img/hero-family-1120.avif 1120w">
-                <source type="image/webp"
-                        sizes="(min-width:960px) 560px, (min-width:700px) 712px, calc(100vw - 36px)"
-                        srcset="img/hero-family-480.webp 480w, img/hero-family-720.webp 720w, img/hero-family-1120.webp 1120w">
-                <img src="img/hero-family-720.jpg" width="720" height="480"
-                     alt="মোবাইলে ইন্টারনেট ব্যবহার করছেন একজন"
-                     data-en-alt="Someone using the internet on a mobile phone"
-                     decoding="async">
-              </picture>
-            </figure>
-
-            <div class="panel-foot">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21.5s7-6.4 7-11.5a7 7 0 1 0-14 0c0 5.1 7 11.5 7 11.5Z"/><circle cx="12" cy="10" r="2.6"/></svg>
-              <span data-en="New areas added every month — call to check yours">প্রতি মাসেই নতুন এলাকা — কল করে জেনে নিন</span>
-            </div>
-          </div>
-        </div>
-
       </div>
     </div>
+
+    <!-- কোণার হটলাইন কার্ড (শুধু বড় পর্দায় — ফোনে নিচে স্থায়ী কল বোতাম আছে)।
+         .wrap-এর ভেতরে নয়, সরাসরি .hero-এর সন্তান — তাই পাতার কোণায় বসে,
+         লেখার কলামের ডান প্রান্তে ঝুলে থাকে না। -->
+    <a class="hotline" href="tel:01979504463" data-tel>
+        <span class="hotline-ic">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+        </span>
+      <span>
+        <small data-en="Customer service">কাস্টমার সার্ভিস</small>
+        <b data-hotline>01979-504463</b>
+      </span>
+    </a>
   </section>
 
   <!-- ===================== সংখ্যায় আমাদের সেবা =====================
@@ -1663,6 +1697,23 @@ html.nav-open,html.nav-open body{overflow:hidden}
         <p class="eyebrow" data-en="Why us">কেন আমরা</p>
         <h2 class="sec-title" data-en="Village service, city-grade line">গ্রামের সেবা, শহরের মানের লাইন</h2>
       </div>
+
+      <!-- ঘরে বসে ইন্টারনেট — আগে এই ছবিটি ব্যানারে ছিল; ব্যানার এখন
+           পুরো প্রস্থজুড়ে গ্রামের ছবি, তাই এটি এখানে এসেছে -->
+      <figure class="ph why-ph rv">
+        <picture>
+          <source type="image/avif"
+                  sizes="(min-width:1200px) 600px, (min-width:700px) 712px, calc(100vw - 36px)"
+                  srcset="img/hero-family-480.avif 480w, img/hero-family-720.avif 720w, img/hero-family-1120.avif 1120w">
+          <source type="image/webp"
+                  sizes="(min-width:1200px) 600px, (min-width:700px) 712px, calc(100vw - 36px)"
+                  srcset="img/hero-family-480.webp 480w, img/hero-family-720.webp 720w, img/hero-family-1120.webp 1120w">
+          <img src="img/hero-family-720.jpg" width="720" height="480"
+               alt="মোবাইলে ইন্টারনেট ব্যবহার করছেন একজন"
+               data-en-alt="Someone using the internet on a mobile phone"
+               loading="lazy" decoding="async">
+        </picture>
+      </figure>
 
       <!-- ছবি: খুঁটি থেকে ফাইবার হয়ে বাড়ি, তারপর ওয়াই-ফাই -->
       <svg class="art art-fiber rv" viewBox="0 0 480 240" role="img" aria-labelledby="art-fiber-t" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -2163,6 +2214,7 @@ var SITE = {
     if (label) { label.textContent = en ? ("Call " + p1) : ("কল করুন " + p1); }
     var hdr = $("[data-hdr-phone]");
     if (hdr) { hdr.textContent = p1; }
+    $$("[data-hotline]").forEach(function (el) { el.textContent = p1; });
     var f1 = $("[data-phone-1]"); if (f1) { f1.textContent = p1; }
     var f2 = $("[data-phone-2]"); if (f2) { f2.textContent = p2; }
 
