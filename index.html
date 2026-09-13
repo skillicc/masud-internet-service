@@ -172,7 +172,7 @@
   --ph-filter:saturate(1.06) contrast(1.02);
   --ph-dim:transparent;
   --ph-scrim:rgba(4,20,17,.55);
-  --cov-veil:rgba(244,248,247,.90);
+  --cov-veil:rgba(244,248,247,.84);
 
   /* --- সংখ্যার ব্যান্ড / stat band --- */
   --band-bg1:#00786A; --band-bg2:#00A88E;
@@ -244,7 +244,7 @@
     --ph-filter:brightness(.86) saturate(.92) contrast(1.06);
     --ph-dim:rgba(10,22,20,.22);
     --ph-scrim:rgba(2,10,8,.66);
-    --cov-veil:rgba(4,18,15,.88);
+    --cov-veil:rgba(4,18,15,.82);
     --band-bg1:#0C2B26; --band-bg2:#123E35;
     --band-ink:#E9F5F1; --band-ink-2:#9FBDB5;
     --band-num:#5BF0D2; --band-photo-op:.22;
@@ -304,7 +304,7 @@
   --ph-filter:brightness(.86) saturate(.92) contrast(1.06);
   --ph-dim:rgba(10,22,20,.22);
   --ph-scrim:rgba(2,10,8,.66);
-  --cov-veil:rgba(4,18,15,.88);
+  --cov-veil:rgba(4,18,15,.82);
   --band-bg1:#0C2B26; --band-bg2:#123E35;
   --band-ink:#E9F5F1; --band-ink-2:#9FBDB5;
   --band-num:#5BF0D2; --band-photo-op:.22;
@@ -446,7 +446,8 @@ button{font-family:inherit}
 }
 .topbar.stuck::after{opacity:1}
 .topbar-in{display:flex;align-items:center;gap:12px;height:var(--hdr-h)}
-.brand{display:flex;align-items:center;gap:10px;text-decoration:none;min-width:0;flex:0 1 auto}
+/* লোগোর লিংকটিও আঙুলের মাপে — হেডারের পুরো উচ্চতা জুড়ে */
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;min-width:0;flex:0 1 auto;height:100%}
 .mark{
   width:36px;height:36px;flex:none;border-radius:11px;
   background:linear-gradient(140deg,var(--brand-3),var(--brand));
@@ -483,11 +484,35 @@ button{font-family:inherit}
   transition:background .18s var(--ease),color .18s var(--ease);
 }
 .lang button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:var(--shadow-1)}
-@media (max-width:390px){
-  .lang button{padding:5px 8px;font-size:12.5px}
-  .tools{gap:6px}
-  .icon-btn{width:36px;height:36px}
+/* ⚠ ছোট ফোনে প্রতিষ্ঠানের নামটাই "মাসুদ ইন্টারনেট …" হয়ে কাটা পড়ছিল।
+     ডান পাশের টুলগুলো ১৭৩px নিয়ে নিচ্ছিল। সেগুলো ছোট করে নামের জায়গা
+     বাড়ানো হয়েছে — নামটা কাটা যাওয়ার চেয়ে বোতাম একটু ছোট হওয়া ভালো।
+     (বোতামগুলোর আঙুল-এলাকা pointer:coarse-এর ::after দিয়ে ৪৪px-ই থাকে।) */
+@media (max-width:430px){
+  .brand-name{font-size:15px}
+  .brand-sub{display:none}          /* ১১px বাংলা কেউ পড়তে পারে না */
+  .tools{gap:5px}
+  .lang{padding:2px}
+  .lang button{padding:5px 7px;font-size:12.5px}
+  .icon-btn{width:35px;height:35px;border-radius:10px}
+  .icon-btn svg{width:18px;height:18px}
 }
+@media (max-width:400px){
+  .tools{gap:4px}
+  .lang button{padding:5px 6px}
+}
+/* ৩৭৫px-এর নিচে (সস্তা অ্যান্ড্রয়েডের সাধারণ মাপ) সবকিছু আঁটে না।
+   থিম বদলের বোতামটা সরানো হয় — ডার্ক মোড এমনিতেই ফোনের সেটিং মেনে চলে,
+   তাই কিছু হারায় না; কিন্তু প্রতিষ্ঠানের নাম কাটা গেলে সেটা চোখে লাগে। */
+@media (max-width:375px){
+  .brand-name{font-size:13.5px}
+  .brand .mark{width:32px;height:32px;border-radius:10px}
+  .brand .mark svg{width:19px;height:19px}
+  #btn-theme{display:none}
+}
+/* ৩৩০px-এর নিচে (খুব পুরোনো ফোন) ভাষার বোতামটাও সরে যায়।
+   সাইট বাংলাতেই খোলে, আর এই দর্শকের জন্য সেটাই স্বাভাবিক ভাষা। */
+@media (max-width:330px){ .lang{display:none} }
 .icon-btn{
   width:38px;height:38px;flex:none;display:grid;place-items:center;cursor:pointer;
   background:var(--surface-2);border:1px solid var(--line-soft);border-radius:11px;
@@ -700,6 +725,11 @@ html.nav-open,html.nav-open body{overflow:hidden}
 .cov-map text{
   font-family:'Hind Siliguri',sans-serif;font-size:13px;font-weight:600;
   fill:var(--ink-2);text-anchor:middle;
+  /* পেছনে গ্রামের ছবি থাকে। অক্ষরের চারপাশে কাগজের রঙের সরু রেখা টেনে
+     দিলে ছবির গাঢ় অংশেও (গাছ, মাটি) নাম স্পষ্ট পড়া যায় — পর্দা গাঢ়
+     করে গ্রামটা ঢেকে দেওয়ার দরকার হয় না। মানচিত্রে এটাই চেনা কৌশল। */
+  paint-order:stroke fill;
+  stroke:var(--paper);stroke-width:3.5px;stroke-linejoin:round;
 }
 .cov-ring{fill:none;stroke:var(--brand);stroke-dasharray:3 7}
 /* তিনটি বলয়ে তিনটি রং — কেন্দ্র থেকে দূরে গেলে রং বদলায় */
@@ -792,8 +822,8 @@ html.nav-open,html.nav-open body{overflow:hidden}
   font-size:clamp(29px,5.4vw,43px);line-height:1.12;letter-spacing:-.02em;
   font-variant-numeric:tabular-nums;color:var(--band-num);
 }
-.stat span{display:block;font-size:13px;line-height:1.45;margin-top:4px;color:var(--band-ink-2)}
-@media (max-width:400px){ .stat{padding:15px 8px 17px} .stat span{font-size:12px} }
+.stat span{display:block;font-size:13.5px;line-height:1.45;margin-top:4px;color:var(--band-ink-2)}
+@media (max-width:400px){ .stat{padding:15px 8px 17px} .stat span{font-size:12.5px} }
 
 /* =====================================================================
    7. OFFER
@@ -810,7 +840,7 @@ html.nav-open,html.nav-open body{overflow:hidden}
   .offer{grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);align-items:stretch}
   .offer-ph{aspect-ratio:auto;height:100%;min-height:100%}
 }
-.offer-label{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:7px}
+.offer-label{font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:7px}
 .offer h2{font-size:clamp(22px,3.4vw,30px)}
 .offer h2 b{color:var(--gold);font-variant-numeric:tabular-nums}
 .offer ul{list-style:none;margin:clamp(16px,2.2vw,22px) 0 0;padding:0;display:grid;gap:10px}
@@ -862,7 +892,7 @@ html.nav-open,html.nav-open body{overflow:hidden}
 .pkg-day{
   align-self:flex-start;background:var(--c-tint);color:var(--c);
   border:1px solid var(--c-line);border-radius:999px;padding:4px 11px 5px;
-  font-size:12px;font-weight:600;letter-spacing:.01em;font-variant-numeric:tabular-nums;
+  font-size:13px;font-weight:600;letter-spacing:.01em;font-variant-numeric:tabular-nums;
 }
 /* জনপ্রিয় কার্ডের ব্যাজটি সোনালি — এই একটিমাত্র রং দুই থিমেই এক থাকে,
    কারণ "সবচেয়ে জনপ্রিয়" সংকেতটি সব সময় একইরকম চেনা উচিত */
@@ -1200,9 +1230,16 @@ html.nav-open,html.nav-open body{overflow:hidden}
 .foot h3{font-size:16.5px;margin-bottom:9px}
 .foot p{font-size:15px;color:var(--ink-2);line-height:1.75}
 .foot-brand{display:flex;align-items:center;gap:10px;margin-bottom:10px}
-.foot-list{display:grid;gap:2px}
-.foot-list a{font-size:15px;color:var(--ink-2);text-decoration:none;line-height:1.9;width:fit-content;transition:color .18s var(--ease)}
+.foot-list{display:grid;gap:0}
+/* ⚠ ফুটারের লিংকগুলো আগে ২৯px উঁচু ছিল — আঙুলের জন্য অনেক ছোট, অথচ
+     ফোন নম্বর দুটোও এখানেই। এখন প্রতিটি অন্তত ৪৪px। */
+.foot-list a{
+  display:flex;align-items:center;min-height:44px;padding:2px 0;
+  font-size:15px;color:var(--ink-2);text-decoration:none;line-height:1.4;
+  width:fit-content;transition:color .18s var(--ease);
+}
 .foot-list a:hover{color:var(--brand)}
+.foot-list a[hidden]{display:none}
 .copy{
   margin-top:28px;padding-top:18px;border-top:1px solid var(--line-soft);
   font-size:13.5px;color:var(--ink-3);
