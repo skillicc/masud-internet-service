@@ -1118,18 +1118,31 @@ html.nav-open,html.nav-open body{overflow:hidden}
   background:var(--surface);border:1px solid var(--line);
   border-radius:var(--r-md);padding:18px 18px 20px;
 }
-.tip-n{
-  display:grid;place-items:center;width:30px;height:30px;margin-bottom:11px;
-  border-radius:9px;background:var(--brand-soft);color:var(--brand);
-  font-family:'Baloo Da 2',sans-serif;font-weight:700;font-size:15px;
+/* আগে এখানে শুধু ১–৬ সংখ্যা ছিল। সংখ্যাগুলোর কোনো মানে ছিল না — টিপসগুলো
+   ধাপে ধাপে করার জিনিস নয়। তাই প্রতিটি টিপসের বিষয় অনুযায়ী আলাদা আইকন:
+   রাউটার · রিস্টার্ট · তালা · স্পিড মিটার · ফাইবারের তার · ব্যাটারি।
+   এতে প্রতিটি কার্ড দূর থেকেই আলাদা চেনা যায়। */
+.tip-ic{
+  display:grid;place-items:center;width:46px;height:46px;margin-bottom:13px;
+  border-radius:13px;background:var(--brand-soft);color:var(--brand);
 }
+.tip-ic svg{width:25px;height:25px;display:block}
 /* ছয়টি টিপসে ছয়টি রং, ঘুরিয়ে ঘুরিয়ে */
-.tip:nth-child(6n+1) .tip-n{background:var(--p1-tint);color:var(--p1)}
-.tip:nth-child(6n+2) .tip-n{background:var(--p2-tint);color:var(--p2)}
-.tip:nth-child(6n+3) .tip-n{background:var(--p3-tint);color:var(--p3)}
-.tip:nth-child(6n+4) .tip-n{background:var(--p4-tint);color:var(--p4)}
-.tip:nth-child(6n+5) .tip-n{background:var(--acc-violet-tint);color:var(--acc-violet)}
-.tip:nth-child(6n+6) .tip-n{background:var(--acc-magenta-tint);color:var(--acc-magenta)}
+.tip:nth-child(6n+1) .tip-ic{background:var(--p1-tint);color:var(--p1)}
+.tip:nth-child(6n+2) .tip-ic{background:var(--p2-tint);color:var(--p2)}
+.tip:nth-child(6n+3) .tip-ic{background:var(--p3-tint);color:var(--p3)}
+.tip:nth-child(6n+4) .tip-ic{background:var(--p4-tint);color:var(--p4)}
+.tip:nth-child(6n+5) .tip-ic{background:var(--acc-violet-tint);color:var(--acc-violet)}
+.tip:nth-child(6n+6) .tip-ic{background:var(--acc-magenta-tint);color:var(--acc-magenta)}
+/* কার্ডের উপরে নিজের রঙের সরু ফিতা — প্যাকেজ কার্ডের মতোই */
+.tip{position:relative;overflow:hidden}
+.tip::before{content:"";position:absolute;inset:0 0 auto;height:3px;background:var(--brand)}
+.tip:nth-child(6n+1)::before{background:var(--p1)}
+.tip:nth-child(6n+2)::before{background:var(--p2)}
+.tip:nth-child(6n+3)::before{background:var(--p3)}
+.tip:nth-child(6n+4)::before{background:var(--p4)}
+.tip:nth-child(6n+5)::before{background:var(--acc-violet)}
+.tip:nth-child(6n+6)::before{background:var(--acc-magenta)}
 .tip h3{font-size:17px;margin-bottom:4px}
 .tip p{font-size:14.5px;color:var(--ink-2);line-height:1.62}
 .callout{
@@ -1997,32 +2010,32 @@ html.nav-open,html.nav-open body{overflow:hidden}
       </div>
       <div class="tips">
         <article class="tip rv">
-          <span class="tip-n" aria-hidden="true" data-en="1">১</span>
+          <span class="tip-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="12.5" width="18" height="7.5" rx="2.2"/><path d="M7 12.5 5 6M17 12.5 19 6"/><circle cx="7.2" cy="16.3" r=".9" fill="currentColor" stroke="none"/><circle cx="10.4" cy="16.3" r=".9" fill="currentColor" stroke="none"/></svg></span>
           <h3 data-en="Put the router high up, in the middle">রাউটার উঁচুতে, ঘরের মাঝখানে</h3>
           <p data-en="Inside a cupboard or down on the floor, the signal gets eaten by the walls. Keep it in the middle of the house, at least five feet up and out in the open — every room then gets the same coverage.">আলমারির ভেতরে বা মেঝেতে রাখলে সিগন্যাল দেয়ালে আটকে যায়। ঘরের মাঝামাঝি, মাটি থেকে অন্তত ৫ ফুট উঁচুতে খোলা জায়গায় রাখুন — সব ঘরে সমান নেটওয়ার্ক পাবেন।</p>
         </article>
         <article class="tip rv">
-          <span class="tip-n" aria-hidden="true" data-en="2">২</span>
+          <span class="tip-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 12a8.5 8.5 0 1 1-2.9-6.4"/><path d="M20.5 4.2v4.6h-4.6"/><path d="M12 8.2v4.4"/></svg></span>
           <h3 data-en="Slow? Restart the router first">স্পিড কম মনে হলে আগে রিস্টার্ট</h3>
           <p data-en="Switch the router off for 30 seconds, then on again. Most slow-speed complaints clear up right there — try it once before you call us.">রাউটারের বিদ্যুৎ ৩০ সেকেন্ড বন্ধ রেখে আবার চালু করুন। স্পিড কমে যাওয়ার বেশিরভাগ সমস্যা এতেই ঠিক হয়ে যায় — কল করার আগে একবার করে দেখুন।</p>
         </article>
         <article class="tip rv">
-          <span class="tip-n" aria-hidden="true" data-en="3">৩</span>
+          <span class="tip-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10.5" width="16" height="10" rx="2.4"/><path d="M7.8 10.5V7.6a4.2 4.2 0 0 1 8.4 0v2.9"/><circle cx="12" cy="15.4" r="1.3" fill="currentColor" stroke="none"/></svg></span>
           <h3 data-en="Keep the password strong">পাসওয়ার্ড শক্ত রাখুন</h3>
           <p data-en="Do not use a birthday or a phone number. Mix letters and numbers, at least eight characters, and change it every three or four months — otherwise your speed quietly goes to the neighbours' phones.">জন্মতারিখ বা ফোন নম্বর পাসওয়ার্ড দেবেন না। অক্ষর ও সংখ্যা মিলিয়ে অন্তত ৮ ঘরের পাসওয়ার্ড দিন, ৩-৪ মাসে একবার বদলান — নইলে আপনার স্পিড প্রতিবেশীর ফোনে চলে যায়।</p>
         </article>
         <article class="tip rv">
-          <span class="tip-n" aria-hidden="true" data-en="4">৪</span>
+          <span class="tip-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18a8.5 8.5 0 1 1 16 0"/><path d="M12 18 16 11.6"/><circle cx="12" cy="18" r="1.4" fill="currentColor" stroke="none"/></svg></span>
           <h3 data-en="How to measure speed properly">স্পিড মাপার সঠিক নিয়ম</h3>
           <p data-en="Stand near the router and test on fast.com or speedtest.net with one device only. From a far room, or while the whole house is streaming, the number will always read low.">রাউটারের কাছে দাঁড়িয়ে, শুধু একটি ডিভাইসে fast.com বা speedtest.net দিয়ে মাপুন। দূরের ঘর থেকে বা বাড়ির সবাই ইউটিউব চালু রেখে মাপলে স্পিড কম দেখাবেই।</p>
         </article>
         <article class="tip rv">
-          <span class="tip-n" aria-hidden="true" data-en="5">৫</span>
+          <span class="tip-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 18.5c4.5 0 4.5-6.5 9-6.5"/><path d="M12.5 12h4.2"/><rect x="16.7" y="9.2" width="3.8" height="5.6" rx="1.3"/><circle cx="3.5" cy="18.5" r="1.4" fill="currentColor" stroke="none"/></svg></span>
           <h3 data-en="Never bend the fiber cable">ফাইবারের তার মোড়াবেন না</h3>
           <p data-en="Fiber is a thread of glass — a sharp bend, or a door pressing on it, snaps the strand inside where you cannot see it. If the cable looks pulled tight or coiled, call us instead of handling it yourself.">ফাইবার কাচের সুতার মতো — জোরে ভাঁজ করলে বা দরজা-জানালার নিচে চাপা পড়লে ভেতরে ভেঙে যায়, বাইরে থেকে বোঝাও যায় না। তার টানটান বা মোড়ানো দেখলে নিজে না ধরে আমাদের কল করুন।</p>
         </article>
         <article class="tip rv">
-          <span class="tip-n" aria-hidden="true" data-en="6">৬</span>
+          <span class="tip-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="7.5" width="14.5" height="9" rx="2.2"/><path d="M20.5 11v2"/><path d="M11.6 9.6 9 12.4h3.2l-.8 2.4 2.7-2.9h-3.2Z" fill="currentColor" stroke="none"/></svg></span>
           <h3 data-en="Keep Wi-Fi on through load-shedding">লোডশেডিংয়ে ওয়াই-ফাই চালু রাখুন</h3>
           <p data-en="Our line and boxes run on backup power, but your own router dies with the mains. A small mini-UPS for the router and the ONU keeps the internet running right through an outage.">আমাদের লাইন ও বক্স ব্যাকআপ বিদ্যুতে চলে, কিন্তু বিদ্যুৎ গেলে আপনার রাউটার বন্ধ হয়ে যায়। রাউটার ও ওএনইউ-র জন্য ছোট একটি মিনি-ইউপিএস নিলে বিদ্যুৎ না থাকলেও ইন্টারনেট চলবে।</p>
         </article>
