@@ -713,9 +713,10 @@ html.nav-open,html.nav-open body{overflow:hidden}
 /* =====================================================================
    6b. ILLUSTRATIONS (inline SVG — scales sharp, follows the theme)
    ===================================================================== */
-.art{display:block;width:100%;height:auto;max-width:520px;margin:0 auto clamp(20px,3vw,30px)}
-@media (min-width:1200px){ .art{max-width:600px} }
-.fiber-flow{stroke-dasharray:7 15;animation:flow 3s linear infinite}
+/* এখানে আগে খুঁটি-থেকে-বাড়ি ফাইবারের একটি আঁকা ছবি ছিল। সেটি পাশের
+   "বাড়ি পর্যন্ত ফাইবার" কারণটিরই পুনরাবৃত্তি করছিল, আর দুটি ছবি একের পর
+   এক বসায় সেকশনটা ফাঁকা ও অগোছালো দেখাত — তাই সরানো হয়েছে।
+   @keyframes flow রাখা হয়েছে, কভারেজ মানচিত্রের লাইনগুলো ওটা ব্যবহার করে। */
 @keyframes flow{to{stroke-dashoffset:-44}}
 
 /* =====================================================================
@@ -761,7 +762,6 @@ html.nav-open,html.nav-open body{overflow:hidden}
   margin:0 auto clamp(18px,2.6vw,26px);
 }
 @media (min-width:700px){ .why-ph{aspect-ratio:21/9} }
-@media (min-width:1200px){ .why-ph{max-width:600px} }
 
 .offer-ph{aspect-ratio:16/9;margin-top:4px}
 .step-ph{aspect-ratio:4/3;margin-bottom:14px;border-radius:var(--r-md)}
@@ -901,6 +901,21 @@ html.nav-open,html.nav-open body{overflow:hidden}
 /* =====================================================================
    9. WHY
    ===================================================================== */
+/* বড় পর্দায় দুই কলাম — বাঁয়ে ছবি ও আঁকা ছবি, ডানে চারটি কারণ।
+   আগে দুটি ছবি মাঝখানে একের পর এক বসত আর দুপাশে বিশাল ফাঁকা জায়গা
+   পড়ে থাকত; দর্শকের চোখে সেটা "ফাঁকা ও অগোছালো" লাগত। */
+.why-wrap{display:grid;gap:clamp(22px,3vw,34px)}
+@media (min-width:960px){
+  .why-wrap{
+    grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);
+    gap:clamp(30px,3.6vw,58px);align-items:center;
+  }
+  .why-wrap .why-ph{aspect-ratio:4/3;max-width:none;margin:0}
+  /* id দিয়ে লেখা, কারণ নিচের .why-এর ব্রেকপয়েন্টগুলোকে হারাতে হবে */
+  #why .why{grid-template-columns:1fr}
+  #why .why-item{flex-direction:row;gap:14px}
+}
+
 /* ঘরগুলোর মাঝের ১px ফাঁকটাই আসলে পেছনের রং — সেটাকে গ্রেডিয়েন্ট করে
    দিলে বিনা খরচে রঙিন জালের মতো রেখা পাওয়া যায় */
 .why{
@@ -1698,15 +1713,16 @@ html.nav-open,html.nav-open body{overflow:hidden}
         <h2 class="sec-title" data-en="Village service, city-grade line">গ্রামের সেবা, শহরের মানের লাইন</h2>
       </div>
 
-      <!-- ঘরে বসে ইন্টারনেট — আগে এই ছবিটি ব্যানারে ছিল; ব্যানার এখন
-           পুরো প্রস্থজুড়ে গ্রামের ছবি, তাই এটি এখানে এসেছে -->
+      <!-- বড় পর্দায় দুই কলাম: বাঁয়ে ছবি, ডানে চারটি কারণ।
+           আগে ছবি মাঝখানে ভাসত আর দুপাশে বিশাল ফাঁকা জায়গা পড়ে থাকত। -->
+      <div class="why-wrap">
       <figure class="ph why-ph rv">
         <picture>
           <source type="image/avif"
-                  sizes="(min-width:1200px) 600px, (min-width:700px) 712px, calc(100vw - 36px)"
+                  sizes="(min-width:1320px) 540px, (min-width:960px) 500px, (min-width:700px) 712px, calc(100vw - 36px)"
                   srcset="img/hero-family-480.avif 480w, img/hero-family-720.avif 720w, img/hero-family-1120.avif 1120w">
           <source type="image/webp"
-                  sizes="(min-width:1200px) 600px, (min-width:700px) 712px, calc(100vw - 36px)"
+                  sizes="(min-width:1320px) 540px, (min-width:960px) 500px, (min-width:700px) 712px, calc(100vw - 36px)"
                   srcset="img/hero-family-480.webp 480w, img/hero-family-720.webp 720w, img/hero-family-1120.webp 1120w">
           <img src="img/hero-family-720.jpg" width="720" height="480"
                alt="মোবাইলে ইন্টারনেট ব্যবহার করছেন একজন"
@@ -1714,48 +1730,6 @@ html.nav-open,html.nav-open body{overflow:hidden}
                loading="lazy" decoding="async">
         </picture>
       </figure>
-
-      <!-- ছবি: খুঁটি থেকে ফাইবার হয়ে বাড়ি, তারপর ওয়াই-ফাই -->
-      <svg class="art art-fiber rv" viewBox="0 0 480 240" role="img" aria-labelledby="art-fiber-t" fill="none" stroke-linecap="round" stroke-linejoin="round">
-        <title id="art-fiber-t" data-en="Fiber runs from the pole straight into your house, and Wi-Fi reaches the whole family">খুঁটি থেকে ফাইবার সরাসরি আপনার বাড়িতে, আর ওয়াই-ফাই পুরো পরিবারে</title>
-
-        <path d="M12 214h456" stroke="var(--line)" stroke-width="2.4" stroke-dasharray="2 12"/>
-
-        <!-- খুঁটি ও ডিবি বক্স -->
-        <path d="M72 214V56" stroke="var(--ink-3)" stroke-width="3.2"/>
-        <path d="M54 66h36" stroke="var(--ink-3)" stroke-width="3.2"/>
-        <rect x="57" y="88" width="30" height="36" rx="6" fill="var(--surface)" stroke="var(--ink-3)" stroke-width="2.4"/>
-        <path d="M65 99h14M65 107h14M65 115h8" stroke="var(--brand)" stroke-width="2.2"/>
-
-        <!-- ফাইবার লাইন -->
-        <path d="M72 60C142 108 214 132 292 140" stroke="var(--brand)" stroke-width="3.2" opacity=".25"/>
-        <path class="fiber-flow" d="M72 60C142 108 214 132 292 140" stroke="var(--brand)" stroke-width="3.2"/>
-
-        <!-- বাড়ি -->
-        <path d="M300 124 387 62 474 124" stroke="var(--ink-3)" stroke-width="3.2"/>
-        <rect x="314" y="122" width="146" height="92" rx="7" fill="var(--surface)" stroke="var(--ink-3)" stroke-width="2.4"/>
-        <rect x="404" y="166" width="38" height="48" rx="5" stroke="var(--ink-3)" stroke-width="2.2"/>
-        <rect x="336" y="146" width="32" height="28" rx="4" stroke="var(--ink-3)" stroke-width="2.2"/>
-        <path d="M352 146v28M336 160h32" stroke="var(--ink-3)" stroke-width="1.8"/>
-
-        <!-- দেয়ালে ওএনইউ -->
-        <rect x="292" y="126" width="26" height="32" rx="6" fill="var(--surface)" stroke="var(--brand)" stroke-width="2.4"/>
-        <circle cx="299" cy="136" r="1.9" fill="var(--brand)"/>
-        <circle cx="299" cy="145" r="1.9" fill="var(--brand)" opacity=".5"/>
-
-        <!-- ওয়াই-ফাই -->
-        <g transform="translate(288,150) rotate(-38)" stroke="var(--brand)" stroke-width="2.6">
-          <path d="M-13 -6a18 18 0 0 1 26 0"/>
-          <path d="M-25 -17a35 35 0 0 1 50 0" opacity=".62"/>
-          <path d="M-37 -28a52 52 0 0 1 74 0" opacity=".34"/>
-        </g>
-
-        <!-- ফোন ও ল্যাপটপ -->
-        <rect x="140" y="168" width="28" height="46" rx="6" fill="var(--surface)" stroke="var(--ink-3)" stroke-width="2.2"/>
-        <path d="M150 176h8" stroke="var(--ink-3)" stroke-width="2"/>
-        <rect x="192" y="172" width="58" height="34" rx="4" fill="var(--surface)" stroke="var(--ink-3)" stroke-width="2.2"/>
-        <path d="M184 214h74" stroke="var(--ink-3)" stroke-width="2.4"/>
-      </svg>
 
       <div class="why rv">
         <div class="why-item">
@@ -1786,6 +1760,7 @@ html.nav-open,html.nav-open body{overflow:hidden}
             <p data-en="Send the bill on bKash or Nagad — no walking to the office every month.">বিকাশ বা নগদে বিল পাঠান — প্রতি মাসে অফিসে যাওয়ার দরকার নেই।</p>
           </div>
         </div>
+      </div>
       </div>
     </div>
   </section>
